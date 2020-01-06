@@ -5,6 +5,12 @@ let translations = {
       edition: 'Edición',
       library: 'Biblioteca',
       help: 'Ayuda'
+    },
+    statusBar: {
+      amountPlayers: 'Jugadores:',
+      timeSpent: 'Tiempo trans.:',
+      gameName: 'Juego:',
+      sessionNumber: 'Sesión N°:'
     }
   },
   en: {
@@ -13,6 +19,12 @@ let translations = {
       edition: 'Edition',
       library: 'Library',
       help: 'Help'
+    },
+    statusBar: {
+      amountPlayers: 'Players:',
+      timeSpent: 'Time spent:',
+      gameName: 'Game:',
+      sessionNumber: 'Session N°:'
     }
   }
 }
