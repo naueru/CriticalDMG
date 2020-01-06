@@ -1,4 +1,8 @@
+// Themes
 @import '../../Constants/Themes/MainTheme.scss';
+
+// Sizes
+@import '../../Constants//Sizes/Sizes.scss';
 
 :local {
   .mainList {
@@ -7,7 +11,7 @@
     flex-direction: row;
     list-style: none;
     margin: 0;
-    max-height: 2.4rem;
+    max-height: $Size-MaxHeight-MainMenu;
     padding: 0;
     .mainListItem {
       font-family: $Font-MainFont;
