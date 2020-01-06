@@ -1,14 +1,17 @@
 // Core
 import React, { Component } from 'react';
 
+// Components
+import MainMenu from '../../Components/MainMenu';
+
 // Styles
-import styles from './Home.module.css';
+// import styles from './Home.module.css';
 
 class Home extends Component {
   render = () => {
     return (
       <div>
-        <h1 className={styles.title}>Home</h1>
+        <MainMenu />
       </div>
     );
   };
