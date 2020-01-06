@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 // Components
 import MainMenu from '../../Components/MainMenu';
+import MainBoard from '../../Components/MainBoard';
 import StatusBar from '../../Components/StatusBar';
 
 // Styles
@@ -19,6 +20,7 @@ class Home extends Component {
     return (
       <div>
         <MainMenu />
+        <MainBoard />
         <StatusBar
           players={currentPlayers}
           timeSpent={timeSpent}
