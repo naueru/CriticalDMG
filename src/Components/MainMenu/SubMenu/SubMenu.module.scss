@@ -1,0 +1,43 @@
+// Themes
+@import '../../../Constants/Themes/MainTheme.scss';
+
+:local {
+  .subMenuWrapper {
+    height: 0;
+    left: -8px;
+    position: relative;
+    top: 3px;
+    width: 0;
+  }
+
+  .subMenuList {
+    align-items: flex-start;
+    background-color: $Color-mainMenu;
+    border: $Border-MainBorder;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    list-style: none;
+    min-width: 10rem;
+    padding: 0.8rem;
+    top: 23px;
+  }
+  .subMenuListItem {
+    margin: 0 -8px;
+    padding: 4px 8px;
+    width: 100%;
+    &:hover {
+      background-color: $Color-mainMenuSelected;
+    }
+  }
+  .subMenuButton {
+    background: none;
+    border: none;
+    font-family: sans-serif;
+    text-align: left;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+}
