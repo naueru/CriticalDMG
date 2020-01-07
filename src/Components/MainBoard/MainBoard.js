@@ -1,6 +1,10 @@
 // Core
 import React, { Component } from 'react';
 
+// Components
+import VideoPlayer from '../VideoPlayer';
+import ChatLog from '../ChatLog';
+
 // Styles
 import styles from './MainBoard.module.css';
 
@@ -9,10 +13,10 @@ class MainBoard extends Component {
     return (
       <section className={styles.mainBoard}>
         <section className={styles.mainBoardLeftPanel}>
-          <div className={styles.video}>Camera</div>
+          <VideoPlayer />
           <div>Table</div>
         </section>
-        <div className={styles.chat}>Chat</div>
+        <ChatLog />
       </section>
     );
   };
