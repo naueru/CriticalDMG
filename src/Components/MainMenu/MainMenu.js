@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 // Translations
 import getTranslations from '../../CritCore/Translations/Translations.js';
 
+// Conponents
+import SubMenu from './SubMenu';
+
 // Styles
 import styles from './MainMenu.module.css';
 
@@ -14,9 +17,15 @@ class MainMenu extends Component {
     return (
       <nav>
         <ul className={styles.mainList}>
-          <li className={styles.mainListItem}>{mainMenuLabels.file}</li>
+          <li className={styles.mainListItem}>
+            {mainMenuLabels.file}
+            <SubMenu />
+          </li>
           <li className={styles.mainListItem}>{mainMenuLabels.edition}</li>
-          <li className={styles.mainListItem}>{mainMenuLabels.library}</li>
+          <li className={styles.mainListItem}>
+            {mainMenuLabels.library}
+            <SubMenu />
+          </li>
           <li className={styles.mainListItem}>{mainMenuLabels.help}</li>
         </ul>
       </nav>
