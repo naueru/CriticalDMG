@@ -5,25 +5,20 @@
 @import '../../Constants//Sizes/Sizes.scss';
 
 :local {
-  .mainList {
+  .statusBarList {
     background-color: $Color-mainMenu;
-    border-bottom: $Border-MainBorder;
+    border-top: $Border-MainBorder;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     list-style: none;
     margin: 0;
     max-height: $Size-MaxHeight-MainMenu;
     padding: 0;
-    .mainListItem {
+    .statusBarListItem {
       font-family: $Font-MainFont;
       line-height: 1;
       padding: 4px 8px;
-      &:last-child {
-        margin-left: auto;
-      }
-      &:hover {
-        background-color: $Color-mainMenuSelected;
-      }
     }
   }
 }
