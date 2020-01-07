@@ -1,0 +1,13 @@
+// Themes
+@import '../../Constants/Themes/MainTheme.scss';
+
+// Sizes
+@import '../../Constants/Sizes/Sizes.scss';
+
+:local {
+  .chat {
+    background-color: $Color-MainBGColor;
+    border-left: 1px solid $Color-MainBorderColor;
+    width: $Size-Width-Chat;
+  }
+}

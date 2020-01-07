@@ -1,0 +1,13 @@
+// Sizes
+@import '../../Constants/Sizes/Sizes.scss';
+
+:local {
+  .mainBoard {
+    display: flex;
+    height: $Size-Height-MainBoard;
+    width: 100vw;
+  }
+  .mainBoardLeftPanel {
+    width: $Size-Width-MainBoard-LeftPanel;
+  }
+}
