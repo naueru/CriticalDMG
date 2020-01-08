@@ -1,8 +1,8 @@
 // Core
 import React, { Component } from 'react';
 
-// Translations
-import getTranslations from '../../CritCore/Translations/Translations.js';
+// Parser
+import parseMenues from './MenuParser';
 
 // Conponents
 import SubMenu from './SubMenu';
@@ -11,22 +11,24 @@ import SubMenu from './SubMenu';
 import styles from './MainMenu.module.css';
 
 class MainMenu extends Component {
+  renderMenuItems = (list) => {
+    return list.map((item, index) => {
+      const label = item.label;
+      return (
+        <li className={styles.mainListItem} key={`${label}_${index}`}>
+            {label}
+            <SubMenu items={item.subMenues} />
+          </li>
+      )
+    })
+  }
+
   render = () => {
-    const translations = getTranslations('es'), // ToDo: Define a way to set the language
-      mainMenuLabels = (translations && translations.mainMenu) || {};
+    const menues = parseMenues('es'); // ToDo: Define a way to set the language
     return (
       <nav>
         <ul className={styles.mainList}>
-          <li className={styles.mainListItem}>
-            {mainMenuLabels.file}
-            <SubMenu />
-          </li>
-          <li className={styles.mainListItem}>{mainMenuLabels.edition}</li>
-          <li className={styles.mainListItem}>
-            {mainMenuLabels.library}
-            <SubMenu />
-          </li>
-          <li className={styles.mainListItem}>{mainMenuLabels.help}</li>
+          {this.renderMenuItems(menues)}
         </ul>
       </nav>
     );
