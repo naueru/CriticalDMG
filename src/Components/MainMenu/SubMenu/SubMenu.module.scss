@@ -4,9 +4,9 @@
 :local {
   .subMenuWrapper {
     height: 0;
-    left: -8px;
+    left: -0.8rem;
     position: relative;
-    top: 3px;
+    top: 0.3rem;
     width: 0;
   }
 
@@ -18,13 +18,14 @@
     flex-direction: column;
     left: 0;
     list-style: none;
-    min-width: 10rem;
+    min-width: 8rem;
     padding: 0.8rem;
-    top: 23px;
+    top: 2.3rem;
+    width: max-content;
   }
   .subMenuListItem {
-    margin: 0 -8px;
-    padding: 4px 8px;
+    margin: 0 -0.8rem;
+    padding: 0.4rem 0.8rem;
     width: 100%;
     &:hover {
       background-color: $Color-mainMenuSelected;

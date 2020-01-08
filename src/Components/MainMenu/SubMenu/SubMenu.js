@@ -21,7 +21,7 @@ class SubMenu extends Component {
       const label = item && item.label,
         onClick   = item && item.onClick;
       return (
-        <li className={styles.subMenuListItem}>
+        <li className={styles.subMenuListItem} key={`${label}_${index}`}>
           <button
             className={styles.subMenuButton}
             onClick={onClick}
@@ -34,14 +34,13 @@ class SubMenu extends Component {
   };
 
   render = () => {
+    const { props } = this,
+      { items } = props;
+
     return (
       <div className={styles.subMenuWrapper}>
         <ul className={styles.subMenuList}>
-          {this.renderList([
-            {label: 'Item 1', onClick: () => alert('Clicked on 1')},
-            {label: 'Item 2', onClick: () => alert('Clicked on 2')},
-            {label: 'Item 3', onClick: () => alert('Clicked on 3')}
-          ])}
+          {this.renderList(items)}
         </ul>
       </div>
     );
