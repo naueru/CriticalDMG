@@ -1,0 +1,14 @@
+// Themes
+@import '../../Constants/Themes/MainTheme.scss';
+
+:local {
+  .modalContainer {
+    align-items: center;
+    background-color: $Color-ModalCurtain;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+  }
+}
