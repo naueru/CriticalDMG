@@ -21,16 +21,6 @@ class Home extends Component {
       gameName        = state.gameName;
     return (
       <div>
-        <Modal>
-          <TabsContainer tabs={[
-            {label: 'Tab1', content: <div>Content 1</div>},
-            {label: 'Tab2', content: <div>Content 2</div>},
-            {label: 'Tab3', content: <div>Content 3</div>},
-          ]}
-          width={200}
-          height={250}
-          />
-        </Modal>
         <MainMenu />
         <MainBoard />
         <StatusBar
