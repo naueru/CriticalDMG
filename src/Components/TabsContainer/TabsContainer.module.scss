@@ -1,0 +1,29 @@
+// Themes
+@import '../../Constants/Themes/MainTheme.scss';
+
+:local {
+  .tabsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .tabs {
+    display: flex;
+    flex-direction: row;
+    .tab {
+      background: tan;
+      border: none;
+      border-bottom: 1px solid gray;
+      border-radius: 8px 8px 0 0;
+      padding: 4px 8px;
+    }
+    .tabSelected {
+      background: $Color-MainBGColor;
+      border: none;
+      border-radius: 8px 8px 0 0;
+      padding: 4px 8px;
+    }
+  }
+  .content {
+    background-color: $Color-MainBGColor;
+  }
+}
