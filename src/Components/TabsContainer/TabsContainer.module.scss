@@ -1,0 +1,35 @@
+// Themes
+@import '../../Constants/Themes/MainTheme.scss';
+
+:local {
+  .tabsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .tabs {
+    display: flex;
+    flex-direction: row;
+    .tab {
+      background: $Color-TabUnselected;
+      border: none;
+      border-bottom: $Border-MainBorder;
+      border-radius: 8px 8px 0 0;
+      padding: 4px 8px;
+      &:focus {
+        outline: none;
+      }
+    }
+    .tabSelected {
+      background: $Color-MainBGColor;
+      border: none;
+      border-radius: 8px 8px 0 0;
+      padding: 4px 8px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .content {
+    background-color: $Color-MainBGColor;
+  }
+}

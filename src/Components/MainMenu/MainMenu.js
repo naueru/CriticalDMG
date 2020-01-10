@@ -13,35 +13,34 @@ import styles from './MainMenu.module.css';
 class MainMenu extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      activeMenu: false
+    };
   }
 
   renderMenuItems = (list) => {
-    const { state } = this;
+    const { activeMenu } = this.state;
     return list.map((item, index) => {
       const label     = item.label,
-        stateKey      = `show${label}subMenu`,
-        renderSubmenu = state[stateKey];
+        renderSubmenu = activeMenu === index,
+        setActiveMenu = renderSubmenu ? -1 : index;
       return (
         <li className={styles.mainListItem} key={`${label}_${index}`}>
           <button
             className={styles.mainMenuButton}
-            onClick={() => {
-              let newState = state;
-                newState[stateKey] = !newState[stateKey];
-              this.setState({ newState }); // ToDo: Adjust this logic, maybe check for active menu to render
-            }
-          }>
+            onClick={() => this.setState({ activeMenu: setActiveMenu })}
+          >
             {label}
           </button>
-          {renderSubmenu && <SubMenu items={item.subMenues} />}
+          {renderSubmenu && <SubMenu items={item.subMenues} onClick={() => this.setState({ activeMenu: -1 })} />}
         </li>
       )
     })
   }
 
   render = () => {
-    const menues = parseMenues('es'); // ToDo: Define a way to set the language
+    const { handleState } = this.props,
+      menues = parseMenues('es', handleState); // ToDo: Define a way to set the language
     return (
       <nav>
         <ul className={styles.mainList}>
