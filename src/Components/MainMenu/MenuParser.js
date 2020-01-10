@@ -3,25 +3,28 @@ import getTranslations from '../../CritCore/Translations/Translations.js';
 
 
 
-let parseMenues = (lang = 'en') => {
+let parseMenues = (lang = 'en', handleState) => {
   const translations  = getTranslations(lang),
     userName          = '', // ToDo define how to get user name if logged
     mainMenu          = (translations && translations.mainMenu) || {},
     file              = mainMenu.file || {},
-    fileLabel         = file.label,
-    fileSubMenues     = file.subMenues,
+    fileLabel         = file.label || '',
+    fileSubMenues     = file.subMenues || {},
     edition           = mainMenu.edition || {},
-    editionLabel      = edition.label,
-    editionSubMenues  = edition.subMenues,
+    editionLabel      = edition.label || '',
+    editionSubMenues  = edition.subMenues || {},
     library           = mainMenu.library || {},
-    libraryLabel      = library.label,
-    librarySubMenues  = library.subMenues,
+    libraryLabel      = library.label || '',
+    librarySubMenues  = library.subMenues || {},
+    media             = mainMenu.media || {},
+    mediaLabel        = media.label || '',
+    mediaSubMenues    = media.subMenues || {},
     help              = mainMenu.help || {},
-    helpLabel         = help.label,
-    helpSubMenues     = help.subMenues,
+    helpLabel         = help.label || '',
+    helpSubMenues     = help.subMenues || {},
     session           = mainMenu.session || {},
-    sessionLabel      = userName || session.label,
-    sessionSubMenues  = session.subMenues;
+    sessionLabel      = userName || session.label || '',
+    sessionSubMenues  = session.subMenues || {};
   return [
     {
       label: fileLabel,
@@ -62,7 +65,7 @@ let parseMenues = (lang = 'en') => {
         },
         {
           label: librarySubMenues.viewMaps,
-          onClick: () => alert(`Clicked ${librarySubMenues.viewMaps}`)
+          onClick: () => handleState({ showModal: true, showMaps: true })
         },
         {
           label: librarySubMenues.bestiary,
@@ -71,6 +74,15 @@ let parseMenues = (lang = 'en') => {
         {
           label: librarySubMenues.weaponsItems,
           onClick: () => alert(`Clicked ${librarySubMenues.weaponsItems}`)
+        }
+      ]
+    },
+    {
+      label: mediaLabel,
+      subMenues: [
+        {
+          label: mediaSubMenues.player,
+          onClick: () => alert(`Clicked ${mediaSubMenues.player}`)
         }
       ]
     },
