@@ -44,9 +44,9 @@ class TabsContainer extends Component {
       contentList = tabs.map((tab, index) => {
         const { content } = tab;
         return (
-          <div>
+          <Fragment>
             {(currentTab === index) && content}
-          </div>
+          </Fragment>
         );
       });
     return (
@@ -56,7 +56,10 @@ class TabsContainer extends Component {
         </div>
         <div
           className={styles.content}
-          style={{width: `${width}px`, height: `${height}px`}}
+          style={{
+              width: `${width}`,
+              height: `${height}`
+          }}
         >
           {contentList}
         </div>
