@@ -5,21 +5,50 @@ import React, { Component } from 'react';
 import MainMenu from '../../Components/MainMenu';
 import MainBoard from '../../Components/MainBoard';
 import StatusBar from '../../Components/StatusBar';
+import Modal from '../../Components/Modal';
+import MapViewer from '../../Components/MapViewer';
+
+// Mocks
+const smallCityMapMock = require('../../assets/img/mocks/GoldarSmall.jpg');
+const bigCityMapMock = require('../../assets/img/mocks/GoldarBig.jpg');
+const smallContinentMapMock = require('../../assets/img/mocks/GaiaSmall.jpg');
+const bigContinentMapMock = require('../../assets/img/mocks/GaiaBig.jpg');
+const mockedMaps = [
+  {label: 'Continent', smallImgUrl: smallContinentMapMock, largeImgUrl: bigContinentMapMock},
+  {label: 'Goldar', smallImgUrl: smallCityMapMock, largeImgUrl: bigCityMapMock}
+];
 
 // Styles
 // import styles from './Home.module.css';
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  handleState = (state) => {
+    return this.setState(state);
+  }
+
   render = () => {
-    let me = this,
-      state = me.state || {},
-      currentPlayers  = state.currentPlayers,
-      timeSpent       = state.initialTime,
-      sessionNumber   = state.sessionNumber,
-      gameName        = state.gameName;
+    const {
+      currentPlayers,
+      timeSpent,
+      sessionNumber,
+      gameName,
+      showModal,
+      showMaps
+    } = this.state;
+
     return (
       <div>
-        <MainMenu />
+        {showModal && <Modal onClose={() => this.handleState({ showModal: false, showMaps: false })}>
+          {showMaps && <MapViewer
+            maps={mockedMaps} //ToDo: Replace this mocks with real data
+          />}
+        </Modal>}
+        <MainMenu handleState={this.handleState} />
         <MainBoard />
         <StatusBar
           players={currentPlayers}
