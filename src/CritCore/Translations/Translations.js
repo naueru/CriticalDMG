@@ -25,6 +25,12 @@ let translations = {
           weaponsItems: 'Armas y objetos'
         }
       },
+      media: {
+        label: 'Media',
+        subMenues: {
+          player: 'Reproductor/mezclador de audio'
+        }
+      },
       help: {
         label: 'Ayuda',
         subMenues: {
@@ -70,6 +76,12 @@ let translations = {
           viewMaps: 'View maps',
           bestiary: 'Bestiary',
           weaponsItems: 'Weapons and items'
+        }
+      },
+      media: {
+        label: 'Media',
+        subMenues: {
+          player: 'Audio player/mixer'
         }
       },
       help: {
