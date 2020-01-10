@@ -1,10 +1,11 @@
 // Core
-import React from 'react';
+import React, { Fragment } from 'react';
 
 // Libraries
 import PropTypes from 'prop-types';
 
 // Components
+import { GlassMagnifier } from "react-image-magnifiers";
 import TabsContainer from '../TabsContainer';
 
 // Styles
@@ -12,10 +13,19 @@ import styles from './MapViewer.module.css';
 
 const MapViewer = ({maps, onClick}) => {
   const mapList = maps.map((map) => {
-    const { label, url } = map;
+    const { label, smallImgUrl, largeImgUrl } = map;
     return {
       label,
-      content: <img src={url} alt={label} className={styles.image} />
+      content: (
+        <Fragment>
+          <GlassMagnifier
+            imageSrc={smallImgUrl}
+            imageAlt={label}
+            largeImageSrc={largeImgUrl}
+            magnifierSize="50%"
+          />
+        </Fragment>
+      )
     };
   });
   return (
@@ -25,21 +35,17 @@ const MapViewer = ({maps, onClick}) => {
     >
       <TabsContainer
         tabs={mapList}
-        width="80vw"
-        height="80vh"
       />
     </div>
   );
 }
 
-// ToDo: Define by props if uses close button, wrapper and type of transition
 MapViewer.propTypes = {
   maps: PropTypes.array,
-  onClose: PropTypes.func
 };
 
 MapViewer.defaultProps = {
-  onClose: () => {}
+  maps: []
 }
 
 export default MapViewer;
