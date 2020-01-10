@@ -9,11 +9,13 @@ import styles from './SubMenu.module.css';
 
 class SubMenu extends Component {
   static propTypes = {
-    items: PropTypes.array
+    items: PropTypes.array,
+    onClick: PropTypes.func
   };
 
   static defaultProps = {
-    items: []
+    items: [],
+    onClick: () => {}
   };
 
   renderList = (list) => {
@@ -34,11 +36,10 @@ class SubMenu extends Component {
   };
 
   render = () => {
-    const { props } = this,
-      { items } = props;
+    const { items, onClick } = this.props;
 
     return (
-      <div className={styles.subMenuWrapper}>
+      <div className={styles.subMenuWrapper} onClick={onClick}>
         <ul className={styles.subMenuList}>
           {this.renderList(items)}
         </ul>
