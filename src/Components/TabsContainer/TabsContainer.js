@@ -35,7 +35,10 @@ class TabsContainer extends Component {
         return (
           <button
             className={style}
-            onClick={() => this.setCurrentTab(index)}
+            onClick={(e) => {
+              e.stopPropagation();
+              return this.setCurrentTab(index)
+            }}
           >
             {label}
           </button>
