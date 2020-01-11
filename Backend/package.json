@@ -1,0 +1,50 @@
+{
+  "name": "criticaldmg",
+  "version": "0.1.0",
+  "main": "src",
+  "directories": {
+    "lib": "src",
+    "test": "test/",
+    "config": "config/"
+  },
+  "engines": {
+    "node": "^13.0.0",
+    "yarn": ">= 0.18.0"
+  },
+  "scripts": {
+    "test": "yarn run compile && yarn run jest",
+    "dev": "ts-node-dev --no-notify src/",
+    "start": "yarn run compile && node lib/",
+    "jest": "jest  --forceExit",
+    "compile": "shx rm -rf lib/ && tsc"
+  },
+  "types": "lib/",
+  "dependencies": {
+    "@feathersjs/configuration": "^4.4.1",
+    "@feathersjs/errors": "^4.4.1",
+    "@feathersjs/express": "^4.4.1",
+    "@feathersjs/feathers": "^4.4.1",
+    "@feathersjs/socketio": "^4.4.1",
+    "@feathersjs/transport-commons": "^4.4.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "helmet": "^3.21.2",
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.0.1",
+    "@types/cors": "^2.8.6",
+    "@types/helmet": "^0.0.45",
+    "@types/jest": "^24.0.25",
+    "@types/serve-favicon": "^2.5.0",
+    "axios": "^0.19.1",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.1",
+    "shx": "^0.3.2",
+    "ts-jest": "^24.3.0",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.3"
+  }
+}
