@@ -90,7 +90,7 @@ and
 docker-compose up
 ```
 This last commands start the server in the port set on the .env file. 
-This docker configuration is intended to be temporal, as this is a prototype we don't want to install dependencies on our computer that we don't know if we're going to use. In any case if we choose to work based on this prototype we can work to improve our docker configuration or just install the dependencies.
+This docker configuration is intended to be temporal, as this is a POC we don't want to install dependencies on our computer that we don't know if we're going to use. In any case if we choose to work based on this prototype we can work to improve our docker configuration or just install the dependencies.
 
 ## Original Getting Started 
 
