@@ -1,4 +1,5 @@
-# criticaldmg
+
+# criticaldmg -Backend
 
 > 
 
@@ -6,27 +7,35 @@
 
 This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
 
-## Getting Started
+## Getting started
 
-Getting up and running is as easy as 1, 2, 3.
+You can run this project with docker without installing any dependencies, only [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
+```
+docker-compose build
+```
+and
+```
+docker-compose up
+```
+This last commands start the server in the port set on the .env file. 
+This docker configuration is intended to be temporal, as this is a prototype we don't want to install dependencies on our computer that we don't know if we're going to use. In any case if we choose to work based on this prototype we can work to improve our docker configuration or just install the dependencies.
 
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
+## Original Getting Started 
+
+1. Make sure you have [NodeJS](https://nodejs.org/), [npm](https://www.npmjs.com/) and mongo installed.
 2. Install your dependencies
 
     ```
     cd path/to/criticaldmg
     npm install
     ```
-
-3. Start your app
+3. Install and configure Mongo
+4. Set Mongo variables on the code
+5. Start your app
 
     ```
     npm start
     ```
-
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory will be run.
 
 ## Scaffolding
 
@@ -40,6 +49,3 @@ $ feathers generate hook                  # Generate a new Hook
 $ feathers help                           # Show all commands
 ```
 
-## Help
-
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).

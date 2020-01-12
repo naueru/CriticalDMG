@@ -24,7 +24,7 @@ services:
     volumes:
       - database:/data/db
     ports:
-        - ${DATABASE_PORT}:27017
+      - ${DATABASE_PORT}:27017
 
 volumes:
   database:
