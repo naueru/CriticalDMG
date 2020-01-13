@@ -7,6 +7,7 @@ import MainBoard from '../../Components/MainBoard';
 import StatusBar from '../../Components/StatusBar';
 import Modal from '../../Components/Modal';
 import MapViewer from '../../Components/MapViewer';
+import About from '../../Components/About';
 
 // Mocks
 const smallCityMapMock = require('../../assets/img/mocks/GoldarSmall.jpg');
@@ -38,7 +39,8 @@ class Home extends Component {
       sessionNumber,
       gameName,
       showModal,
-      showMaps
+      showMaps,
+      showAbout
     } = this.state;
 
     return (
@@ -47,6 +49,7 @@ class Home extends Component {
           {showMaps && <MapViewer
             maps={mockedMaps} //ToDo: Replace this mocks with real data
           />}
+          {showAbout && <About />}
         </Modal>}
         <MainMenu handleState={this.handleState} />
         <MainBoard />

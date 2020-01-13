@@ -50,6 +50,10 @@ let translations = {
       timeSpent: 'Tiempo trans.:',
       gameName: 'Juego:',
       sessionNumber: 'Sesión N°:'
+    },
+    about: {
+      description: 'CriticalDMG es una plataforma de juegos RPG  de mesa de código abierto.',
+      docsLinkLabel: 'Leer la documentación'
     }
   },
   en: {
@@ -103,6 +107,10 @@ let translations = {
       timeSpent: 'Time spent:',
       gameName: 'Game:',
       sessionNumber: 'Session N°:'
+    },
+    about: {
+      description: 'CriticalDMG is an opensource table RPG platform.',
+      docsLinkLabel: 'Read the documentation'
     }
   }
 }

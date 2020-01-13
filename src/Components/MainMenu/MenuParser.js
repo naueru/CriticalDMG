@@ -1,8 +1,6 @@
 // Translations
 import getTranslations from '../../CritCore/Translations/Translations.js';
 
-
-
 let parseMenues = (lang = 'en', handleState) => {
   const translations  = getTranslations(lang),
     userName          = '', // ToDo define how to get user name if logged
@@ -91,7 +89,7 @@ let parseMenues = (lang = 'en', handleState) => {
       subMenues: [
         {
           label: helpSubMenues.about,
-          onClick: () => alert(`Clicked ${helpSubMenues.about}`)
+          onClick: () => handleState({ showModal: true, showAbout: true })
         }
       ]
     },
