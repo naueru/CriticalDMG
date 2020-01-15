@@ -1,0 +1,18 @@
+:local {
+  .icon {
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .warrior {
+    background-image: url('../../assets/img/mocks/Icon_War.svg');
+  }
+  .mage {
+    background-image: url('../../assets/img/mocks/Icon_Mage.svg');
+  }
+  .bard {
+    background-image: url('../../assets/img/mocks/Icon_Bard.svg');
+  }
+}
