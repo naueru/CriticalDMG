@@ -1,0 +1,17 @@
+:local {
+  .logContainer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 3rem);
+    justify-content: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    .logRegistry {
+      padding: 1rem;
+    }
+  }
+}
