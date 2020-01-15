@@ -54,6 +54,9 @@ let translations = {
     about: {
       description: 'CriticalDMG es una plataforma de juegos RPG  de mesa de código abierto.',
       docsLinkLabel: 'Leer la documentación'
+    },
+    chatLog: {
+      inputPlaceholder: '> Ingrese texto o comando'
     }
   },
   en: {
@@ -111,6 +114,9 @@ let translations = {
     about: {
       description: 'CriticalDMG is an opensource table RPG platform.',
       docsLinkLabel: 'Read the documentation'
+    },
+    chatLog: {
+      inputPlaceholder: '> Insert text or command'
     }
   }
 }
