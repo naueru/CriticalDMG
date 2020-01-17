@@ -45,10 +45,11 @@ class Log extends Component {
           );
           break;
         default:
+          comp = null;
           break;
       }
       return (
-        <li
+        comp && <li
           className={`${styles.logRegistry} ${(selectedItem === index) && styles.selected}`}
           onClick={() => handleSelect(index)}
         >
@@ -89,6 +90,14 @@ class Log extends Component {
               picture: '',
               icon: 'mage',
               character: 'Meriadoc'
+            }
+          },
+          {
+            type: 'event',
+            content:{
+              text: 'Suddenly the doors of the tavern open and enter 3 beefy men',
+              image: '',
+              sound: '',
             }
           },
           {
