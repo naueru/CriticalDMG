@@ -96,7 +96,10 @@ class Log extends Component {
             type: 'event',
             content:{
               text: 'Suddenly the doors of the tavern open and enter 3 beefy men',
-              image: '',
+              image: {
+                url: '',
+                name: ''
+              },
               sound: '',
             }
           },
