@@ -13,9 +13,27 @@ const parseRollProps = (content) => {
   return content;
 };
 
+const parseEventProps = (content) => {
+  const {
+    text,
+    image,
+    sound,
+    autoPlay
+  } = content,
+  parsedProps = {
+    text,
+    imgUrl: image.url,
+    imgName: image.name,
+    sound,
+    autoPlay
+  };
+  return parsedProps;
+};
+
 const ItemsPropsParser = {
   parseMsgProps,
-  parseRollProps
+  parseRollProps,
+  parseEventProps
 };
 
 export default ItemsPropsParser;
