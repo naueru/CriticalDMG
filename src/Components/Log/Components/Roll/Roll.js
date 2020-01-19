@@ -40,16 +40,19 @@ class Roll extends Component {
       faces,
       modfier,
       character
-    }           = this.props,
-    mod         = ((modfier >= 0) && `+${modfier}`) || modfier,
-    text        = `${character} rolled ${total} (${dices}d${faces}${mod})`,
-    rolls       = `[${results.join(', ')}]`;
+    }       = this.props,
+    mod     = ((modfier >= 0) && `+${modfier}`) || modfier,
+    rolls   = `[${results.join(', ')}]`,
+    prefix  = `${character} rolled `,
+    sufix   = ` (${dices}d${faces}${mod})`;
     return (
-      <div className={styles.rollContainer} title={rolls} >
+      <div className={styles.rollContainer} >
         <span className={styles.pictureContainer}>
           <CDMGIcon name={'dice'} />
         </span>
-        {text}
+        <p className={styles.rollText}>
+          {prefix}<span className={styles.rollResults} title={rolls}>{total}</span>{sufix}
+        </p>
       </div>
     );
   };
