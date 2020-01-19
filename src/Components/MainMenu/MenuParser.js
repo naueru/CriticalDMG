@@ -14,6 +14,9 @@ let parseMenues = (lang = 'en', handleState) => {
     library           = mainMenu.library || {},
     libraryLabel      = library.label || '',
     librarySubMenues  = library.subMenues || {},
+    tools             = mainMenu.tools || {},
+    toolsLabel        = tools.label || '',
+    toolsSubMenues    = tools.subMenues || {},
     media             = mainMenu.media || {},
     mediaLabel        = media.label || '',
     mediaSubMenues    = media.subMenues || {},
@@ -72,6 +75,19 @@ let parseMenues = (lang = 'en', handleState) => {
         {
           label: librarySubMenues.weaponsItems,
           onClick: () => alert(`Clicked ${librarySubMenues.weaponsItems}`)
+        },
+        {
+          label: librarySubMenues.magicPowers,
+          onClick: () => alert(`Clicked ${librarySubMenues.magicPowers}`)
+        }
+      ]
+    },
+    {
+      label: toolsLabel,
+      subMenues: [
+        {
+          label: toolsSubMenues.commands,
+          onClick: () => alert(`Clicked ${toolsSubMenues.commands}`)
         }
       ]
     },
