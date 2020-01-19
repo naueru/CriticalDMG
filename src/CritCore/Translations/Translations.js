@@ -22,7 +22,14 @@ let translations = {
           loadManuals: 'Abrir manuales',
           viewMaps: 'Ver mapas',
           bestiary: 'Bestiario',
-          weaponsItems: 'Armas y objetos'
+          weaponsItems: 'Armas y objetos',
+          magicPowers: 'Magia / poderes'
+        }
+      },
+      tools: {
+        label: 'Herramientas',
+        subMenues: {
+          commands: 'Comandos'
         }
       },
       media: {
@@ -82,7 +89,14 @@ let translations = {
           loadManuals: 'Load manuals',
           viewMaps: 'View maps',
           bestiary: 'Bestiary',
-          weaponsItems: 'Weapons and items'
+          weaponsItems: 'Weapons and items',
+          magicPowers: 'Magic / powers'
+        }
+      },
+      tools: {
+        label: 'Tools',
+        subMenues: {
+          commands: 'Commands'
         }
       },
       media: {
