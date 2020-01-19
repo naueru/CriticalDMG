@@ -1,8 +1,11 @@
 const parseMsgProps = (content) => {
-  const { text, picture, icon, character } = content,
-    message = `${character}: ${text}`,
+  const { text, actionModifier, picture, icon, character } = content,
+    name = `${character}:`,
+    actMod = actionModifier ? `*${actionModifier}*` : '',
     parsedProps = {
-      message,
+      name,
+      actionModifier: actMod,
+      message: text,
       picture,
       icon
     };
