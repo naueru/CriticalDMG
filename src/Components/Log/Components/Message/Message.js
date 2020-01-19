@@ -34,7 +34,7 @@ class Message extends Component {
         <span className={styles.pictureContainer}>
           {renderIcon && <CDMGIcon name={icon} />}
         </span>
-        {message}
+        <p className={styles.messageText}>{message}</p>
       </div>
     );
   };

@@ -23,6 +23,7 @@ const MapViewer = ({maps, onClick}) => {
             imageAlt={label}
             largeImageSrc={largeImgUrl}
             magnifierSize="50%"
+            allowOverflow
           />
         </Fragment>
       )

@@ -45,7 +45,7 @@ class Home extends Component {
 
     return (
       <div>
-        {showModal && <Modal onClose={() => this.handleState({ showModal: false, showMaps: false })}>
+        {showModal && <Modal onClose={() => this.handleState({ showModal: false, showMaps: false, showAbout: false })}>
           {showMaps && <MapViewer
             maps={mockedMaps} //ToDo: Replace this mocks with real data
           />}

@@ -4,41 +4,69 @@ import React, { Component } from 'react';
 // Libraries
 import PropTypes from 'prop-types';
 
+// Parsers
+import ItemsPropsParser from './ItemsPropsParser';
+
 // Components
 import Message from './Components/Message';
+import Roll from './Components/Roll';
+import Event from './Components/Event';
+
+// Mock
+import snd from '../../../src/assets/sounds/mocks/door.ogg';
 
 // Styles
 import styles from './Log.module.css';
 
 class Log extends Component {
   static propTypes = {
-    list: PropTypes.array
+    list: PropTypes.array,
+    handleSelect: PropTypes.func,
+    selectedItem: PropTypes.number
   };
 
   static defaultProps = {
-    list: []
+    list: [],
+    handleSelect: () => {},
+    selectedItem: 0
   };
+
   parseList = (list = []) => {
-    return list.map((item = {}) => {
+    const { handleSelect, selectedItem } = this.props;
+    return list.map((item = {}, index) => {
       let comp,
-      { type, text, picture, icon } = item;
+      { type, content } = item,
+      key = `Log_entry_${index}`;
 
       switch(type) {
         case 'message':
           comp = (
-            <li className={styles.logRegistry}>
-              <Message
-                message={text}
-                picture={picture}
-                icon={icon}
-              />
-            </li>
+            <Message {...ItemsPropsParser.parseMsgProps(content)} />
+          );
+          break;
+        case 'roll':
+          comp = (
+            <Roll {...ItemsPropsParser.parseRollProps(content)} />
+          );
+          break;
+        case 'event':
+          comp = (
+            <Event {...ItemsPropsParser.parseEventProps(content)} />
           );
           break;
         default:
+          comp = null;
           break;
       }
-      return comp;
+      return (
+        comp && <li
+          key={key}
+          className={`${styles.logRegistry} ${(selectedItem === index) && styles.selected}`}
+          onClick={() => handleSelect(index)}
+        >
+          {comp}
+        </li>
+      );
     });
   };
 
@@ -48,24 +76,53 @@ class Log extends Component {
         {this.parseList([
           {
             type: 'message',
-            text: '*YELLS* Bartender, bring me a beer!.',
-            picture: '',
-            icon: 'warrior'
+            content:{
+              text: '*YELLS* Bartender, bring me a beer!.',
+              picture: '',
+              icon: 'warrior',
+              character: 'Valdamir'
+            }
           },
           {
-            type: 'coso'
+            type: 'roll',
+            content:{
+              total: 11,
+              results: [5, 4],
+              dices: 2,
+              faces: 6,
+              modfier: 2,
+              character: 'Valdamir'
+            }
           },
           {
             type: 'message',
-            text: 'Hey, careful with that.',
-            picture: '',
-            icon: 'mage'
+            content:{
+              text: 'Hey, careful with that.',
+              picture: '',
+              icon: 'mage',
+              character: 'Meriadoc'
+            }
+          },
+          {
+            type: 'event',
+            content:{
+              text: 'Suddenly the doors of the tavern open and a beefy men appears',
+              image: {
+                url: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg',
+                name: 'beefy'
+              },
+              sound: snd,
+              autoPlay: false
+            }
           },
           {
             type: 'message',
-            text: '*WHISPERS* Guys, look, somebody has arrived.',
-            picture: '',
-            icon: 'bard'
+            content:{
+              text: '*WHISPERS* Guys, look, somebody has arrived.',
+              picture: '',
+              icon: 'bard',
+              character: 'Drako'
+            }
           }
         ])}
       </ul>
