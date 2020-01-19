@@ -1,6 +1,9 @@
+// Themes
+@import '../../Constants/Themes/MainTheme.scss';
+
 :local {
   .logContainer {
-    background-color: white;
+    background-color: $Color-ChatLogBG;
     display: flex;
     flex-direction: column;
     height: calc(100% - 3rem);
@@ -15,6 +18,6 @@
     }
   }
   .selected {
-    background-color: aliceblue;
+    background-color: $Color-ChatLogSelectedBG;
   }
 }
