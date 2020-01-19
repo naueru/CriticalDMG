@@ -12,6 +12,9 @@ import Message from './Components/Message';
 import Roll from './Components/Roll';
 import Event from './Components/Event';
 
+// Mock
+import snd from '../../../src/assets/sounds/mocks/door.ogg';
+
 // Styles
 import styles from './Log.module.css';
 
@@ -32,7 +35,8 @@ class Log extends Component {
     const { handleSelect, selectedItem } = this.props;
     return list.map((item = {}, index) => {
       let comp,
-      { type, content } = item;
+      { type, content } = item,
+      key = `Log_entry_${index}`;
 
       switch(type) {
         case 'message':
@@ -56,6 +60,7 @@ class Log extends Component {
       }
       return (
         comp && <li
+          key={key}
           className={`${styles.logRegistry} ${(selectedItem === index) && styles.selected}`}
           onClick={() => handleSelect(index)}
         >
@@ -101,12 +106,12 @@ class Log extends Component {
           {
             type: 'event',
             content:{
-              text: 'Suddenly the doors of the tavern open and enter 3 beefy men',
+              text: 'Suddenly the doors of the tavern open and a beefy men appears',
               image: {
-                url: '',
-                name: ''
+                url: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg',
+                name: 'beefy'
               },
-              sound: 'chimes',
+              sound: snd,
               autoPlay: false
             }
           },
