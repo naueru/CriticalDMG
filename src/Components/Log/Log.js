@@ -77,7 +77,8 @@ class Log extends Component {
           {
             type: 'message',
             content:{
-              text: '*YELLS* Bartender, bring me a beer!.',
+              text: 'Bartender, bring me a beer!.',
+              actionModifier: 'Yelling',
               picture: '',
               icon: 'warrior',
               character: 'Valdamir'
@@ -98,6 +99,7 @@ class Log extends Component {
             type: 'message',
             content:{
               text: 'Hey, careful with that.',
+              actionModifier: '',
               picture: '',
               icon: 'mage',
               character: 'Meriadoc'
@@ -118,7 +120,8 @@ class Log extends Component {
           {
             type: 'message',
             content:{
-              text: '*WHISPERS* Guys, look, somebody has arrived.',
+              text: 'Guys, look, somebody has arrived.',
+              actionModifier: 'Whispering',
               picture: '',
               icon: 'bard',
               character: 'Drako'
