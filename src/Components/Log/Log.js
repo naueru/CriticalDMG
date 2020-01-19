@@ -10,6 +10,7 @@ import ItemsPropsParser from './ItemsPropsParser';
 // Components
 import Message from './Components/Message';
 import Roll from './Components/Roll';
+import Event from './Components/Event';
 
 // Styles
 import styles from './Log.module.css';
@@ -42,6 +43,11 @@ class Log extends Component {
         case 'roll':
           comp = (
             <Roll {...ItemsPropsParser.parseRollProps(content)} />
+          );
+          break;
+        case 'event':
+          comp = (
+            <Event {...ItemsPropsParser.parseEventProps(content)} />
           );
           break;
         default:
@@ -100,7 +106,8 @@ class Log extends Component {
                 url: '',
                 name: ''
               },
-              sound: '',
+              sound: 'chimes',
+              autoPlay: false
             }
           },
           {
