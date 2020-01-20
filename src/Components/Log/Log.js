@@ -32,7 +32,7 @@ class Log extends Component {
   };
 
   parseList = (list = []) => {
-    const { handleSelect, selectedItem } = this.props;
+    const { handleSelect, selectedItem, showImages } = this.props;
     return list.map((item = {}, index) => {
       let comp,
       { type, content } = item,
@@ -51,7 +51,7 @@ class Log extends Component {
           break;
         case 'event':
           comp = (
-            <Event {...ItemsPropsParser.parseEventProps(content)} />
+            <Event {...ItemsPropsParser.parseEventProps(content)} showImages={showImages} />
           );
           break;
         default:
@@ -110,6 +110,8 @@ class Log extends Component {
             content:{
               text: 'Suddenly the doors of the tavern open and a beefy men appears',
               image: {
+                label: 'Do it!',
+                title: 'Just do it!',
                 url: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg',
                 name: 'beefy'
               },
