@@ -4,20 +4,24 @@
 // Sizes
 @import '../../Constants/Sizes/Sizes.scss';
 
-:local {
+.chat {
+  align-items: flex-end;
+  background-color: $Color-MainBGColor;
+  border-left: 1px solid $Color-MainBorderColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.chatInput {
+  box-sizing: border-box;
+  height: 3rem;
+  padding: 0.2rem 0.4rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 992px) {
   .chat {
-    align-items: flex-end;
-    background-color: $Color-MainBGColor;
-    border-left: 1px solid $Color-MainBorderColor;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
     width: $Size-Width-Chat;
-  }
-  .chatInput {
-    box-sizing: border-box;
-    height: 3rem;
-    padding: 0.2rem 0.4rem;
-    width: 100%;
   }
 }
