@@ -27,6 +27,8 @@ const parseEventProps = (content) => {
     text,
     imgUrl: image.url,
     imgName: image.name,
+    imgLabel: image.label,
+    imgTitle: image.title,
     sound,
     autoPlay
   };
