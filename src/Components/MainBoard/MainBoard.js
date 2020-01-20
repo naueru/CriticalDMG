@@ -1,6 +1,9 @@
 // Core
 import React from 'react';
 
+// Libraries
+import PropTypes from 'prop-types';
+
 // Components
 import VideoPlayer from '../VideoPlayer';
 import ChatLog from '../ChatLog';
@@ -18,6 +21,14 @@ const MainBoard = ({showImages}) => {
       <ChatLog showImages={showImages} />
     </section>
   );
+};
+
+MainBoard.propTypes = {
+  showImages: PropTypes.func
+};
+
+MainBoard.defaultProps = {
+  showImages: () => {}
 };
 
 export default MainBoard;
