@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 // Libraries
 import PropTypes from 'prop-types';
 
+// Config
+import config from '../../CritCore/Config/config';
+
 // Translations
 import getTranslations from '../../CritCore/Translations/Translations.js';
 
@@ -37,7 +40,8 @@ class ChatLog extends Component {
 
   render = () => {
     const { showImages } = this.props,
-      translations  = getTranslations('es'),
+      { language } = config,
+      translations  = getTranslations(language),
       { inputPlaceholder } = translations.chatLog,
       { logList, selectedItem } = this.state;
     return (
