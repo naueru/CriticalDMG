@@ -19,12 +19,12 @@ const PictureViewer = ({imageList, onClick}) => {
 
     switch (type) {
       case 'image':
-        const { name, imgUrl} = content;
+        const { title, imgUrl, name} = content;
         comp = {
           label,
           content: (
             <React.Fragment>
-              <h4>{name}</h4>
+              <h4>{title}</h4>
               <img src={imgUrl} alt={name} />
             </React.Fragment>
           )
