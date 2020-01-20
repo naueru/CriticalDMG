@@ -35,11 +35,17 @@ class SubMenu extends Component {
     });
   };
 
+  handleClick = () => {
+    const { onClick, closeMenu } = this.props;
+    closeMenu();
+    onClick();
+  };
+
   render = () => {
-    const { items, onClick } = this.props;
+    const { items } = this.props;
 
     return (
-      <div className={styles.subMenuWrapper} onClick={onClick}>
+      <div className={styles.subMenuWrapper} onClick={this.handleClick}>
         <ul className={styles.subMenuList}>
           {this.renderList(items)}
         </ul>
