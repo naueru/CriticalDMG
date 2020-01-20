@@ -12,7 +12,8 @@ import styles from './About.module.css';
 
 class About extends Component {
   render = () => {
-    const { docsUrl } = config,
+    const { about } = config,
+      { docsUrl } = about,
       translations  = getTranslations('es'),
       { description, docsLinkLabel } = translations.about;
     return (
