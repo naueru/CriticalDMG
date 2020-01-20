@@ -22,13 +22,15 @@ class Log extends Component {
   static propTypes = {
     list: PropTypes.array,
     handleSelect: PropTypes.func,
-    selectedItem: PropTypes.number
+    selectedItem: PropTypes.number,
+    showImages: PropTypes.func
   };
 
   static defaultProps = {
     list: [],
     handleSelect: () => {},
-    selectedItem: 0
+    selectedItem: 0,
+    showImages: () => {}
   };
 
   parseList = (list = []) => {
