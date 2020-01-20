@@ -12,9 +12,9 @@ import styles from './About.module.css';
 
 class About extends Component {
   render = () => {
-    const { about } = config,
+    const { about, language } = config,
       { docsUrl } = about,
-      translations  = getTranslations('es'),
+      translations  = getTranslations(language),
       { description, docsLinkLabel } = translations.about;
     return (
       <div className={styles.aboutContainer}>
