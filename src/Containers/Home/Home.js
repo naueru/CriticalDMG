@@ -25,7 +25,7 @@ const mockedImages = [
   },
   {
     type: 'image',
-    content: {label: 'Do it!', name: 'Shia', imgUrl: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg'}
+    content: {label: 'Do it!', title: 'Just do it!', name: 'shia', imgUrl: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg'}
   }
 ];
 
@@ -40,7 +40,15 @@ class Home extends Component {
 
   handleState = (state) => {
     return this.setState(state);
-  }
+  };
+
+  showImages = (images) => {
+    return this.setState({
+      showModal: true,
+      showImages: true,
+      imagesList: images
+    });
+  };
 
   render = () => {
     const {
@@ -50,21 +58,27 @@ class Home extends Component {
       gameName,
       showModal,
       showMaps,
-      showAbout
+      showAbout,
+      showImages,
+      imagesList
     } = this.state;
 
     return (
       <div>
-        {showModal && <Modal onClose={() => this.handleState({ showModal: false, showMaps: false, showAbout: false })}>
+        {showModal && <Modal onClose={() => this.handleState({ showModal: false, showMaps: false, showAbout: false, showImages: false })}>
 
           {showMaps && <PictureViewer
             imageList={mockedImages} //ToDo: Replace this mocks with real data
           />}
 
+          {showImages && <PictureViewer
+            imageList={imagesList} //ToDo: Replace this mocks with real data
+          />}
+
           {showAbout && <About />}
         </Modal>}
         <MainMenu handleState={this.handleState} />
-        <MainBoard />
+        <MainBoard showImages={this.showImages} />
         <StatusBar
           players={currentPlayers}
           timeSpent={timeSpent}
