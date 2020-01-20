@@ -4,6 +4,9 @@ import React, { Fragment } from 'react';
 // Libraries
 import PropTypes from 'prop-types';
 
+// Config
+import config from '../../CritCore/Config/config';
+
 // Components
 import { GlassMagnifier } from "react-image-magnifiers";
 import TabsContainer from '../TabsContainer';
@@ -31,7 +34,9 @@ const PictureViewer = ({imageList, onClick}) => {
         }
         break;
       case 'map':
-        const { smallImgUrl, largeImgUrl } = content;
+        const { smallImgUrl, largeImgUrl } = content,
+          { pictureViewer } = config,
+          {magnifierSize} = pictureViewer;
         comp = {
           label,
           content: (
@@ -40,7 +45,7 @@ const PictureViewer = ({imageList, onClick}) => {
                 imageSrc={smallImgUrl}
                 imageAlt={label}
                 largeImageSrc={largeImgUrl}
-                magnifierSize="50%"
+                magnifierSize={magnifierSize}
                 allowOverflow
               />
             </Fragment>
