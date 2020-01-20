@@ -23,7 +23,10 @@ class TabsContainer extends Component {
     };
   }
 
-  setCurrentTab = (index) => this.setState({ currentTab: index });
+  setCurrentTab = (index, event) => {
+    event.stopPropagation();
+    return this.setState({ currentTab: index });
+  };
 
   renderTabs = (tabs) => {
     const { currentTab } = this.state,
@@ -36,10 +39,7 @@ class TabsContainer extends Component {
           <li key={`Tab_${index}`}>
             <button
               className={style}
-              onClick={(e) => {
-                e.stopPropagation();
-                return this.setCurrentTab(index)
-              }}
+              onClick={(e) => {this.setCurrentTab(index, e)}}
             >
               {label}
             </button>
