@@ -1,12 +1,29 @@
 // Sizes
 @import '../../Constants/Sizes/Sizes.scss';
 
-:local {
+.video {
+  background-image: url('https://www.fullesports.com/wp-content/uploads/2019/09/Nuevo-logo-Twitch.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: $Size-Height-Video500;
+  width: 100%;
+}
+
+@media screen and (min-width: 600px) {
   .video {
-    background-image: url('https://www.fullesports.com/wp-content/uploads/2019/09/Nuevo-logo-Twitch.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    height: $Size-Height-Video;
-    width: 100%;
+    height: $Size-Height-Video600;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .video {
+    height: $Size-Height-Video768;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .video {
+    height: $Size-Height-Video992;
   }
 }
