@@ -7,7 +7,6 @@
 .chat {
   align-items: flex-end;
   background-color: $Color-MainBGColor;
-  border-left: 1px solid $Color-MainBorderColor;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -22,6 +21,7 @@
 
 @media screen and (min-width: 992px) {
   .chat {
+    border-left: 1px solid $Color-MainBorderColor;
     width: $Size-Width-Chat;
   }
 }
