@@ -38,16 +38,20 @@ class MainMenu extends Component {
           </button>
           {renderSubmenu && <SubMenu items={item.subMenues}
             onClick={() => this.setState({ activeMenu: -1 })}
-            closeMenu={() => this.showHideMenu(false)}
+            closeMenu={() => this.hideMenu()}
           />}
         </li>
       )
     })
   }
 
-  showHideMenu = (force) => {
+  hideMenu = () => {
+    return this.setState({showHideMenu: false})
+  }
+
+  toggleMenu = () => {
     const { showHideMenu } = this.state;
-    return this.setState({showHideMenu: force || !showHideMenu})
+    return this.setState({showHideMenu: !showHideMenu})
   }
 
   render = () => {
@@ -57,7 +61,7 @@ class MainMenu extends Component {
       menues = parseMenues(language, handleState); // ToDo: Define a way to set the language
     return (
       <nav>
-        <button onClick={this.showHideMenu} className={`${styles.hamburgerBtn} ${showHideMenu && styles.open}`}>
+        <button onClick={this.toggleMenu} className={`${styles.hamburgerBtn} ${showHideMenu && styles.open}`}>
           <span className={styles.hamburgerIngredient} />
           <span className={styles.hamburgerIngredient} />
           <span className={styles.hamburgerIngredient} />
