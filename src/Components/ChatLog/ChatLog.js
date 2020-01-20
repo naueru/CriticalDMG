@@ -1,6 +1,9 @@
 // Core
 import React, { Component } from 'react';
 
+// Libraries
+import PropTypes from 'prop-types';
+
 // Translations
 import getTranslations from '../../CritCore/Translations/Translations.js';
 
@@ -11,6 +14,14 @@ import Log from '../Log';
 import styles from './ChatLog.module.css';
 
 class ChatLog extends Component {
+  static propTypes = {
+    showImages: PropTypes.func
+  };
+
+  static defaultProps = {
+    showImages: () => {}
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +33,7 @@ class ChatLog extends Component {
     const { selectedItem } = this.state,
       newSelected = selectedItem === selected ? null : selected;
     this.setState({ selectedItem: newSelected });
-  }
+  };
 
   render = () => {
     const { showImages } = this.props,
