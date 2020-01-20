@@ -1,12 +1,19 @@
 // Sizes
 @import '../../Constants/Sizes/Sizes.scss';
 
-:local {
+.mainBoard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media screen and (min-width: 992px) {
   .mainBoard {
-    display: flex;
+    flex-direction: row;
     height: $Size-Height-MainBoard;
     width: 100vw;
   }
+
   .mainBoardLeftPanel {
     width: $Size-Width-MainBoard-LeftPanel;
   }
