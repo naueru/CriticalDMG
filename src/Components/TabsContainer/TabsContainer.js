@@ -33,30 +33,32 @@ class TabsContainer extends Component {
           style = currentTab === index ? styles.tabSelected : styles.tab;
         // ToDo: Determine how to handle when amount of tabs exeds content width
         return (
-          <button
-            className={style}
-            onClick={(e) => {
-              e.stopPropagation();
-              return this.setCurrentTab(index)
-            }}
-          >
-            {label}
-          </button>
+          <li key={`Tab_${index}`}>
+            <button
+              className={style}
+              onClick={(e) => {
+                e.stopPropagation();
+                return this.setCurrentTab(index)
+              }}
+            >
+              {label}
+            </button>
+          </li>
         );
       }),
       contentList = tabs.map((tab, index) => {
         const { content } = tab;
         return (
-          <Fragment>
+          <Fragment key={`Tab_content_${index}`}>
             {(currentTab === index) && content}
           </Fragment>
         );
       });
     return (
       <Fragment>
-        <div className={styles.tabs}>
+        <ul className={styles.tabs}>
           {tabList}
-        </div>
+        </ul>
         <div
           className={styles.content}
           style={{
