@@ -6,9 +6,14 @@
     display: flex;
     flex-direction: column;
   }
+
   .tabs {
     display: flex;
     flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
     .tab {
       background: $Color-TabUnselected;
       border: none;
@@ -19,6 +24,7 @@
         outline: none;
       }
     }
+
     .tabSelected {
       background: $Color-MainBGColor;
       border: none;
@@ -29,6 +35,7 @@
       }
     }
   }
+
   .content {
     background-color: $Color-MainBGColor;
   }
