@@ -25,14 +25,20 @@ class ChatLog extends Component {
   }
 
   render = () => {
-    const translations  = getTranslations('es'),
+    const { showImages } = this.props,
+      translations  = getTranslations('es'),
       { inputPlaceholder } = translations.chatLog,
       { logList, selectedItem } = this.state;
     return (
-      <div className={styles.chat}>
-        <Log list={logList} handleSelect={this.handleSelect} selectedItem={selectedItem} />
+      <section className={styles.chat}>
+        <Log
+          list={logList}
+          handleSelect={this.handleSelect}
+          selectedItem={selectedItem}
+          showImages={showImages}
+        />
         <input placeholder={inputPlaceholder} className={styles.chatInput} />
-      </div>
+      </section>
     );
   };
 }
