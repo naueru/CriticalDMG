@@ -4,36 +4,119 @@
 // Sizes
 @import '../../Constants//Sizes/Sizes.scss';
 
-:local {
-  .mainList {
-    background-color: $Color-mainMenu;
-    border-bottom: $Border-MainBorder;
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    margin: 0;
-    max-height: $Size-MaxHeight-MainMenu;
-    padding: 0;
-    z-index: 3;
-    .mainListItem {
+.mainList {
+  background-color: $Color-mainMenu;
+  border-bottom: $Border-MainBorder;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  min-width: 20rem;
+  padding: 0;
+  position: fixed;
+  transition-duration: 0.5s;
+  z-index: 3;
+
+  &.hiddenMenu {
+    transform: translate(-100%);
+  }
+
+  .mainListItem {
+    line-height: 1;
+
+    .mainMenuButton {
+      background: none;
+      border: none;
+      font-family: $Font-MainFont;
       line-height: 1;
-      padding: 0;
-      .mainMenuButton {
-        background: none;
-        border: none;
-        font-family: $Font-MainFont;
-        line-height: 1;
-        padding: 4px 8px;
-        &:focus {
-          outline: none;
-        }
+      padding: 14px 8px;
+      width: 100%;
+      &:focus {
+        outline: none;
       }
+    }
+
+    &:hover {
+      background-color: $Color-mainMenuSelected;
+    }
+  }
+}
+
+.hamburgerBtn {
+  align-items: center;
+  background: black;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  height: 4rem;
+  justify-content: space-evenly;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 4rem;
+  z-index: 4;
+
+  &:focus {
+    outline: none;
+  }
+
+  .hamburgerIngredient {
+    background-color: $Color-mainMenu;
+    border-radius: 4px;
+    display: block;
+    height: 5px;
+    margin: 0;
+    padding: 0;
+    transition-duration: 0.5s;
+    width: 3rem;
+  }
+
+  &.open {
+    .hamburgerIngredient {
+      display: none;
+      &:first-child {
+        display: block;
+        transform: translate(0px, 7px) rotate(45deg);
+      }
+      &:last-child {
+        display: block;
+        transform: translate(0px, -8px) rotate(-45deg);
+      }
+    }
+
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .mainList {
+    flex-direction: row;
+    max-height: $Size-MaxHeight-MainMenu;
+    min-width: 0;
+    position: initial;
+    &.hiddenMenu {
+      transform: none;
+    }
+
+    .hamburgerBtn {
+      display: none;
+    }
+
+    .mainListItem {
+      padding: 0;
       &:last-child {
         margin-left: auto;
       }
-      &:hover {
-        background-color: $Color-mainMenuSelected;
+
+      .mainMenuButton {
+        padding: 4px 8px;
+        width: initial;
       }
     }
+  }
+
+  .hamburgerBtn {
+    display: none;
   }
 }
