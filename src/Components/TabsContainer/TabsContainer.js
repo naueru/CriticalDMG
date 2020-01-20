@@ -23,7 +23,10 @@ class TabsContainer extends Component {
     };
   }
 
-  setCurrentTab = (index) => this.setState({ currentTab: index });
+  setCurrentTab = (index, event) => {
+    event.stopPropagation();
+    return this.setState({ currentTab: index });
+  };
 
   renderTabs = (tabs) => {
     const { currentTab } = this.state,
@@ -33,30 +36,29 @@ class TabsContainer extends Component {
           style = currentTab === index ? styles.tabSelected : styles.tab;
         // ToDo: Determine how to handle when amount of tabs exeds content width
         return (
-          <button
-            className={style}
-            onClick={(e) => {
-              e.stopPropagation();
-              return this.setCurrentTab(index)
-            }}
-          >
-            {label}
-          </button>
+          <li key={`Tab_${index}`}>
+            <button
+              className={style}
+              onClick={(e) => {this.setCurrentTab(index, e)}}
+            >
+              {label}
+            </button>
+          </li>
         );
       }),
       contentList = tabs.map((tab, index) => {
         const { content } = tab;
         return (
-          <Fragment>
+          <Fragment key={`Tab_content_${index}`}>
             {(currentTab === index) && content}
           </Fragment>
         );
       });
     return (
       <Fragment>
-        <div className={styles.tabs}>
+        <ul className={styles.tabs}>
           {tabList}
-        </div>
+        </ul>
         <div
           className={styles.content}
           style={{

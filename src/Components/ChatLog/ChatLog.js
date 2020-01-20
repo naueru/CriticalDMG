@@ -1,6 +1,12 @@
 // Core
 import React, { Component } from 'react';
 
+// Libraries
+import PropTypes from 'prop-types';
+
+// Config
+import config from '../../CritCore/Config/config';
+
 // Translations
 import getTranslations from '../../CritCore/Translations/Translations.js';
 
@@ -11,6 +17,14 @@ import Log from '../Log';
 import styles from './ChatLog.module.css';
 
 class ChatLog extends Component {
+  static propTypes = {
+    showImages: PropTypes.func
+  };
+
+  static defaultProps = {
+    showImages: () => {}
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -22,17 +36,24 @@ class ChatLog extends Component {
     const { selectedItem } = this.state,
       newSelected = selectedItem === selected ? null : selected;
     this.setState({ selectedItem: newSelected });
-  }
+  };
 
   render = () => {
-    const translations  = getTranslations('es'),
+    const { showImages } = this.props,
+      { language } = config,
+      translations  = getTranslations(language),
       { inputPlaceholder } = translations.chatLog,
       { logList, selectedItem } = this.state;
     return (
-      <div className={styles.chat}>
-        <Log list={logList} handleSelect={this.handleSelect} selectedItem={selectedItem} />
+      <section className={styles.chat}>
+        <Log
+          list={logList}
+          handleSelect={this.handleSelect}
+          selectedItem={selectedItem}
+          showImages={showImages}
+        />
         <input placeholder={inputPlaceholder} className={styles.chatInput} />
-      </div>
+      </section>
     );
   };
 }

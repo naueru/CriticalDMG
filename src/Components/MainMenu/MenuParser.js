@@ -1,31 +1,39 @@
+// Config
+import config from '../../CritCore/Config/config';
+
 // Translations
 import getTranslations from '../../CritCore/Translations/Translations.js';
 
-let parseMenues = (lang = 'en', handleState) => {
-  const translations  = getTranslations(lang),
-    userName          = '', // ToDo define how to get user name if logged
-    mainMenu          = (translations && translations.mainMenu) || {},
-    file              = mainMenu.file || {},
-    fileLabel         = file.label || '',
-    fileSubMenues     = file.subMenues || {},
-    edition           = mainMenu.edition || {},
-    editionLabel      = edition.label || '',
-    editionSubMenues  = edition.subMenues || {},
-    library           = mainMenu.library || {},
-    libraryLabel      = library.label || '',
-    librarySubMenues  = library.subMenues || {},
-    tools             = mainMenu.tools || {},
-    toolsLabel        = tools.label || '',
-    toolsSubMenues    = tools.subMenues || {},
-    media             = mainMenu.media || {},
-    mediaLabel        = media.label || '',
-    mediaSubMenues    = media.subMenues || {},
-    help              = mainMenu.help || {},
-    helpLabel         = help.label || '',
-    helpSubMenues     = help.subMenues || {},
-    session           = mainMenu.session || {},
-    sessionLabel      = userName || session.label || '',
-    sessionSubMenues  = session.subMenues || {};
+const { defaultLanguage } = config;
+
+let parseMenues = (lang = defaultLanguage, handleState) => {
+  const translations    = getTranslations(lang),
+    userName            = '', // ToDo define how to get user name if logged
+    mainMenu            = (translations && translations.mainMenu) || {},
+    file                = mainMenu.file || {},
+    fileLabel           = file.label || '',
+    fileSubMenues       = file.subMenues || {},
+    edition             = mainMenu.edition || {},
+    editionLabel        = edition.label || '',
+    editionSubMenues    = edition.subMenues || {},
+    library             = mainMenu.library || {},
+    libraryLabel        = library.label || '',
+    librarySubMenues    = library.subMenues || {},
+    character           = mainMenu.character || {},
+    characterLabel      = character.label || '',
+    characterSubMenues  = character.subMenues || {},
+    tools               = mainMenu.tools || {},
+    toolsLabel          = tools.label || '',
+    toolsSubMenues      = tools.subMenues || {},
+    media               = mainMenu.media || {},
+    mediaLabel          = media.label || '',
+    mediaSubMenues      = media.subMenues || {},
+    help                = mainMenu.help || {},
+    helpLabel           = help.label || '',
+    helpSubMenues       = help.subMenues || {},
+    session             = mainMenu.session || {},
+    sessionLabel        = userName || session.label || '',
+    sessionSubMenues    = session.subMenues || {};
   return [
     {
       label: fileLabel,
@@ -79,6 +87,23 @@ let parseMenues = (lang = 'en', handleState) => {
         {
           label: librarySubMenues.magicPowers,
           onClick: () => alert(`Clicked ${librarySubMenues.magicPowers}`)
+        }
+      ]
+    },
+    {
+      label: characterLabel,
+      subMenues: [
+        {
+          label: characterSubMenues.characterSheet,
+          onClick: () => alert(`Clicked ${characterSubMenues.characterSheet}`)
+        },
+        {
+          label: characterSubMenues.inventory,
+          onClick: () => alert(`Clicked ${characterSubMenues.inventory}`)
+        },
+        {
+          label: characterSubMenues.magicPowers,
+          onClick: () => alert(`Clicked ${characterSubMenues.magicPowers}`)
         }
       ]
     },

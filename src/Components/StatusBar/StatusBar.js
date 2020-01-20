@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 // Libraries
 import PropTypes from 'prop-types';
 
+// Config
+import config from '../../CritCore/Config/config';
+
 // Translations
 import getTranslations from '../../CritCore/Translations/Translations.js';
 
@@ -26,7 +29,8 @@ class MainMenu extends Component {
   }
 
   render = () => {
-    const translations    = getTranslations('es'), // ToDo: Define a way to set the language
+    const { language } = config,
+      translations    = getTranslations(language),
       props               = this.props || {},
       players             = props.players,
       timeSpent           = props.timeSpent,

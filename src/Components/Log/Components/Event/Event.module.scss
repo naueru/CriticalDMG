@@ -1,10 +1,17 @@
+// Themes
+@import '../../../../Constants/Themes/MainTheme.scss';
+
 :local {
   .eventContainer {
     align-items: center;
+    background-color: $Color-EventBG;
+    border: $Border-EventBorder;
+    border-radius: 6px;
     display: flex;
     flex-direction: row;
     font-weight: bold;
     justify-content: space-between;
+    padding: 8px;
 
     .eventText {
       margin: 0;

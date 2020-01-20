@@ -1,6 +1,9 @@
 // Core
 import React, { Component } from 'react';
 
+// Config
+import config from '../../CritCore/Config/config';
+
 // Parser
 import parseMenues from './MenuParser';
 
@@ -40,7 +43,8 @@ class MainMenu extends Component {
 
   render = () => {
     const { handleState } = this.props,
-      menues = parseMenues('es', handleState); // ToDo: Define a way to set the language
+      { language } = config,
+      menues = parseMenues(language, handleState); // ToDo: Define a way to set the language
     return (
       <nav>
         <ul className={styles.mainList}>

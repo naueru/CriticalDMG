@@ -13,9 +13,30 @@
       width: 4rem;
     }
 
-    .messageText {
-      margin: 0;
-      padding: 0;
+    .messageContent{
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+
+      .messageHeadline {
+        display: flex;
+        flex-direction: row;
+
+        .messageName {
+          font-weight: bold;
+          margin: 0;
+          padding: 0;
+        }
+
+        .messageActionModifier {
+          margin-left: 0.278em;
+        }
+      }
+
+      .messageText {
+        margin: 0;
+        padding: 0;
+      }
     }
   }
 }

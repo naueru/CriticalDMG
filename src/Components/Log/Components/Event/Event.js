@@ -15,14 +15,16 @@ class Event extends Component {
     text: PropTypes.string,
     imgUrl: PropTypes.string,
     imgName: PropTypes.string,
-    sound: PropTypes.string
+    sound: PropTypes.string,
+    showImages: PropTypes.func
   };
 
   static defaultProps = {
     text: '',
     imgUrl: '',
     imgName: '',
-    sound: ''
+    sound: '',
+    showImages: () => {}
   };
   constructor(props) {
     super(props);
@@ -41,7 +43,8 @@ class Event extends Component {
     return;
   };
 
-  playSound = (id) => {
+  playSound = (id, event) => {
+    event.stopPropagation();
     let audio = document.getElementById(id);
     if (audio) {
       audio.play();
@@ -49,8 +52,19 @@ class Event extends Component {
     return;
   };
 
-  showPicture = (picture, alt) => {
-    return alert(`Displaying event image: ${picture} alt: ${alt}`);
+  showPicture = (imgUrl, name, label, title, event) => {
+    event.stopPropagation();
+    const { showImages } = this.props,
+    img = {
+      type: 'image',
+      content: {
+        label,
+        title,
+        imgUrl,
+        name
+      }
+    };
+    return showImages([img]);
   };
 
   render = () => {
@@ -58,7 +72,9 @@ class Event extends Component {
       text,
       imgUrl,
       imgName,
-      sound,
+      imgLabel,
+      imgTitle,
+      sound
     } = this.props,
     { audioId } = this.state,
     renderMedia = imgUrl || sound;
@@ -66,10 +82,10 @@ class Event extends Component {
       <div className={styles.eventContainer}>
         <p className={styles.eventText}>{text}</p>
         {renderMedia && <div className={styles.eventMediaContainer}>
-          {imgUrl && <button onClick={() => this.showPicture(imgUrl, imgName)} className={styles.eventMediaBtn}>
+          {imgUrl && <button onClick={(e) => this.showPicture(imgUrl, imgName, imgLabel, imgTitle, e)} className={styles.eventMediaBtn}>
             <CDMGIcon name={'picture'}/>
           </button>}
-          {sound  && <button onClick={() => this.playSound(audioId)} className={styles.eventMediaBtn}>
+          {sound  && <button onClick={(e) => this.playSound(audioId, e)} className={styles.eventMediaBtn}>
             <CDMGIcon name={'sound'}/>
           </button>}
           {sound && <audio id={audioId} src={sound}>
