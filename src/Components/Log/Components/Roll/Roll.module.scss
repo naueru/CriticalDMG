@@ -8,6 +8,13 @@
     flex-direction: row;
     justify-content: flex-start;
 
+    // Styles for shadow, check if mantain
+    background-color: $Color-MainBGColor;
+    border: $Border-RollBorder;
+    border-radius: 6px;
+    box-shadow: $Shadow-LogEntry;
+    padding: 8px;
+
     .pictureContainer {
       border-radius: 1rem;
       height: 4rem;
