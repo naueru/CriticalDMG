@@ -17,7 +17,8 @@ class MainMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeMenu: false
+      activeMenu: false,
+      showHideMenu: false
     };
   }
 
@@ -35,19 +36,33 @@ class MainMenu extends Component {
           >
             {label}
           </button>
-          {renderSubmenu && <SubMenu items={item.subMenues} onClick={() => this.setState({ activeMenu: -1 })} />}
+          {renderSubmenu && <SubMenu items={item.subMenues}
+            onClick={() => this.setState({ activeMenu: -1 })}
+            closeMenu={() => this.showHideMenu(false)}
+          />}
         </li>
       )
     })
   }
 
+  showHideMenu = (force) => {
+    const { showHideMenu } = this.state;
+    return this.setState({showHideMenu: force || !showHideMenu})
+  }
+
   render = () => {
     const { handleState } = this.props,
+      { showHideMenu } = this.state,
       { language } = config,
       menues = parseMenues(language, handleState); // ToDo: Define a way to set the language
     return (
       <nav>
-        <ul className={styles.mainList}>
+        <button onClick={this.showHideMenu} className={`${styles.hamburgerBtn} ${showHideMenu && styles.open}`}>
+          <span className={styles.hamburgerIngredient} />
+          <span className={styles.hamburgerIngredient} />
+          <span className={styles.hamburgerIngredient} />
+        </button>
+        <ul className={`${styles.mainList} ${!showHideMenu && styles.hiddenMenu}`}>
           {this.renderMenuItems(menues)}
         </ul>
       </nav>
