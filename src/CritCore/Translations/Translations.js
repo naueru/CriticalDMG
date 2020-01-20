@@ -26,6 +26,14 @@ let translations = {
           magicPowers: 'Magia / poderes'
         }
       },
+      character: {
+        label: 'Personaje',
+        subMenues: {
+          characterSheet: 'Hoja de personaje',
+          inventory: 'Inventario',
+          magicPowers: 'Magia / poderes'
+        }
+      },
       tools: {
         label: 'Herramientas',
         subMenues: {
@@ -90,6 +98,14 @@ let translations = {
           viewMaps: 'View maps',
           bestiary: 'Bestiary',
           weaponsItems: 'Weapons and items',
+          magicPowers: 'Magic / powers'
+        }
+      },
+      character: {
+        label: 'Character',
+        subMenues: {
+          characterSheet: 'Character sheet',
+          inventory: 'Inventory',
           magicPowers: 'Magic / powers'
         }
       },

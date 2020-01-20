@@ -1,16 +1,28 @@
 // Colors
-$Color-mainMenu: antiquewhite;
-$Color-mainMenuSelected: cornflowerblue;
+$Color-CDMGWhite: rgb(245, 245, 245);
 
 $Color-MainBGColor: antiquewhite;
 $Color-MainBorderColor: gray;
 
+$Color-mainMenu: $Color-MainBGColor;
+$Color-mainMenuSelected: cornflowerblue;
+
 $Color-ModalCurtain: rgba(0, 0, 0, 0.8);
 
 $Color-TabUnselected: tan;
+
+$Color-ChatLogBG: $Color-CDMGWhite;
+$Color-ChatLogSelectedBG: lightskyblue;
+
+$Color-EventBG: rgba(0, 0, 255, 0.1);
+$Color-RollBG: $Color-MainBGColor;
 
 // Fonts
 $Font-MainFont: sans-serif;
 
 // Borders
 $Border-MainBorder: 1px solid $Color-MainBorderColor;
+
+
+$Border-EventBorder: 1px solid blue;
+$Border-RollBorder: 1px solid gray;

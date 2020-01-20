@@ -22,17 +22,19 @@ class Log extends Component {
   static propTypes = {
     list: PropTypes.array,
     handleSelect: PropTypes.func,
-    selectedItem: PropTypes.number
+    selectedItem: PropTypes.number,
+    showImages: PropTypes.func
   };
 
   static defaultProps = {
     list: [],
     handleSelect: () => {},
-    selectedItem: 0
+    selectedItem: 0,
+    showImages: () => {}
   };
 
   parseList = (list = []) => {
-    const { handleSelect, selectedItem } = this.props;
+    const { handleSelect, selectedItem, showImages } = this.props;
     return list.map((item = {}, index) => {
       let comp,
       { type, content } = item,
@@ -51,7 +53,7 @@ class Log extends Component {
           break;
         case 'event':
           comp = (
-            <Event {...ItemsPropsParser.parseEventProps(content)} />
+            <Event {...ItemsPropsParser.parseEventProps(content)} showImages={showImages} />
           );
           break;
         default:
@@ -77,7 +79,8 @@ class Log extends Component {
           {
             type: 'message',
             content:{
-              text: '*YELLS* Bartender, bring me a beer!.',
+              text: 'Bartender, bring me a beer!.',
+              actionModifier: 'Yelling',
               picture: '',
               icon: 'warrior',
               character: 'Valdamir'
@@ -98,6 +101,7 @@ class Log extends Component {
             type: 'message',
             content:{
               text: 'Hey, careful with that.',
+              actionModifier: '',
               picture: '',
               icon: 'mage',
               character: 'Meriadoc'
@@ -108,6 +112,8 @@ class Log extends Component {
             content:{
               text: 'Suddenly the doors of the tavern open and a beefy men appears',
               image: {
+                label: 'Do it!',
+                title: 'Just do it!',
                 url: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg',
                 name: 'beefy'
               },
@@ -118,7 +124,8 @@ class Log extends Component {
           {
             type: 'message',
             content:{
-              text: '*WHISPERS* Guys, look, somebody has arrived.',
+              text: 'Guys, look, somebody has arrived.',
+              actionModifier: 'Whispering',
               picture: '',
               icon: 'bard',
               character: 'Drako'
