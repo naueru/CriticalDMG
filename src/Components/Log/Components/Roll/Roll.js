@@ -16,7 +16,7 @@ class Roll extends Component {
     results: PropTypes.array,
     dices: PropTypes.number,
     faces: PropTypes.number,
-    modfier: PropTypes.number,
+    modifier: PropTypes.number,
     character: PropTypes.string
   };
 
@@ -25,7 +25,7 @@ class Roll extends Component {
     results: [],
     dices: 0,
     faces: 0,
-    modfier: 0,
+    modifier: 0,
     character: ''
   };
   constructor(props) {
@@ -38,10 +38,10 @@ class Roll extends Component {
       results,
       dices,
       faces,
-      modfier,
+      modifier,
       character
     }       = this.props,
-    mod     = ((modfier >= 0) && `+${modfier}`) || modfier,
+    mod     = ((modifier >= 0) && `+${modifier}`) || modifier,
     rolls   = `[${results.join(', ')}]`,
     prefix  = `${character} rolled `,
     sufix   = ` (${dices}d${faces}${mod})`;
