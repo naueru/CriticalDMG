@@ -25,6 +25,7 @@ export const session = (state = initialState, action) => {
     case CHECK_CREDENTIALS_SUCCESS:
       return {
         ...state,
+        ...action.session,
         isLoading: false,
         token: _get(action, 'session.data.token'),
         user: _get(action, 'session.data.user'),
