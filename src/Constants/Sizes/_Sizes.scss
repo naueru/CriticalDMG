@@ -1,5 +1,9 @@
 // Sizes for app elements
 
+// Welcome
+$Size-Height-Welcome-Nav: 2rem;
+$Size-Height-Welcome-Wrapper: calc(100vh - 2rem);
+
 // Main menu
 $Size-MaxHeight-MainMenu: 2.3rem;
 
@@ -20,3 +24,5 @@ $Size-Height-Video500: 25rem;
 $Size-Height-Video600: 30rem;
 $Size-Height-Video768: 35rem;
 $Size-Height-Video992: 50rem;
+
+$size-average-space-character: 0.278em;
