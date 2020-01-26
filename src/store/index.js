@@ -1,20 +1,20 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 
 import rootReducer from '../reducers';
 
-const initialState = {
-  session: {
-    logged: true,
-    id: 0,
-    userName: 'valdamir',
-    password: '1234',
-    picture: '',
-    icon: 'warrior',
-    alterEgo: 'Valdamir!'
-  },
-};
+const initialState = {};
+
+const middleware = [thunk],
+  enhancers = [];
+
+  const composedEnhancers = compose(
+    applyMiddleware(...middleware),
+    ...enhancers,
+  );
+
 
 export default () => {
-  const store = createStore(rootReducer, initialState);
+  const store = createStore(rootReducer, initialState, composedEnhancers);
   return { store };
 };
