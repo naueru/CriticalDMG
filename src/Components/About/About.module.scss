@@ -1,18 +1,17 @@
 // Themes
 @import '../../Constants/Themes/MainTheme';
 
-:local {
-	.aboutContainer {
-    align-items: center;
-		background-color: $Color-MainBGColor;
-		border: $Border-MainBorder;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    min-height: 40rem;
-    min-width: 35rem;
-    .aboutDescription {
-      width: 80%;;
-    }
-	}
+.aboutContainer {
+  align-items: center;
+  background-color: $Color-MainBGColor;
+  border: $Border-MainBorder;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 40rem;
+  min-width: 35rem;
+
+  .aboutDescription {
+    width: 80%;
+  }
 }
