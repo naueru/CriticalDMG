@@ -1,4 +1,6 @@
-const parse = (input = '') => {
+const parse = (input = '', user) => {
+  const { icon, alterEgo } = user,
+    character = alterEgo;
   let isSay = input[0] !== '/',
     verifiedInput = isSay ? '/say ' + input : input,
     terms = verifiedInput.split(' '),
@@ -14,8 +16,8 @@ const parse = (input = '') => {
           text: verifiedInput.slice(command.length),
           actionModifier: '',
           picture: '',
-          icon: 'warrior',
-          character: 'Valdamir'
+          icon,
+          character
         }
       };
       break;
@@ -27,8 +29,8 @@ const parse = (input = '') => {
           text: verifiedInput.slice(command.length),
           actionModifier: 'Yelling',
           picture: '',
-          icon: 'warrior',
-          character: 'Valdamir'
+          icon,
+          character
         }
       };
       break;
@@ -40,8 +42,8 @@ const parse = (input = '') => {
           text: verifiedInput.slice(command.length),
           actionModifier: 'Whispering',
           picture: '',
-          icon: 'warrior',
-          character: 'Valdamir'
+          icon,
+          character
         }
       };
       break;
@@ -65,7 +67,7 @@ const parse = (input = '') => {
           modifier,
           results,
           total,
-          character: 'Valdamir'
+          character
         };
       for (let i = 0; i < roll.dices; i++) {
         let rnd = Math.round(Math.random()*roll.faces);
