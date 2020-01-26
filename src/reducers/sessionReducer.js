@@ -1,4 +1,4 @@
-import _get from 'lodash/get';
+// import _get from 'lodash/get';
 import {
   CHECK_CREDENTIALS_SUCCESS,
   CHECK_CREDENTIALS_FAILED,
@@ -27,8 +27,8 @@ export const session = (state = initialState, action) => {
         ...state,
         ...action.session,
         isLoading: false,
-        token: _get(action, 'session.data.token'),
-        user: _get(action, 'session.data.user'),
+        // token: _get(action, 'session.data.token'),
+        // user: _get(action, 'session.data.user'),
         isAuth: true
       };
 
