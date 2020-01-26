@@ -1,10 +1,12 @@
 import { users } from '../mocks/sessionMocks';
 export const loginCredentials = ({userName, password}) => {
-  const user = users.find(user => user.Name === userName);
+  const user = users.find(user => {
+    return user.userName === userName
+  });
+
   if (user && user.password === password) {
-    Promise.resolve(user);
+    return Promise.resolve(user);
   } else {
-    Promise.reject('Incorrect user or password');
+    return Promise.reject('Incorrect user or password');
   }
-  return;
 };
