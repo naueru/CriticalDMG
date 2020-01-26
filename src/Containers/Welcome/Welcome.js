@@ -9,18 +9,78 @@ import { ActionCreators } from '../../actions';
 // Libraries
 import _get from 'lodash/get';
 
+// Components
+import Modal from '../../Components/Modal';
+import Login from '../../Components/Login';
+import Register from '../../Components/Register';
+
 // Styles
 import styles from './Welcome.module.css';
 
 class Welcome extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      showModal: false,
+      showLogin: false,
+      showRegister: false
+    };
+  }
+
+  handleState = (state) => {
+    return this.setState(state);
+  };
+
+  checkCredentials = () => {
+    const { checkCredentials } = this.props;
+    const { userName, password } = this.state;
+    return checkCredentials({ userName, password })
+      .then(() => this.setState({
+        userName: '',
+        password: '',
+        showModal: false,
+        showLogin: false
+      }));
+  };
+
   render = () => {
+    const {
+        showModal,
+        showLogin,
+        showRegister,
+        userName,
+        password
+    } = this.state;
     return (
       <div className={styles.welcomeContainer}>
+        {showModal && <Modal onClose={() => this.handleState({ showModal: false, showLogin: false, showRegister: false })}>
+          {showLogin && <Login
+            handleChange={this.handleState}
+            onSubmit={this.checkCredentials}
+            userName={userName}
+            pwd={password}
+          />}
+          {showRegister && <Register />}
+        </Modal>}
         <nav className={styles.loginRegisterContainer}>
           <ul className={styles.loginRegisterList}>
-            <li className={styles.loginRegisterItem}>Login</li>
+            <li className={styles.loginRegisterItem}>
+              <button
+                className={styles.loginRegisterButton}
+                onClick={() => this.handleState({ showLogin: true, showModal: true })}
+              >
+                Login
+              </button>
+            </li>
             <span  className={styles.loginRegisterSeparator}>/</span>
-            <li className={styles.loginRegisterItem}>Register</li>
+            <li className={styles.loginRegisterItem}>
+              <button
+                className={styles.loginRegisterButton}
+                onClick={() => this.handleState({ showRegister: true, showModal: true })}
+              >
+                Register
+              </button>
+            </li>
           </ul>
         </nav>
         <section className={styles.welcomeWrapper}>
