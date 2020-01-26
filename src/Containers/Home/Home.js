@@ -1,6 +1,11 @@
 // Core
 import React, { Component } from 'react';
 
+// Store
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { ActionCreators } from '../../actions';
+
 // Components
 import MainMenu from '../../Components/MainMenu';
 import MainBoard from '../../Components/MainBoard';
@@ -52,17 +57,21 @@ class Home extends Component {
 
   render = () => {
     const {
-      currentPlayers,
-      timeSpent,
-      sessionNumber,
-      gameName,
-      showModal,
-      showMaps,
-      showAbout,
-      showImages,
-      imagesList
-    } = this.state;
-
+        logOut
+      } = this.props,
+      {
+        currentPlayers,
+        timeSpent,
+        sessionNumber,
+        gameName,
+        showModal,
+        showMaps,
+        showAbout,
+        showImages,
+        imagesList,
+        shouldLogOut
+      } = this.state;
+    if ( shouldLogOut ) {logOut()}
     return (
       <div>
         {showModal && <Modal onClose={() => this.handleState({ showModal: false, showMaps: false, showAbout: false, showImages: false })}>
@@ -90,4 +99,24 @@ class Home extends Component {
   };
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  // FILTERED PROPS STORE HERE
+  session: state.session,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  // Filter used actions
+  const { logOut } = ActionCreators;
+  return bindActionCreators(
+    {
+      // FILTERED ACTIONS HERE
+      logOut,
+    },
+    dispatch,
+  );
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Home);

@@ -1,52 +1,53 @@
+// Sizes
+@import '../../../../Constants/Sizes/Sizes';
+
 // Themes
-@import '../../../../Constants/Themes/MainTheme.scss';
+@import '../../../../Constants/Themes/MainTheme';
 
-:local {
-  .messageContainer {
-    align-items: center;
+.messageContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  // Styles for shadow, check if mantain
+  background-color: $Color-MainBGColor;
+  border: $Border-RollBorder;
+  border-radius: 6px;
+  box-shadow: $Shadow-LogEntry;
+  padding: 8px;
+
+  .pictureContainer {
+    border-radius: 1rem;
+    height: 4rem;
+    margin-right: 1rem;
+    overflow: hidden;
+    width: 4rem;
+  }
+
+  .messageContent{
+    align-items: flex-start;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-direction: column;
 
-    // Styles for shadow, check if mantain
-    background-color: $Color-MainBGColor;
-    border: $Border-RollBorder;
-    border-radius: 6px;
-    box-shadow: $Shadow-LogEntry;
-    padding: 8px;
-
-    .pictureContainer {
-      border-radius: 1rem;
-      height: 4rem;
-      margin-right: 1rem;
-      overflow: hidden;
-      width: 4rem;
-    }
-
-    .messageContent{
-      align-items: flex-start;
+    .messageHeadline {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
 
-      .messageHeadline {
-        display: flex;
-        flex-direction: row;
-
-        .messageName {
-          font-weight: bold;
-          margin: 0;
-          padding: 0;
-        }
-
-        .messageActionModifier {
-          margin-left: 0.278em;
-        }
-      }
-
-      .messageText {
+      .messageName {
+        font-weight: bold;
         margin: 0;
         padding: 0;
       }
+
+      .messageActionModifier {
+        margin-left: $size-average-space-character;
+      }
+    }
+
+    .messageText {
+      margin: 0;
+      padding: 0;
     }
   }
 }
