@@ -143,7 +143,7 @@ let parseMenues = (lang = defaultLanguage, handleState) => {
         },
         {
           label: sessionSubMenues.signOut,
-          onClick: () => alert(`Clicked ${sessionSubMenues.signOut}`)
+          onClick: () => handleState({ shouldLogOut: true })
         }
       ]
     }

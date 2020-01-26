@@ -1,24 +1,22 @@
 // Themes
-@import '../../Constants/Themes/MainTheme.scss';
+@import '../../Constants/Themes/MainTheme';
 
-:local {
-  .logContainer {
-    background-color: $Color-ChatLogBG;
-    display: flex;
-    flex-direction: column;
-    height: calc(100% - 3rem);
-    justify-content: left;
-    list-style: none;
-    margin: 0;
-    overflow-y: auto;
-    padding: 0;
-    width: 100%;
+.logContainer {
+  background-color: $Color-ChatLogBG;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 3rem);
+  justify-content: left;
+  list-style: none;
+  margin: 0;
+  overflow-y: auto;
+  padding: 0;
+  width: 100%;
 
-    .logRegistry {
-      padding: 1rem;
-    }
+  .logRegistry {
+    padding: 1rem;
   }
-  .selected {
-    background-color: $Color-ChatLogSelectedBG;
-  }
+}
+.selected {
+  background-color: $Color-ChatLogSelectedBG;
 }
