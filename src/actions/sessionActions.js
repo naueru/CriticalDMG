@@ -3,8 +3,8 @@ import {
   CHECK_CREDENTIALS_SUCCESS,
   CHECK_CREDENTIALS_FAILED,
   CHECK_CREDENTIALS_LOADING,
-  // LOG_OUT,
-  LOG_IN
+  LOG_OUT,
+  // LOG_IN
 } from '../reducers/constants';
 
 import { loginCredentials } from '../services/sessionServices';
@@ -23,8 +23,8 @@ export const checkCredentialsFailed = error => ({
   error
 });
 
-export const logIn = () => ({
-  type: LOG_IN
+export const logOut = () => ({
+  type: LOG_OUT
 });
 
 export const checkCredentials = credentials => (dispatch, getState) => {
