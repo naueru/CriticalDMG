@@ -1,43 +1,44 @@
 // Themes
-@import '../../../../Constants/Themes/MainTheme.scss';
+@import '../../../../Constants/Sizes/Sizes';
 
-:local {
-  .rollContainer {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+// Themes
+@import '../../../../Constants/Themes/MainTheme';
 
-    // Styles for shadow, check if mantain
-    background-color: $Color-MainBGColor;
+.rollContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  // Styles for shadow, check if mantain
+  background-color: $Color-MainBGColor;
+  border: $Border-RollBorder;
+  border-radius: 6px;
+  box-shadow: $Shadow-LogEntry;
+  padding: 8px;
+
+  .pictureContainer {
+    border-radius: 1rem;
+    height: 4rem;
+    margin-right: 1rem;
+    overflow: hidden;
+    width: 4rem;
+  }
+
+  .rollText {
+    margin: 0;
+    padding: 0;
+  }
+
+  .rollResults {
+    background-color: $Color-RollBG;
     border: $Border-RollBorder;
-    border-radius: 6px;
-    box-shadow: $Shadow-LogEntry;
-    padding: 8px;
-
-    .pictureContainer {
-      border-radius: 1rem;
-      height: 4rem;
-      margin-right: 1rem;
-      overflow: hidden;
-      width: 4rem;
-    }
-
-    .rollText {
-      margin: 0;
-      padding: 0;
-    }
-
-    .rollResults {
-      background-color: $Color-RollBG;
-      border: $Border-RollBorder;
-      border-radius: 5px;
-      color: black;
-      font-weight: bolder;
-      margin-left: 0.278em;
-      margin-right: 0.278em;
-      padding-left: 4px;
-      padding-right: 4px;
-    }
+    border-radius: 5px;
+    color: black;
+    font-weight: bolder;
+    margin-left: $size-average-space-character;
+    margin-right: $size-average-space-character;
+    padding-left: 4px;
+    padding-right: 4px;
   }
 }
