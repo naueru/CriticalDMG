@@ -1,6 +1,11 @@
 // Core
 import React, { Component } from 'react';
 
+// Store
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+// import { ActionCreators } from '../../actions';
+
 // Libraries
 import PropTypes from 'prop-types';
 
@@ -103,8 +108,9 @@ class ChatLog extends Component {
   };
 
   parseInput = (input = '') => {
-    const { log } = this.state,
-      parsedInput = inputParser.parse(input);
+    const { session } = this.props,
+      { log } = this.state,
+      parsedInput = inputParser.parse(input, session);
       log.push(parsedInput);
     this.setState({ log });
 
@@ -132,4 +138,24 @@ class ChatLog extends Component {
   };
 }
 
-export default ChatLog;
+const mapStateToProps = state => ({
+  // FILTERED PROPS STORE HERE
+  session: state.session,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  // Filter used actions
+  // const { checkCredentials } = ActionCreators;
+  return bindActionCreators(
+    {
+      // FILTERED ACTIONS HERE
+      postEntres: () => {console.log('Implement this')},
+    },
+    dispatch,
+  );
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ChatLog);
