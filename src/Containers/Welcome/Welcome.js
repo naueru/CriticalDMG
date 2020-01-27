@@ -9,6 +9,12 @@ import { ActionCreators } from '../../actions';
 // Libraries
 import _get from 'lodash/get';
 
+// Config
+import config from '../../CritCore/Config/config';
+
+// Translations
+import getTranslations from '../../CritCore/Translations/Translations.js';
+
 // Components
 import Modal from '../../Components/Modal';
 import Login from '../../Components/Login';
@@ -31,16 +37,10 @@ class Welcome extends Component {
     return this.setState(state);
   };
 
-  checkCredentials = () => {
+  checkLoginCredentials = () => {
     const { checkCredentials } = this.props;
     const { userName, password } = this.state;
-    return checkCredentials({ userName, password })
-      .then(() => this.setState({
-        userName: '',
-        password: '',
-        showModal: false,
-        showLogin: false
-      }));
+    return checkCredentials({ userName, password });
   };
 
   render = () => {
@@ -50,13 +50,19 @@ class Welcome extends Component {
         showRegister,
         userName,
         password
-    } = this.state;
+      }                   = this.state,
+      { language }        = config,
+      translations        = getTranslations(language), //ToDo: Replace this language for config directly or from store
+      welcomeTranslations = translations.welcome,
+      loginLabel          = welcomeTranslations.login,
+      registerLabel       = welcomeTranslations.register,
+      description         = welcomeTranslations.description;
     return (
       <div className={styles.welcomeContainer}>
         {showModal && <Modal onClose={() => this.handleState({ showModal: false, showLogin: false, showRegister: false })}>
           {showLogin && <Login
             handleChange={this.handleState}
-            onSubmit={this.checkCredentials}
+            onSubmit={this.checkLoginCredentials}
             userName={userName}
             pwd={password}
           />}
@@ -69,7 +75,7 @@ class Welcome extends Component {
                 className={styles.loginRegisterButton}
                 onClick={() => this.handleState({ showLogin: true, showModal: true })}
               >
-                Login
+                {loginLabel}
               </button>
             </li>
             <span  className={styles.loginRegisterSeparator}>/</span>
@@ -78,7 +84,7 @@ class Welcome extends Component {
                 className={styles.loginRegisterButton}
                 onClick={() => this.handleState({ showRegister: true, showModal: true })}
               >
-                Register
+                {registerLabel}
               </button>
             </li>
           </ul>
@@ -87,7 +93,7 @@ class Welcome extends Component {
           <div className={styles.welcomeFrame}>
             <div className={styles.logo} />
             <h1 className={styles.headline}>CriticalDMG</h1>
-            <p className={styles.description}>The OpenSource table rpg toolkit. Welcome, Login to continue!</p>
+            <p className={styles.description}>{description}</p>
           </div>
         </section>
       </div>

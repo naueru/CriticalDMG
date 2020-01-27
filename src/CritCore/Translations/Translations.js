@@ -53,7 +53,7 @@ let translations = {
         }
       },
       session: {
-        label: 'Iniciar sesión',
+        label: 'Cuenta',
         subMenues: {
           profile: 'Perfil',
           signOut: 'Salir'
@@ -72,6 +72,16 @@ let translations = {
     },
     chatLog: {
       inputPlaceholder: '> Ingrese texto o comando'
+    },
+    welcome: {
+      login: 'Ingresar',
+      register: 'Registrarse',
+      description: 'El kit de herramientas OpenSource para juegos RPG de mesa. ¡Bienvenido, Por favor ingresa para continuar!'
+    },
+    login: {
+      userName: 'Nombre de usuario',
+      password: 'Contraseña',
+      button: 'Ingresar'
     }
   },
   en: {
@@ -128,7 +138,7 @@ let translations = {
         }
       },
       session: {
-        label: 'Log in',
+        label: 'Account',
         subMenues: {
           profile: 'Profile',
           signOut: 'Logout'
@@ -147,6 +157,16 @@ let translations = {
     },
     chatLog: {
       inputPlaceholder: '> Insert text or command'
+    },
+    welcome: {
+      login: 'Login',
+      register: 'Register',
+      description: 'The OpenSource table rpg toolkit. Welcome, Login to continue!'
+    },
+    login: {
+      userName: 'User Name',
+      password: 'Password',
+      button: 'Login'
     }
   }
 }

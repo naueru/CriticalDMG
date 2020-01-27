@@ -57,7 +57,8 @@ class Home extends Component {
 
   render = () => {
     const {
-        logOut
+        logOut,
+        session
       } = this.props,
       {
         currentPlayers,
@@ -70,7 +71,8 @@ class Home extends Component {
         showImages,
         imagesList,
         shouldLogOut
-      } = this.state;
+      } = this.state,
+      { userName } = session;
     if ( shouldLogOut ) {logOut()}
     return (
       <div>
@@ -86,7 +88,7 @@ class Home extends Component {
 
           {showAbout && <About />}
         </Modal>}
-        <MainMenu handleState={this.handleState} />
+        <MainMenu handleState={this.handleState} account={userName}/>
         <MainBoard showImages={this.showImages} />
         <StatusBar
           players={currentPlayers}

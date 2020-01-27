@@ -1,6 +1,9 @@
 // Core
 import React, { Component } from 'react';
 
+// Libraries
+import PropTypes from 'prop-types';
+
 // Config
 import config from '../../CritCore/Config/config';
 
@@ -14,6 +17,16 @@ import SubMenu from './SubMenu';
 import styles from './MainMenu.module.css';
 
 class MainMenu extends Component {
+  static propTypes = {
+    handleState: PropTypes.func,
+    account: PropTypes.string
+  };
+
+  static defaultProps = {
+    handleState: () => {},
+    account: ''
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -55,10 +68,10 @@ class MainMenu extends Component {
   }
 
   render = () => {
-    const { handleState } = this.props,
+    const { handleState, account } = this.props,
       { showHideMenu } = this.state,
       { language } = config,
-      menues = parseMenues(language, handleState); // ToDo: Define a way to set the language
+      menues = parseMenues(language, handleState, account);
     return (
       <nav>
         <button onClick={this.toggleMenu} className={`${styles.hamburgerBtn} ${showHideMenu && styles.open}`}>

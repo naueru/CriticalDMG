@@ -29,8 +29,10 @@
       background: none;
       border: none;
       font-family: $Font-MainFont;
+      height: 100%;
       line-height: 1;
       padding: 14px 8px;
+      text-transform: capitalize;
       width: 100%;
       &:focus {
         outline: none;

@@ -42,12 +42,20 @@
     width: 0;
   }
 
+  li {
+    &:last-child {
+      .subMenuWrapper {
+        position: absolute;
+        right: 0;
+        width: initial;
+      }
+    }
+  }
+
   .subMenuList {
     align-items: flex-start;
     justify-content: initial;
-    left: 0;
     padding: 0.8rem;
-    top: 2.3rem;
     width: max-content;
   }
 
