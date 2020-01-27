@@ -6,9 +6,9 @@ import getTranslations from '../../CritCore/Translations/Translations.js';
 
 const { defaultLanguage } = config;
 
-let parseMenues = (lang = defaultLanguage, handleState) => {
+let parseMenues = (lang = defaultLanguage, handleState, account) => {
   const translations    = getTranslations(lang),
-    userName            = '', // ToDo define how to get user name if logged
+    userName            = account,
     mainMenu            = (translations && translations.mainMenu) || {},
     file                = mainMenu.file || {},
     fileLabel           = file.label || '',
