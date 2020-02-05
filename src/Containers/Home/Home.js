@@ -13,6 +13,7 @@ import StatusBar from '../../Components/StatusBar';
 import Modal from '../../Components/Modal';
 import PictureViewer from '../../Components/PictureViewer';
 import About from '../../Components/About';
+import AvailableCommands from '../../Components/AvailableCommands';
 
 // Mocks
 const smallCityMapMock = require('../../assets/img/mocks/GoldarSmall.jpg');
@@ -49,8 +50,7 @@ class Home extends Component {
 
   showImages = (images) => {
     return this.setState({
-      showModal: true,
-      showImages: true,
+      showModal: 'images',
       imagesList: images
     });
   };
@@ -66,9 +66,6 @@ class Home extends Component {
         sessionNumber,
         gameName,
         showModal,
-        showMaps,
-        showAbout,
-        showImages,
         imagesList,
         shouldLogOut
       } = this.state,
@@ -76,17 +73,19 @@ class Home extends Component {
     if ( shouldLogOut ) {logOut()}
     return (
       <div>
-        {showModal && <Modal onClose={() => this.handleState({ showModal: false, showMaps: false, showAbout: false, showImages: false })}>
+        {showModal && <Modal onClose={() => this.handleState({ showModal: false })}>
 
-          {showMaps && <PictureViewer
+          {showModal === 'maps' && <PictureViewer
             imageList={mockedImages} //ToDo: Replace this mocks with real data
           />}
 
-          {showImages && <PictureViewer
+          {showModal === 'images' && <PictureViewer
             imageList={imagesList} //ToDo: Replace this mocks with real data
           />}
 
-          {showAbout && <About />}
+          {showModal === 'about' && <About />}
+
+          {showModal === 'availableCommands' && <AvailableCommands />}
         </Modal>}
         <MainMenu handleState={this.handleState} account={userName}/>
         <MainBoard showImages={this.showImages} />

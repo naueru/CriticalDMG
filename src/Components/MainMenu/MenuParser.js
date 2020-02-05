@@ -74,7 +74,7 @@ let parseMenues = (lang = defaultLanguage, handleState, account) => {
         },
         {
           label: librarySubMenues.viewMaps,
-          onClick: () => handleState({ showModal: true, showMaps: true })
+          onClick: () => handleState({ showModal: 'maps' })
         },
         {
           label: librarySubMenues.bestiary,
@@ -130,7 +130,11 @@ let parseMenues = (lang = defaultLanguage, handleState, account) => {
       subMenues: [
         {
           label: helpSubMenues.about,
-          onClick: () => handleState({ showModal: true, showAbout: true })
+          onClick: () => handleState({ showModal: 'about' })
+        },
+        {
+          label: helpSubMenues.availableCommands,
+          onClick: () => handleState({ showModal: 'availableCommands' })
         }
       ]
     },
