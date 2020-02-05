@@ -49,7 +49,8 @@ let translations = {
       help: {
         label: 'Ayuda',
         subMenues: {
-          about: 'Acerca de CriticalDMG'
+          about: 'Acerca de CriticalDMG',
+          availableCommands: 'Comandos disponibles'
         }
       },
       session: {
@@ -82,6 +83,15 @@ let translations = {
       userName: 'Nombre de usuario',
       password: 'Contraseña',
       button: 'Ingresar'
+    },
+    availableCommands: {
+      title: 'Comandos disponibles',
+      description: [
+        {command :'{/say | /s} {text}', description: 'Current player says text'},
+        {command :'{/yell | /y} {text}', description: 'Current player yells text'},
+        {command :'{/whisper | /w} {text}', description: 'Current player whispers text'},
+        {command :'{/roll | /r} {XdY+M}', description: 'Current player rolls X dices of Y faces and adds M to result'}
+      ]
     }
   },
   en: {
@@ -134,7 +144,8 @@ let translations = {
       help: {
         label: 'Help',
         subMenues: {
-          about: 'About CriticalDMG'
+          about: 'About CriticalDMG',
+          availableCommands: 'Available commands'
         }
       },
       session: {
@@ -167,6 +178,15 @@ let translations = {
       userName: 'User Name',
       password: 'Password',
       button: 'Login'
+    },
+    availableCommands: {
+      title: 'Available commands',
+      description: [
+        {command :'{/say | /s} {text}', description: 'Current player says text'},
+        {command :'{/yell | /y} {text}', description: 'Current player yells text'},
+        {command :'{/whisper | /w} {text}', description: 'Current player whispers text'},
+        {command :'{/roll | /r} {XdY+M}', description: 'Current player rolls X dices of Y faces and adds M to result'}
+      ]
     }
   }
 }
