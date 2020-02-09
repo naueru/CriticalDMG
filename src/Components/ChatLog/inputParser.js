@@ -1,4 +1,7 @@
-const parse = (input = '', user) => {
+// Predefined events
+import getPrefabEvents from '../../constants/events/genericEvents';
+
+const parse = (input = '', user, language) => {
   const { icon, alterEgo } = user,
     character = alterEgo;
   let isSay = input[0] !== '/',
@@ -81,7 +84,17 @@ const parse = (input = '', user) => {
       break;
     case '/event':
     case '/e':
-      console.log('new event');
+      const prefabEvents = getPrefabEvents(language),
+        hasId = terms[1][0] === '#',
+        id = hasId && terms[1].slice(1),
+        event = id ? prefabEvents[id] : {
+          type: 'event',
+          content:{
+            text: verifiedInput.slice(command.length),
+            autoPlay: false
+          }
+        };
+      result = event;
       break;
     default:
       console.log(`Sorry, ${command} is not a valid command`);
