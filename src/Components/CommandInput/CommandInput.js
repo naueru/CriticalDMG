@@ -10,13 +10,17 @@ import styles from './CommandInput.module.css';
 class CommandInput extends Component {
   static propTypes = {
     handleSubmit: PropTypes.func,
+    handleHistory: PropTypes.func,
     placeholder: PropTypes.string,
+    defaultInput: PropTypes.string,
     handleChange: PropTypes.func
   };
 
   static defaultProps = {
     handleSubmit: () => {},
+    handleHistory: () => {},
     placeholder: '',
+    defaultInput: '',
     handleChange: () => {}
   };
 
@@ -29,18 +33,35 @@ class CommandInput extends Component {
   };
 
   handleKeyDown = (e = {}) => {
-    const { handleSubmit } = this.props,
+    const { handleSubmit, handleHistory } = this.props,
       { value } = e.target;
-    if (e.key === 'Enter') {
-      handleSubmit(value);
-      e.target.value = '';
+    switch(e.key){
+      case 'Enter':
+        handleSubmit(value);
+        e.target.value = '';
+        break;
+      case 'ArrowUp':
+        handleHistory('decrease', this.setInputValue);
+        break;
+      case 'ArrowDown':
+        handleHistory('increase', this.setInputValue);
+        break;
+      default:
+        break
     }
   };
 
+  setInputValue = (val) => {
+    let inp = document.getElementById('commandInput');
+    inp.value = val;
+  };
+
   render = () => {
-    const { placeholder } = this.props;
+    const { placeholder, defaultInput } = this.props;
     return (
       <input
+        id="commandInput"
+        defaultValue={defaultInput}
         placeholder={placeholder}
         className={styles.inputText}
         onKeyDown={this.handleKeyDown}
