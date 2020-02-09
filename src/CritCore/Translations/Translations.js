@@ -92,6 +92,10 @@ let translations = {
         {command :'{/whisper | /w} {text}', description: 'Current player whispers text'},
         {command :'{/roll | /r} {XdY+M}', description: 'Current player rolls X dices of Y faces and adds M to result'}
       ]
+    },
+    events: {
+      softRain: 'Lentamente, unas cuantas gotas comienzan a caer desde el cielo.',
+      heavyRain: 'Repentinamente, un puñado de truenos y un montón de agua comienza a caer del cielo.'
     }
   },
   en: {
@@ -187,6 +191,10 @@ let translations = {
         {command :'{/whisper | /w} {text}', description: 'Current player whispers text'},
         {command :'{/roll | /r} {XdY+M}', description: 'Current player rolls X dices of Y faces and adds M to result'}
       ]
+    },
+    events: {
+      softRain: 'Softly a few drops start falling from the sky.',
+      heavyRain: 'Suddenly a bunch of thunders and a lot of water start falling from the sky.'
     }
   }
 }

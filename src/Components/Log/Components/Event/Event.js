@@ -12,6 +12,7 @@ import styles from './Event.module.css';
 
 class Event extends Component {
   static propTypes = {
+    index: PropTypes.number,
     text: PropTypes.string,
     imgUrl: PropTypes.string,
     imgName: PropTypes.string,
@@ -20,6 +21,7 @@ class Event extends Component {
   };
 
   static defaultProps = {
+    index: 0,
     text: '',
     imgUrl: '',
     imgName: '',
@@ -35,16 +37,19 @@ class Event extends Component {
   }
 
   componentDidMount = () =>{
-    const { imgName, imgUrl, sound, autoPlay } = this.props;
+    const { imgName, imgUrl, imgLabel, imgTitle, sound, autoPlay } = this.props,
+      { audioId } = this.state;
 
-    if (imgName && imgUrl && autoPlay) {this.showPicture(imgUrl, imgName)};
-    if (sound && autoPlay) {this.playSound(sound)};
+    if (imgName && imgUrl && autoPlay) {this.showPicture(imgUrl, imgName, imgLabel, imgTitle)};
+    if (sound && autoPlay) {this.playSound(audioId)};
 
     return;
   };
 
   playSound = (id, event) => {
-    event.stopPropagation();
+    if (event) {
+      event.stopPropagation();
+    }
     let audio = document.getElementById(id);
     if (audio) {
       audio.play();
@@ -53,7 +58,9 @@ class Event extends Component {
   };
 
   showPicture = (imgUrl, name, label, title, event) => {
-    event.stopPropagation();
+    if (event) {
+      event.stopPropagation();
+    }
     const { showImages } = this.props,
     img = {
       type: 'image',

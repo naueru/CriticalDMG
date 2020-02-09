@@ -41,6 +41,9 @@ class ChatLog extends Component {
     super(props);
     this.state = {
       selectedItem: null,
+      defaultInput: '',
+      inputHistory: [],
+      inputHistoryIndex: 0,
       log: [
         {
           type: 'message',
@@ -107,12 +110,29 @@ class ChatLog extends Component {
     this.setState({ selectedItem: newSelected });
   };
 
+  handleHistory = (action, callback) => {
+    const { inputHistoryIndex, inputHistory } = this.state,
+      newIndex = action === 'increase' ? Math.min(inputHistory.length, inputHistoryIndex + 1) : Math.max(0, inputHistoryIndex - 1);
+    this.setState({
+      inputHistoryIndex: newIndex,
+      defaultInput: inputHistory[newIndex]
+    }, () => callback(inputHistory[newIndex] || ''));
+  };
+
   parseInput = (input = '') => {
     const { session } = this.props,
-      { log } = this.state,
-      parsedInput = inputParser.parse(input, session);
+      { log, inputHistory } = this.state,
+      { language } = config,
+      parsedInput = inputParser.parse(input, session, language);
       log.push(parsedInput);
-    this.setState({ log });
+      inputHistory.push(input);
+      let inputHistoryIndex = inputHistory.length-1;
+    this.setState({
+      log,
+      inputHistory,
+      inputHistoryIndex,
+      defaultInput: ''
+    });
 
   };
 
@@ -121,7 +141,7 @@ class ChatLog extends Component {
       { language } = config,
       translations  = getTranslations(language),
       { inputPlaceholder } = translations.chatLog,
-      { log, selectedItem } = this.state;
+      { log, selectedItem, defaultInput } = this.state;
     return (
       <section className={styles.chat}>
         <Log
@@ -131,7 +151,12 @@ class ChatLog extends Component {
           showImages={showImages}
         />
         <div className={styles.inputContainer}>
-          <CommandInput placeholder={inputPlaceholder} handleSubmit={this.parseInput} />
+          <CommandInput
+            placeholder={inputPlaceholder}
+            handleSubmit={this.parseInput}
+            handleHistory={this.handleHistory}
+            defaultInput={defaultInput}
+          />
         </div>
       </section>
     );
@@ -149,7 +174,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
       // FILTERED ACTIONS HERE
-      postEntres: () => {console.log('Implement this')},
+      postEntries: () => {console.log('Implement this')},
     },
     dispatch,
   );
