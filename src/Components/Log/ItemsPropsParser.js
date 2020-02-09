@@ -23,12 +23,13 @@ const parseEventProps = (content) => {
     sound,
     autoPlay
   } = content,
+  img = image || {},
   parsedProps = {
     text,
-    imgUrl: image.url,
-    imgName: image.name,
-    imgLabel: image.label,
-    imgTitle: image.title,
+    imgUrl: img.url,
+    imgName: img.name,
+    imgLabel: img.label,
+    imgTitle: img.title,
     sound,
     autoPlay
   };
