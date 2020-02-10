@@ -55,17 +55,11 @@
   .subMenuList {
     align-items: flex-start;
     justify-content: initial;
-    padding: 0.8rem;
     width: max-content;
   }
 
-  .subMenuListItem {
-    margin: 0 -0.8rem;
-    padding: 0.4rem 0.8rem;
-  }
-
   .subMenuButton {
-    padding: initial;
+    padding: 0.4rem 0.8rem;
     text-align: left;
   }
 }
