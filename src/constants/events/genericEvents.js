@@ -24,7 +24,7 @@ const getPrefabEvents = (lang) => {
     beefy: {
       type: 'event',
       content:{
-        text: translatedEvents.heavyRain,
+        text: 'Suddenly the doors of the tavern open and a beefy man appears',
         image: {
           label: 'Do it!',
           title: 'Just do it!',

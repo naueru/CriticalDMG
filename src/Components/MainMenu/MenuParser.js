@@ -70,7 +70,7 @@ let parseMenues = (lang = defaultLanguage, handleState, account) => {
       subMenues: [
         {
           label: librarySubMenues.loadManuals,
-          onClick: () => alert(`Clicked ${librarySubMenues.loadManuals}`)
+          onClick: () => handleState({ showModal: 'manuals' })
         },
         {
           label: librarySubMenues.viewMaps,
