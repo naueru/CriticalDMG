@@ -79,7 +79,7 @@ class ChatLog extends Component {
         {
           type: 'event',
           content:{
-            text: 'Suddenly the doors of the tavern open and a beefy men appears',
+            text: 'Suddenly the doors of the tavern open and a beefy man appears',
             image: {
               label: 'Do it!',
               title: 'Just do it!',

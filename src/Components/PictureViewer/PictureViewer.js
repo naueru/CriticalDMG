@@ -26,10 +26,10 @@ const PictureViewer = ({imageList, onClick}) => {
         comp = {
           label,
           content: (
-            <React.Fragment>
+            <Fragment>
               <h4>{title}</h4>
               <img src={imgUrl} alt={name} />
-            </React.Fragment>
+            </Fragment>
           )
         }
         break;

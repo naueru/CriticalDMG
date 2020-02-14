@@ -12,6 +12,7 @@ import MainBoard from '../../Components/MainBoard';
 import StatusBar from '../../Components/StatusBar';
 import Modal from '../../Components/Modal';
 import PictureViewer from '../../Components/PictureViewer';
+import ManualsViewer from '../../Components/ManualsViewer';
 import About from '../../Components/About';
 import AvailableCommands from '../../Components/AvailableCommands';
 
@@ -20,6 +21,10 @@ const smallCityMapMock = require('../../assets/img/mocks/GoldarSmall.jpg');
 const bigCityMapMock = require('../../assets/img/mocks/GoldarBig.jpg');
 const smallContinentMapMock = require('../../assets/img/mocks/GaiaSmall.jpg');
 const bigContinentMapMock = require('../../assets/img/mocks/GaiaBig.jpg');
+
+const manualCore = require('../../assets/manuals/Core.pdf');
+const manualExp = require('../../assets/manuals/Exp1.pdf');
+const manualBeast = require('../../assets/manuals/Beasts.pdf');
 const mockedImages = [
   {
     type: 'map',
@@ -32,6 +37,20 @@ const mockedImages = [
   {
     type: 'image',
     content: {label: 'Do it!', title: 'Just do it!', name: 'shia', imgUrl: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg'}
+  }
+];
+const mockedManuals = [
+  {
+    label: 'Core',
+    url: manualCore,
+  },
+  {
+    label: 'Expansion 1',
+    url: manualExp,
+  },
+  {
+    label: 'Bestiary',
+    url: manualBeast,
   }
 ];
 
@@ -86,6 +105,7 @@ class Home extends Component {
           {showModal === 'about' && <About />}
 
           {showModal === 'availableCommands' && <AvailableCommands />}
+          {showModal === 'manuals' && <ManualsViewer manualsList={mockedManuals} />}
         </Modal>}
         <MainMenu handleState={this.handleState} account={userName}/>
         <MainBoard showImages={this.showImages} />
