@@ -51,6 +51,7 @@ class Login extends Component {
             <button onClick={() => handleChange({userName: 'valdamir', password: '1234'})}>User 1</button>
             <button onClick={() => handleChange({userName: 'meriadoc', password: '1234'})}>User 2</button>
             <button onClick={() => handleChange({userName: 'dilfo', password: '1234'})}>User 3</button>
+            <button onClick={() => handleChange({userName: 'yvaine', password: '1234'})}>User 4</button>
           </div>
         </div>
       </div>
