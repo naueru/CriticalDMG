@@ -1,14 +1,14 @@
-// import _get from 'lodash/get';
 import {
   CHECK_CREDENTIALS_SUCCESS,
   CHECK_CREDENTIALS_FAILED,
   CHECK_CREDENTIALS_LOADING,
   LOG_OUT
 } from './constants';
+import { isLoggedIn } from "../services/localStorageServices";
 
 const initialState = {
   isLoading: false,
-  isAuth: false,
+  isAuth: isLoggedIn(),
   token: null,
   error: null,
   user: null
@@ -27,8 +27,6 @@ export const session = (state = initialState, action) => {
         ...state,
         ...action.session,
         isLoading: false,
-        // token: _get(action, 'session.data.token'),
-        // user: _get(action, 'session.data.user'),
         isAuth: true
       };
 
