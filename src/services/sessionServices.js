@@ -1,12 +1,18 @@
-import { users } from '../mocks/sessionMocks';
-export const loginCredentials = ({userName, password}) => {
-  const user = users.find(user => {
-    return user.userName === userName
-  });
+import { getClient } from '../apiClient';
 
-  if (user && user.password === password) {
-    return Promise.resolve(user);
-  } else {
-    return Promise.reject('Incorrect user or password');
+export const loginCredentials = async ({ userName, password }) => {
+  const res = await getClient().post(
+    'https://criticaldmg-api.herokuapp.com/authentication',
+    {
+      email: userName,
+      password: password,
+      strategy: 'local'
+    }
+  );
+
+  if (res.status !== 201) {
+    throw new Error('Incorrect user or password');
   }
+
+  return res.data;
 };

@@ -6,7 +6,8 @@ const config = {
   },
   pictureViewer: {
     magnifierSize: '50%'
-  }
+  },
+  SERVER_HOST: process.env.REACT_APP_SERVER_HOST || "localhost",
+  SERVER_PORT: process.env.REACT_APP_SERVER_PORT || "3000",
 };
-
 export default config;
