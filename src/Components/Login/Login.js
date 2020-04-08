@@ -48,10 +48,10 @@ class Login extends Component {
             Test users:
           </span>
           <div>
-            <button onClick={() => handleChange({userName: 'valdamir', password: '1234'})}>User 1</button>
-            <button onClick={() => handleChange({userName: 'meriadoc', password: '1234'})}>User 2</button>
-            <button onClick={() => handleChange({userName: 'dilfo', password: '1234'})}>User 3</button>
-            <button onClick={() => handleChange({userName: 'yvaine', password: '1234'})}>User 4</button>
+            <button onClick={() => handleChange({userName: 'a@b.com', password: '1234'})}>User 1</button>
+            <button onClick={() => handleChange({userName: 'c@d.com', password: '1234'})}>User 2</button>
+            <button onClick={() => handleChange({userName: 'e@f.com', password: '1234'})}>User 3</button>
+            <button onClick={() => handleChange({userName: 'g@h.com', password: '1234'})}>User 4</button>
           </div>
         </div>
       </div>
