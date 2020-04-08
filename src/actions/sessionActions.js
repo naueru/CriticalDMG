@@ -50,7 +50,10 @@ export const checkCredentials = credentials => (dispatch, getState) => {
   dispatch(checkCredentialsLoading(credentials));
   return loginCredentials(credentials)
     .then(saveTokenToLocalStorage)
-    .then(response => dispatch(checkCredentialsSuccess(response)))
+    .then(response => {
+      debugger
+      return dispatch(checkCredentialsSuccess(response && response.user))
+    })
     .catch(err => {
       dispatch(checkCredentialsFailed(err.response));
       const error = _get(err, 'response.data') || err.response;
