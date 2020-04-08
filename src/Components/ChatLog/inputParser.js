@@ -73,7 +73,7 @@ const parse = (input = '', user, language) => {
           character
         };
       for (let i = 0; i < roll.dices; i++) {
-        let rnd = Math.round(Math.random()*roll.faces);
+        let rnd = Math.ceil(Math.random()*roll.faces);
         roll.results.push(rnd);
         roll.total += rnd;
       }
