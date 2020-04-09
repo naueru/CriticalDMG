@@ -49,7 +49,7 @@ export const session = (state = initialState, action) => {
         ...state,
         isLoading: false,
         user: action.session.user
-      }
+      };
 
     default:
       return state;

@@ -58,7 +58,7 @@ export const checkCredentials = credentials => (dispatch, getState) => {
   return loginCredentials(credentials)
     .then(saveTokenToLocalStorage)
     .then(response => {
-      return dispatch(checkCredentialsSuccess(response))
+      return dispatch(checkCredentialsSuccess(response));
     })
     .catch(err => {
       const error = _get(err, 'response.data', err && err.response);
@@ -68,7 +68,7 @@ export const checkCredentials = credentials => (dispatch, getState) => {
 };
 
 export const fetchLoggedUser = () => async dispatch => {
-  const { sub } = getAutohrizationTokenDecoded()
+  const { sub } = getAutohrizationTokenDecoded();
   const loggedUser = await fetchUser(sub);
   return dispatch(fetchLoggedUserSuccess(loggedUser));
-}
+};

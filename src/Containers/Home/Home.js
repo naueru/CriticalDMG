@@ -78,12 +78,12 @@ class Home extends Component {
   };
 
   componentDidUpdate = () => {
-    const { shouldLogOut } = this.state; 
-    const { logOut } = this.props; 
+    const { shouldLogOut } = this.state;
+    const { logOut } = this.props;
     if (shouldLogOut) {
-      logOut()
+      logOut();
     }
-  }
+  };
 
   render = () => {
     const {

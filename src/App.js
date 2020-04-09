@@ -22,9 +22,9 @@ function App({ isAuth, user, fetchLoggedUser }) {
   useEffect(() => {
 
     if(isAuth && noUserInRedux) {
-      fetchLoggedUser()
+      fetchLoggedUser();
     }
-  })
+  });
 
   const loggedInContent = noUserInRedux ? 'Loading...' : <Home />;
 
