@@ -51,12 +51,16 @@ class Welcome extends Component {
         userName,
         password
       }                   = this.state,
+      { session = {} }    = this.props,
+      error               = session.error || {},
+      errorCode           = error.code,
       { language }        = config,
-      translations        = getTranslations(language), //ToDo: Replace this language for config directly or from store
-      welcomeTranslations = translations.welcome,
+      translations        = getTranslations(language) || {}, //ToDo: Replace this language for config directly or from store
+      welcomeTranslations = translations.welcome || {},
       loginLabel          = welcomeTranslations.login,
       registerLabel       = welcomeTranslations.register,
-      description         = welcomeTranslations.description;
+      description         = welcomeTranslations.description,
+      errorLabel          = errorCode && welcomeTranslations[errorCode];
     return (
       <div className={styles.welcomeContainer}>
         {showModal && <Modal onClose={() => this.handleState({ showModal: false, showLogin: false, showRegister: false })}>
@@ -65,6 +69,7 @@ class Welcome extends Component {
             onSubmit={this.checkLoginCredentials}
             userName={userName}
             pwd={password}
+            errorLabel={errorLabel}
           />}
           {showRegister && <Register />}
         </Modal>}
