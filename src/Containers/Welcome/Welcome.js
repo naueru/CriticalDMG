@@ -37,9 +37,8 @@ class Welcome extends Component {
     return this.setState(state);
   };
 
-  checkLoginCredentials = () => {
+  checkLoginCredentials = ({ userName, password }) => {
     const { checkCredentials } = this.props;
-    const { userName, password } = this.state;
     return checkCredentials({ userName, password });
   };
 
@@ -47,9 +46,7 @@ class Welcome extends Component {
     const {
         showModal,
         showLogin,
-        showRegister,
-        userName,
-        password
+        showRegister
       }                   = this.state,
       { language }        = config,
       translations        = getTranslations(language), //ToDo: Replace this language for config directly or from store
@@ -61,10 +58,7 @@ class Welcome extends Component {
       <div className={styles.welcomeContainer}>
         {showModal && <Modal onClose={() => this.handleState({ showModal: false, showLogin: false, showRegister: false })}>
           {showLogin && <Login
-            handleChange={this.handleState}
             onSubmit={this.checkLoginCredentials}
-            userName={userName}
-            pwd={password}
           />}
           {showRegister && <Register />}
         </Modal>}

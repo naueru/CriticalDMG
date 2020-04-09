@@ -14,22 +14,36 @@ import getTranslations from '../../CritCore/Translations/Translations.js';
 import styles from './Login.module.scss';
 
 class Login extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      userName: '',
+      password: '',
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
   static propTypes = {
-    userName: PropTypes.string,
-    pwd: PropTypes.string,
-    handleChange: PropTypes.func,
     onSubmit: PropTypes.func
   }
 
   static defaultProps = {
-    userName: '',
-    pwd: '',
-    handleChange: () => {},
     onSubmit: () => {}
   }
 
+  handleChange({ target }) {
+    const { name, value } = target;
+    this.setState({ [name]: value});
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onSubmit(this.state)
+  }
+
   render = () => {
-    const { userName, pwd, handleChange, onSubmit } = this.props,
+    const { userName, password } = this.state,
       { language }      = config,
       translations      = getTranslations(language), //ToDo: Replace this language for config directly or from store
       loginTranslations = translations.login,
@@ -38,22 +52,24 @@ class Login extends Component {
       submitLabel       = loginTranslations.button;
     return (
       <div className={styles.loginContainer} onClick={e => e.stopPropagation()}>
-        <h3 className={styles.loginHeadline}>{userNameLabel}</h3>
-        <input className={styles.logininput} value={userName} onChange={e => handleChange({userName: e.target.value})} />
-        <h3 className={styles.loginHeadline}>{passwordLabel}</h3>
-        <input className={styles.logininput} value={pwd} onChange={e => handleChange({password: e.target.value})} type="password" />
-        <button className={styles.loginBtn} onClick={onSubmit}>{submitLabel}</button>
+        <form onSubmit={this.handleSubmit}>
+          <h3 className={styles.loginHeadline}>{userNameLabel}</h3>
+          <input name="userName" className={styles.logininput} value={userName} onChange={this.handleChange} />
+          <h3 className={styles.loginHeadline}>{passwordLabel}</h3>
+          <input name="password" className={styles.logininput} value={password} onChange={this.handleChange} type="password" />
+          <button className={styles.loginBtn} >{submitLabel}</button>
+        </form>
         <div>
-          <span>
-            Test users:
-          </span>
-          <div>
-            <button onClick={() => handleChange({userName: 'a@b.com', password: '1234'})}>User 1</button>
-            <button onClick={() => handleChange({userName: 'c@d.com', password: '1234'})}>User 2</button>
-            <button onClick={() => handleChange({userName: 'e@f.com', password: '1234'})}>User 3</button>
-            <button onClick={() => handleChange({userName: 'g@h.com', password: '1234'})}>User 4</button>
+            <span>
+              Test users:
+            </span>
+            <div>
+              <button onClick={() => this.setState({userName: 'a@b.com', password: '1234'})}>User 1</button>
+              <button onClick={() => this.setState({userName: 'c@d.com', password: '1234'})}>User 2</button>
+              <button onClick={() => this.setState({userName: 'e@f.com', password: '1234'})}>User 3</button>
+              <button onClick={() => this.setState({userName: 'g@h.com', password: '1234'})}>User 4</button>
+            </div>
           </div>
-        </div>
       </div>
     );
   };
