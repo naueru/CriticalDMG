@@ -51,12 +51,11 @@ export const checkCredentials = credentials => (dispatch, getState) => {
   return loginCredentials(credentials)
     .then(saveTokenToLocalStorage)
     .then(response => {
-      debugger
       return dispatch(checkCredentialsSuccess(response && response.user))
     })
     .catch(err => {
-      dispatch(checkCredentialsFailed(err.response));
-      const error = _get(err, 'response.data') || err.response;
-      throw error;
+      const error = _get(err, 'response.data', err && err.response);
+      dispatch(checkCredentialsFailed(error));
+      // throw error;
     });
 };
