@@ -2,7 +2,8 @@ import {
   CHECK_CREDENTIALS_SUCCESS,
   CHECK_CREDENTIALS_FAILED,
   CHECK_CREDENTIALS_LOADING,
-  LOG_OUT
+  LOG_OUT,
+  FETCH_LOGGED_USER_SUCCESS
 } from './constants';
 import { isLoggedIn } from "../services/localStorageServices";
 
@@ -42,6 +43,13 @@ export const session = (state = initialState, action) => {
         isLoading: false,
         isAuth: false
       };
+
+    case FETCH_LOGGED_USER_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        user: action.session.user
+      }
 
     default:
       return state;

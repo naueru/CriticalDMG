@@ -4,14 +4,21 @@ import {
   CHECK_CREDENTIALS_FAILED,
   CHECK_CREDENTIALS_LOADING,
   LOG_OUT,
+  FETCH_LOGGED_USER_SUCCESS,
   // LOG_IN
 } from '../reducers/constants';
 
 import { loginCredentials } from '../services/sessionServices';
-import { setAutohrizationToken, removeAutohrizationToken } from '../services/localStorageServices';
+import { setAutohrizationToken, removeAutohrizationToken, getAutohrizationTokenDecoded } from '../services/localStorageServices';
+import { fetchUser } from '../services/userServices';
 
 export const checkCredentialsLoading = () => ({
   type: CHECK_CREDENTIALS_LOADING
+});
+
+export const fetchLoggedUserSuccess = user => ({
+  type: FETCH_LOGGED_USER_SUCCESS,
+  session: { user }
 });
 
 export const checkCredentialsSuccess = session => ({
@@ -24,7 +31,7 @@ export const checkCredentialsFailed = error => ({
   error
 });
 
-export const logOut = () => ( dispatch ) => {
+export const logOut = () => dispatch => {
   removeAutohrizationToken();
   return dispatch({ type: LOG_OUT });
 };
@@ -51,7 +58,7 @@ export const checkCredentials = credentials => (dispatch, getState) => {
   return loginCredentials(credentials)
     .then(saveTokenToLocalStorage)
     .then(response => {
-      return dispatch(checkCredentialsSuccess(response && response.user))
+      return dispatch(checkCredentialsSuccess(response))
     })
     .catch(err => {
       const error = _get(err, 'response.data', err && err.response);
@@ -59,3 +66,9 @@ export const checkCredentials = credentials => (dispatch, getState) => {
       // throw error;
     });
 };
+
+export const fetchLoggedUser = () => async dispatch => {
+  const { sub } = getAutohrizationTokenDecoded()
+  const loggedUser = await fetchUser(sub);
+  return dispatch(fetchLoggedUserSuccess(loggedUser));
+}
