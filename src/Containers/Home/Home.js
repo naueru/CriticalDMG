@@ -6,6 +6,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 
+// Libraries
+import _get from 'lodash/get';
+
 // Components
 import MainMenu from '../../Components/MainMenu';
 import MainBoard from '../../Components/MainBoard';
@@ -74,10 +77,17 @@ class Home extends Component {
     });
   };
 
+  componentDidUpdate = () => {
+    const { shouldLogOut } = this.state;
+    const { logOut } = this.props;
+    if (shouldLogOut) {
+      logOut();
+    }
+  };
+
   render = () => {
     const {
-        logOut,
-        session
+        user
       } = this.props,
       {
         currentPlayers,
@@ -85,11 +95,10 @@ class Home extends Component {
         sessionNumber,
         gameName,
         showModal,
-        imagesList,
-        shouldLogOut
+        imagesList
       } = this.state,
-      { userName } = session;
-    if ( shouldLogOut ) {logOut()}
+      { userName } = user;
+
     return (
       <div>
         {showModal && <Modal onClose={() => this.handleState({ showModal: false })}>
@@ -122,7 +131,7 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   // FILTERED PROPS STORE HERE
-  session: state.session,
+  user: _get(state, 'session.user'),
 });
 
 const mapDispatchToProps = (dispatch) => {
