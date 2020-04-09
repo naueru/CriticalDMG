@@ -39,9 +39,9 @@ class Login extends Component {
     return (
       <div className={styles.loginContainer} onClick={e => e.stopPropagation()}>
         <h3 className={styles.loginHeadline}>{userNameLabel}</h3>
-        <input className={styles.logininput} defaultValue={userName} onChange={e => handleChange({userName: e.target.value})} />
+        <input className={styles.logininput} value={userName} onChange={e => handleChange({userName: e.target.value})} />
         <h3 className={styles.loginHeadline}>{passwordLabel}</h3>
-        <input className={styles.logininput} defaultValue={pwd} onChange={e => handleChange({password: e.target.value})} type="password" />
+        <input className={styles.logininput} value={pwd} onChange={e => handleChange({password: e.target.value})} type="password" />
         <button className={styles.loginBtn} onClick={onSubmit}>{submitLabel}</button>
         <div>
           <span>

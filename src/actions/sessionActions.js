@@ -51,7 +51,6 @@ export const checkCredentials = credentials => (dispatch, getState) => {
   return loginCredentials(credentials)
     .then(saveTokenToLocalStorage)
     .then(response => {
-      debugger
       return dispatch(checkCredentialsSuccess(response && response.user))
     })
     .catch(err => {
