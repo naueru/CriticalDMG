@@ -23,33 +23,40 @@
     padding: 4px 8px;
   }
 
-  .loginHeadline {
-    line-height: 1;
-    margin: 1rem 0;
-  }
+  .loginForm {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 
-  .logininput {
-    margin: 1rem 0;
-  }
-
-  .loginBtn {
-    background: none;
-    border: solid 2px black;
-    border-radius: 5px;
-    color: black;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 1;
-    margin: 1rem 0;
-    padding: 4px 8px;
-
-    &:hover {
-      color: white;
-      background-color: black;
+    .loginHeadline {
+      line-height: 1;
+      margin: 1rem 0;
     }
 
-    &:focus {
-      outline: none;
+    .logininput {
+      margin: 1rem 0;
+    }
+
+    .loginBtn {
+      background: none;
+      border: solid 2px black;
+      border-radius: 5px;
+      color: black;
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 1;
+      margin: 1rem 0;
+      padding: 4px 8px;
+      width: fit-content;
+
+      &:hover {
+        color: white;
+        background-color: black;
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 }

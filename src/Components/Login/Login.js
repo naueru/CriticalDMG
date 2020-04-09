@@ -40,7 +40,7 @@ const Login = ({ onSubmit, errorLabel }) => {
 
   return (
     <div className={styles.loginContainer} onClick={e => e.stopPropagation()}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.loginForm}>
         { errorLabel && <h3 className={styles.loginError}>{errorLabel}</h3>}
         <h3 className={styles.loginHeadline}>{userNameLabel}</h3>
         <input name="userName" className={styles.logininput} value={userName} onChange={handleChange} />
