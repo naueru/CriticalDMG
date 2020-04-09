@@ -2,7 +2,7 @@ import { getClient } from '../apiClient';
 
 export const loginCredentials = async ({ userName, password }) => {
   const res = await getClient().post(
-    'https://criticaldmg-api.herokuapp.com/authentication',
+    '/authentication',
     {
       email: userName,
       password: password,

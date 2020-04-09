@@ -8,6 +8,6 @@ const config = {
     magnifierSize: '50%'
   },
   SERVER_HOST: process.env.REACT_APP_SERVER_HOST || "localhost",
-  SERVER_PORT: process.env.REACT_APP_SERVER_PORT || "3000",
+  SERVER_PORT: process.env.REACT_APP_SERVER_PORT || "3030",
 };
 export default config;
