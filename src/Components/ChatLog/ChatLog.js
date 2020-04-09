@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 
 // Libraries
 import PropTypes from 'prop-types';
+import _get from 'lodash/get';
 
 // Config
 import config from '../../CritCore/Config/config';
@@ -120,10 +121,10 @@ class ChatLog extends Component {
   };
 
   parseInput = (input = '') => {
-    const { session } = this.props,
+    const { user } = this.props,
       { log, inputHistory } = this.state,
       { language } = config,
-      parsedInput = inputParser.parse(input, session, language);
+      parsedInput = inputParser.parse(input, user, language);
       log.push(parsedInput);
       inputHistory.push(input);
       let inputHistoryIndex = inputHistory.length-1;
@@ -165,7 +166,7 @@ class ChatLog extends Component {
 
 const mapStateToProps = state => ({
   // FILTERED PROPS STORE HERE
-  session: state.session,
+  user: _get(state, 'session.user'),
 });
 
 const mapDispatchToProps = (dispatch) => {
