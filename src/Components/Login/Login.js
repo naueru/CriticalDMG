@@ -20,7 +20,7 @@ const Login = ({ onSubmit, errorLabel }) => {
   const handleChange = ({ target }) => {
     const { name, value } = target;
     setCredentials({
-      ...credentials, 
+      ...credentials,
       [name]: value
     });
   }
