@@ -77,7 +77,9 @@ let translations = {
     welcome: {
       login: 'Ingresar',
       register: 'Registrarse',
-      description: 'El kit de herramientas OpenSource para juegos RPG de mesa. ¡Bienvenido, Por favor ingresa para continuar!'
+      description: 'El kit de herramientas OpenSource para juegos RPG de mesa. ¡Bienvenido, Por favor ingresa para continuar!',
+      401: 'Nombre de usuario o contraseña incorrectos',
+      500: 'Ups!, error interno, intente nuevamente más tarde'
     },
     login: {
       userName: 'Nombre de usuario',
@@ -176,7 +178,9 @@ let translations = {
     welcome: {
       login: 'Login',
       register: 'Register',
-      description: 'The OpenSource table rpg toolkit. Welcome, Login to continue!'
+      description: 'The OpenSource table rpg toolkit. Welcome, Login to continue!',
+      401: 'Invalid username or password',
+      500: 'Oops!, internal error, try again later.'
     },
     login: {
       userName: 'User Name',
