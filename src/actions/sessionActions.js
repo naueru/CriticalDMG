@@ -42,7 +42,6 @@ const saveTokenToLocalStorage = response => {
 };
 
 export const checkCredentials = credentials => (dispatch, getState) => {
-  console.log('Credentials', credentials);
   if (!credentials) {
     return Promise.reject({ message: 'Please review your credentials' });
   }
@@ -76,8 +75,6 @@ export const fetchLoggedUser = () => async dispatch => {
 
 export const registerUser = credentials => (dispatch) => {
   return register(credentials).then((res) => {
-    // console.log('Respuesta', res);
-
     // return dispatch(checkCredentials(res));
   })
 };
