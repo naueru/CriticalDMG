@@ -42,6 +42,22 @@ class Welcome extends Component {
     return checkCredentials({ userName, password });
   };
 
+  registerUser = ({
+    email,
+    userName,
+    alterEgo,
+    password,
+    icon }) => {
+      const { registerUser } = this.props,
+      data = { email,
+        userName,
+        alterEgo,
+        password,
+        icon };
+        console.log(data);
+    return registerUser(data);
+  };
+
   render = () => {
     const {
         showModal,
@@ -65,7 +81,9 @@ class Welcome extends Component {
             onSubmit={this.checkLoginCredentials}
             errorLabel={errorLabel}
           />}
-          {showRegister && <Register />}
+          {showRegister && <Register
+            onSubmit={this.registerUser}
+          />}
         </Modal>}
         <nav className={styles.loginRegisterContainer}>
           <ul className={styles.loginRegisterList}>
@@ -108,11 +126,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch) => {
   // Filter used actions
-  const { checkCredentials } = ActionCreators;
+  const { checkCredentials, registerUser } = ActionCreators;
   return bindActionCreators(
     {
       // FILTERED ACTIONS HERE
       checkCredentials,
+      registerUser
     },
     dispatch,
   );

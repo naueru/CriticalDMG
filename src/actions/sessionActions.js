@@ -10,7 +10,7 @@ import {
 
 import { loginCredentials } from '../services/sessionServices';
 import { setAutohrizationToken, removeAutohrizationToken, getAutohrizationTokenDecoded } from '../services/localStorageServices';
-import { fetchUser } from '../services/userServices';
+import { fetchUser, register } from '../services/userServices';
 
 export const checkCredentialsLoading = () => ({
   type: CHECK_CREDENTIALS_LOADING
@@ -71,4 +71,10 @@ export const fetchLoggedUser = () => async dispatch => {
   const { sub } = getAutohrizationTokenDecoded();
   const loggedUser = await fetchUser(sub);
   return dispatch(fetchLoggedUserSuccess(loggedUser));
+};
+
+export const registerUser = credentials => (dispatch) => {
+  return register(credentials).then((res) => {
+    // return dispatch(checkCredentials(res));
+  })
 };

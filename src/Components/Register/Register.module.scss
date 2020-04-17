@@ -1,8 +1,62 @@
 
 .registerContainer {
+  align-items: center;
   background-color: white;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: -moz-fit-content;
   height: fit-content;
+  justify-content: space-between;
   margin: 0;
   padding: 4rem;
+  width: -moz-fit-content;
   width: fit-content;
+
+  .registerError {
+    background-color: rgba(255, 0, 0, 0.1);
+    border: red 1px solid;
+    border-radius: 4px;
+    color: red;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 4px 8px;
+  }
+
+  .registerForm {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    .registerHeadline {
+      line-height: 1;
+      margin: 1rem 0;
+    }
+
+    .registerinput {
+      margin: 1rem 0;
+    }
+
+    .registerBtn {
+      background: none;
+      border: solid 2px black;
+      border-radius: 5px;
+      color: black;
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 1;
+      margin: 1rem 0;
+      padding: 4px 8px;
+      width: fit-content;
+
+      &:hover {
+        color: white;
+        background-color: black;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
 }
