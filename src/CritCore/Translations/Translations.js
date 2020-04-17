@@ -86,6 +86,16 @@ let translations = {
       password: 'Contraseña',
       button: 'Ingresar'
     },
+    register: {
+      title: 'Crear cuenta',
+      email: 'E-mail',
+      userName: 'Nombre de usuario',
+      password: 'Ingrese contraseña',
+      repeatPassword: 'Repita contraseña',
+      alterEgo: 'Nombre visible / alter ego',
+      icon: 'Elija un avatar',
+      submit: 'Crear'
+    },
     availableCommands: {
       title: 'Comandos disponibles',
       description: [
@@ -186,6 +196,16 @@ let translations = {
       userName: 'User Name',
       password: 'Password',
       button: 'Login'
+    },
+    register: {
+      title: 'Create account',
+      email: 'E-mail',
+      userName: 'User name',
+      password: 'Password',
+      repeatPassword: 'Repeat password',
+      alterEgo: 'Visible name / alter ego',
+      icon: 'Choose an avatar',
+      submit: 'Create'
     },
     availableCommands: {
       title: 'Available commands',

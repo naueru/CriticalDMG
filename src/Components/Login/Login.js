@@ -23,12 +23,12 @@ const Login = ({ onSubmit, errorLabel }) => {
       ...credentials,
       [name]: value
     });
-  }
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit(credentials)
-  }
+  };
 
   const { userName, password } = credentials,
   { language }      = config,
@@ -49,26 +49,26 @@ const Login = ({ onSubmit, errorLabel }) => {
         <button className={styles.loginBtn} >{submitLabel}</button>
       </form>
       <div>
-          <span>
-            Test users:
-          </span>
-          <div>
-            <button onClick={() => setCredentials({userName: 'a@b.com', password: '1234'})}>User 1</button>
-            <button onClick={() => setCredentials({userName: 'c@d.com', password: '1234'})}>User 2</button>
-            <button onClick={() => setCredentials({userName: 'e@f.com', password: '1234'})}>User 3</button>
-            <button onClick={() => setCredentials({userName: 'g@h.com', password: '1234'})}>User 4</button>
-          </div>
+        <span>
+          Test users:
+        </span>
+        <div>
+          <button onClick={() => setCredentials({userName: 'a@b.com', password: '1234'})}>User 1</button>
+          <button onClick={() => setCredentials({userName: 'c@d.com', password: '1234'})}>User 2</button>
+          <button onClick={() => setCredentials({userName: 'e@f.com', password: '1234'})}>User 3</button>
+          <button onClick={() => setCredentials({userName: 'g@h.com', password: '1234'})}>User 4</button>
         </div>
+      </div>
     </div>
   );
 };
 
 Login.propTypes = {
   onSubmit: PropTypes.func
-}
+};
 
 Login.defaultProps = {
   onSubmit: () => {}
-}
+};
 
 export default Login;

@@ -1,10 +1,10 @@
 import { getClient } from '../apiClient';
 
-export const loginCredentials = async ({ userName, password }) => {
+export const loginCredentials = async ({ email, userName, password }) => {
   const res = await getClient().post(
     '/authentication',
     {
-      email: userName,
+      email: email || userName,
       password: password,
       strategy: 'local'
     }
