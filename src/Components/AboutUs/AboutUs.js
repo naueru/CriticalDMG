@@ -1,6 +1,6 @@
 
 // React
-import React, { Component } from 'react';
+import React from 'react';
 
 // Config
 // import config from '../../CritCore/Config/config';
@@ -11,14 +11,12 @@ import React, { Component } from 'react';
 // Styles
 import styles from './AboutUs.module.css';
 
-class AboutUs extends Component {
-  render = () => {
-    return (
-      <div className={styles.aboutUsContainer}>
-        It's all about us
-      </div>
-    );
-  };
+const AboutUs = () => {
+  return (
+    <div className={styles.aboutUsContainer}>
+      It's all about us
+    </div>
+  );
 }
 
 export default AboutUs;
