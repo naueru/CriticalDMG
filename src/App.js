@@ -32,8 +32,10 @@ function App({ isAuth, user, fetchLoggedUser }) {
     }
   });
 
-  const loggedInContent = noUserInRedux ? LoadingCurtain : Home;
-  const main = isAuth ? loggedInContent : Welcome;
+  // A hack to avoid Route warning expecting functions instead of objecs
+  // Since Connect from Redux converts functional components to objects
+  const loggedInContent = noUserInRedux ? LoadingCurtain : () => {return(<Home />)};
+  const main = isAuth ? loggedInContent : () => {return(<Welcome />)};
 
   return (
     <div className="App">
