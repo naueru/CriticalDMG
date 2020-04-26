@@ -1,4 +1,3 @@
-
 // React
 import React from 'react';
 
@@ -9,14 +8,14 @@ import React from 'react';
 // import getTranslations from '../../CritCore/Translations/Translations.js';
 
 // Styles
-import styles from './NotFound.module.css';
+import styles from './LoadingCurtain.module.css';
 
-const NotFound = () => {
+const LoadingCurtain = () => {
   return (
-    <div className={styles.notFoundContainer}>
-      The page you are looking for is not here
+    <div className={styles.LoadingContainer}>
+      Loading...
     </div>
-  );
+  )
 }
 
-export default NotFound;
+export default LoadingCurtain;
