@@ -24,7 +24,6 @@ const Register = ({ onSubmit, errorLabel }) => {
     icon: '' });
 
   const handleChange = ({ target }) => {
-    console.log('Target', target);
     const { name, value } = target;
     setPayload({
       ...payload,
@@ -41,8 +40,7 @@ const Register = ({ onSubmit, errorLabel }) => {
     userName,
     password,
     repeatPassword,
-    alterEgo,
-    icon } = payload,
+    alterEgo } = payload,
   { language }          = config,
   translations          = getTranslations(language), //ToDo: Replace this language for config directly or from store
   registerTranslations  = translations.register,
