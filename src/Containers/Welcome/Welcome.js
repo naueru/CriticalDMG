@@ -54,7 +54,6 @@ class Welcome extends Component {
         alterEgo,
         password,
         icon };
-        console.log(data);
     return registerUser(data);
   };
 

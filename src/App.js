@@ -17,6 +17,7 @@ import Home from './Containers/Home';
 import Welcome from './Containers/Welcome';
 import AboutUs from './Components/AboutUs';
 import NotFound from './Components/NotFound';
+import LoadingCurtain from './Components/LoadingCurtain';
 
 // Styles
 import './App.css';
@@ -31,7 +32,7 @@ function App({ isAuth, user, fetchLoggedUser }) {
     }
   });
 
-  const loggedInContent = noUserInRedux ? 'Loading...' : Home;
+  const loggedInContent = noUserInRedux ? LoadingCurtain : Home;
   const main = isAuth ? loggedInContent : Welcome;
 
   return (
