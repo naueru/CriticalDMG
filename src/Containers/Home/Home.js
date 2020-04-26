@@ -1,5 +1,5 @@
 // Core
-import React, { Component } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 // Store
 import { bindActionCreators } from 'redux';
@@ -60,73 +60,70 @@ const mockedManuals = [
 // Styles
 // import styles from './Home.module.css';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const Home = ({ user, logOut }) => {
+  const [ state, setState ] = useState({});
+  const mounted = useRef();
 
-  handleState = (state) => {
-    return this.setState(state);
+  const handleState = (state) => {
+    return setState(state);
   };
 
-  showImages = (images) => {
-    return this.setState({
+  const showImages = (images) => {
+    return setState({
       showModal: 'images',
       imagesList: images
     });
   };
 
-  componentDidUpdate = () => {
-    const { shouldLogOut } = this.state;
-    const { logOut } = this.props;
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+    } else {
+      // do componentDidUpate logic
+      const { shouldLogOut } = state;
     if (shouldLogOut) {
       logOut();
     }
-  };
+    }
+  });
 
-  render = () => {
-    const {
-        user
-      } = this.props,
-      {
-        currentPlayers,
-        timeSpent,
-        sessionNumber,
-        gameName,
-        showModal,
-        imagesList
-      } = this.state,
-      { userName } = user;
+  const {
+    currentPlayers,
+    timeSpent,
+    sessionNumber,
+    gameName,
+    showModal,
+    imagesList
+  } = state,
+  { userName } = user;
 
-    return (
-      <div>
-        {showModal && <Modal onClose={() => this.handleState({ showModal: false })}>
+  return (
+    <div>
+      {showModal && <Modal onClose={() => handleState({ showModal: false })}>
 
-          {showModal === 'maps' && <PictureViewer
-            imageList={mockedImages} //ToDo: Replace this mocks with real data
-          />}
+        {showModal === 'maps' && <PictureViewer
+          imageList={mockedImages} //ToDo: Replace this mocks with real data
+        />}
 
-          {showModal === 'images' && <PictureViewer
-            imageList={imagesList} //ToDo: Replace this mocks with real data
-          />}
+        {showModal === 'images' && <PictureViewer
+          imageList={imagesList} //ToDo: Replace this mocks with real data
+        />}
 
-          {showModal === 'about' && <About />}
+        {showModal === 'about' && <About />}
 
-          {showModal === 'availableCommands' && <AvailableCommands />}
-          {showModal === 'manuals' && <ManualsViewer manualsList={mockedManuals} />}
-        </Modal>}
-        <MainMenu handleState={this.handleState} account={userName}/>
-        <MainBoard showImages={this.showImages} />
-        <StatusBar
-          players={currentPlayers}
-          timeSpent={timeSpent}
-          sessionNumber={sessionNumber}
-          gameName={gameName}
-        />
-      </div>
-    );
-  };
+        {showModal === 'availableCommands' && <AvailableCommands />}
+        {showModal === 'manuals' && <ManualsViewer manualsList={mockedManuals} />}
+      </Modal>}
+      <MainMenu handleState={handleState} account={userName}/>
+      <MainBoard showImages={showImages} />
+      <StatusBar
+        players={currentPlayers}
+        timeSpent={timeSpent}
+        sessionNumber={sessionNumber}
+        gameName={gameName}
+      />
+    </div>
+  );
 }
 
 const mapStateToProps = state => ({
