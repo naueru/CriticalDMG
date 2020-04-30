@@ -1,0 +1,23 @@
+// Themes
+@import '../../../../constants/Themes/MainTheme';
+
+.errorContainer {
+  align-items: center;
+  background-color: $Color-ErrorLogBG;
+  border: $Border-ErrorLogBorder;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  justify-content: space-between;
+  padding: 8px;
+
+  // Styles for shadow, check if mantain
+  box-shadow: $Shadow-LogEntry;
+
+  .errorText {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+}

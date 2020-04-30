@@ -16,6 +16,10 @@ const parseRollProps = (content) => {
   return content;
 };
 
+const parseErrorProps = (content) => {
+  return content;
+};
+
 const parseEventProps = (content) => {
   const {
     text,
@@ -39,7 +43,8 @@ const parseEventProps = (content) => {
 const ItemsPropsParser = {
   parseMsgProps,
   parseRollProps,
-  parseEventProps
+  parseEventProps,
+  parseErrorProps
 };
 
 export default ItemsPropsParser;

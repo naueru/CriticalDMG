@@ -11,6 +11,8 @@ import ItemsPropsParser from './ItemsPropsParser';
 import Message from './Components/Message';
 import Roll from './Components/Roll';
 import Event from './Components/Event';
+import Error from './Components/Error';
+
 
 // Styles
 import styles from './Log.module.css';
@@ -51,6 +53,11 @@ class Log extends Component {
         case 'event':
           comp = (
             <Event {...ItemsPropsParser.parseEventProps(content)} showImages={showImages} />
+          );
+          break;
+        case 'error':
+          comp = (
+            <Error {...ItemsPropsParser.parseErrorProps(content)} />
           );
           break;
         default:

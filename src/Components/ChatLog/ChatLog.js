@@ -100,6 +100,12 @@ class ChatLog extends Component {
             icon: 'bard',
             character: 'Drako'
           }
+        },
+        {
+          type: 'error',
+          content:{
+            text: 'The command was not understood',
+          }
         }
       ]
     };
