@@ -16,6 +16,7 @@ $Color-ChatLogSelectedBG: lightskyblue;
 
 $Color-EventBG: rgba(0, 0, 255, 0.1);
 $Color-RollBG: $Color-MainBGColor;
+$Color-ErrorLogBG: rgba(255, 0, 0, 0.1);
 
 // Fonts
 $Font-MainFont: sans-serif;
@@ -26,6 +27,7 @@ $Border-MainBorder: 1px solid $Color-MainBorderColor;
 
 $Border-EventBorder: 1px solid blue;
 $Border-RollBorder: 1px solid gray;
+$Border-ErrorLogBorder: 1px solid red;
 
 
 // Shadows
