@@ -92,7 +92,7 @@ let translations = {
       userName: 'Nombre de usuario',
       password: 'Ingrese contraseña',
       repeatPassword: 'Repita contraseña',
-      alterEgo: 'Nombre visible / alter ego',
+      alterEgo: 'Nombre visible / Alter ego',
       icon: 'Elija un avatar',
       submit: 'Crear'
     },
@@ -210,7 +210,7 @@ let translations = {
       userName: 'User name',
       password: 'Password',
       repeatPassword: 'Repeat password',
-      alterEgo: 'Visible name / alter ego',
+      alterEgo: 'Visible name / Alter ego',
       icon: 'Choose an avatar',
       submit: 'Create'
     },
