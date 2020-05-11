@@ -28,14 +28,21 @@ const Register = ({ onSubmit, errorLabel }) => {
   const handleChange = ({ target }) => {
     const { name, value } = target;
     let algo = {};
-    console.log('Target', name, value); //Borrar antes de subir (name == repeatPassword && value == repeatPassword){setPayload > password} if?
-    if(name === 'repeatPassword'){
-      if(value === payload.password){
-        algo.isPwdMatched = true;
-      }else{
-        algo.isPwdMatched = false;
+    console.log('Target', name, value, target);
+    if(name === 'password'){
+        if(value === payload.repeatPassword && value !== ''){
+          algo.isPwdMatched = true;
+        }else{
+          algo.isPwdMatched = false;
+        }
       }
-    }
+    if(name === 'repeatPassword'){
+        if(value === payload.password && value !== ''){
+          algo.isPwdMatched = true;
+        }else{
+          algo.isPwdMatched = false;
+        }
+      }
     setPayload({
       ...payload,
       ...algo,
@@ -70,7 +77,19 @@ const Register = ({ onSubmit, errorLabel }) => {
   repeatPasswordLabel   = registerTranslations.repeatPassword,
   alterEgoLabel         = registerTranslations.alterEgo,
   iconLabel             = registerTranslations.icon,
-  submitLabel           = registerTranslations.submit;
+  submitLabel           = registerTranslations.submit,
+  pwdTooltipLabel       = registerTranslations.passwordTooltip,
+  repeatPwdTooltipLabel = registerTranslations.repeatPasswordTooltip,
+  emailTooltipLabel     = registerTranslations.emailTooltip,
+  userTooltipLabel      = registerTranslations.userTooltip,
+  alterEgoTooltipLabel  = registerTranslations.alterEgoTooltip
+
+  let pwdError = null;
+  if(isPwdMatched === true){
+    pwdError = styles.registerinput
+  }else{
+    pwdError = styles.registerinputError
+  }
 
   return (
     <div className={styles.registerContainer} onClick={e => e.stopPropagation()}>
@@ -85,8 +104,8 @@ const Register = ({ onSubmit, errorLabel }) => {
           value={email}
           minLength="7"
           maxLength="60"
-          title="E-mail address"
-          placeholder="E-mail"
+          title={emailTooltipLabel}
+          placeholder={emailLabel}
           onChange={handleChange}
           className={styles.registerinput}
         />
@@ -98,8 +117,8 @@ const Register = ({ onSubmit, errorLabel }) => {
           value={userName}
           minLength="6"
           maxLength="20"
-          title="User Name"
-          placeholder="User Name"
+          title={userTooltipLabel}
+          placeholder={userNameLabel}
           onChange={handleChange}
           className={styles.registerinput}
         />
@@ -111,8 +130,8 @@ const Register = ({ onSubmit, errorLabel }) => {
           value={password}
           minLength="4"
           maxLength="30"
-          title="7-30 letters & numbers" // Agregar traducciones / sacar &
-          placeholder="Password"
+          title={pwdTooltipLabel}
+          placeholder={passwordLabel}
           className={styles.registerinput}
           onChange={handleChange}
         />
@@ -124,9 +143,9 @@ const Register = ({ onSubmit, errorLabel }) => {
           value={repeatPassword}
           minLength="4"
           maxLength="30"
-          title="7-30 letters & numbers" // Agregar traducciones / sacar &
-          placeholder="Repeat Password"
-          className={isPwdMatched ? styles.registerinput : styles.registerinputError}
+          title={repeatPwdTooltipLabel}
+          placeholder={repeatPasswordLabel}
+          className={pwdError}
           onChange={handleChange}
         />
         <h3 className={styles.registerHeadline}>{alterEgoLabel}</h3>
@@ -135,6 +154,7 @@ const Register = ({ onSubmit, errorLabel }) => {
           className={styles.registerinput}
           required
           value={alterEgo}
+          title={alterEgoTooltipLabel}
           placeholder={alterEgoLabel}
           onChange={handleChange}
         />
