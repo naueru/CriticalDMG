@@ -108,6 +108,13 @@ let translations = {
     events: {
       softRain: 'Lentamente, unas cuantas gotas comienzan a caer desde el cielo.',
       heavyRain: 'Repentinamente, un puñado de truenos y un montón de agua comienza a caer del cielo.'
+    },
+    errors: {
+      commands: {
+        invalidPrefix: 'Lo siento,',
+        invalidSufix: 'no es un comando válido.',
+        invalidRoll: 'Tirada inválida, por favor use el formato: XdY+mod, ej.: "2d6+4". El modificador es opcional.'
+      }
     }
   },
   en: {
@@ -219,6 +226,13 @@ let translations = {
     events: {
       softRain: 'Softly a few drops start falling from the sky.',
       heavyRain: 'Suddenly a bunch of thunders and a lot of water start falling from the sky.'
+    },
+    errors: {
+      commands: {
+        invalidPrefix: 'Sorry,',
+        invalidSufix: 'is not a valid command.',
+        invalidRoll: 'Invalid roll, please use the following format: XdY+mod, i.e.: "2d6+4". The modifier is optional'
+      }
     }
   }
 }
