@@ -82,7 +82,7 @@ const parse = (input = '', user, language) => {
           total,
           character
         };
-      if (dices && faces && modifier) {
+      if (dices && faces) {
         for (let i = 0; i < roll.dices; i++) {
           let rnd = Math.ceil(Math.random()*roll.faces);
           roll.results.push(rnd);
