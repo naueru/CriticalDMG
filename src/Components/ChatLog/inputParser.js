@@ -1,15 +1,23 @@
 // Predefined events
 import getPrefabEvents from '../../constants/events/genericEvents';
 
+// Translations
+import getTranslations from '../../CritCore/Translations/Translations.js';
+
 const parse = (input = '', user, language) => {
-  const { icon, alterEgo } = user,
+  const translations  = getTranslations(language) || {},
+    errorTranslations = translations.errors || {},
+    commandErrorTrans = errorTranslations.commands || {},
+    invalidCommandPrefix = commandErrorTrans.invalidPrefix || '',
+    invalidCommandSufix = commandErrorTrans.invalidSufix || '',
+    invalidRoll = commandErrorTrans.invalidRoll || '',
+    { icon, alterEgo } = user,
     character = alterEgo;
   let isSay = input[0] !== '/',
     verifiedInput = isSay ? '/say ' + input : input,
     terms = verifiedInput.split(' '),
     command = terms[0].toLowerCase(),
     result;
-
   switch(command) {
     case '/say':
     case '/s':
@@ -52,7 +60,7 @@ const parse = (input = '', user, language) => {
       break;
     case '/roll':
     case '/r':
-      let dicesTerm = terms[1].toLowerCase(),
+      let dicesTerm   = (terms[1] || '').toLowerCase(),
         negSubTerms   = dicesTerm.split('-'),
         negativeTerm  = -Number(negSubTerms[1]),
         baseTerm      = negSubTerms[0],
@@ -72,15 +80,24 @@ const parse = (input = '', user, language) => {
           total,
           character
         };
-      for (let i = 0; i < roll.dices; i++) {
-        let rnd = Math.ceil(Math.random()*roll.faces);
-        roll.results.push(rnd);
-        roll.total += rnd;
+      if (dices && faces && modifier) {
+        for (let i = 0; i < roll.dices; i++) {
+          let rnd = Math.ceil(Math.random()*roll.faces);
+          roll.results.push(rnd);
+          roll.total += rnd;
+        }
+        result = {
+          type: 'roll',
+          content: roll
+        };
+      } else {
+        result = {
+          type: 'error',
+          content: {
+            text: invalidRoll
+          }
+        }
       }
-      result = {
-        type: 'roll',
-        content: roll
-      };
       break;
     case '/event':
     case '/e':
@@ -97,7 +114,12 @@ const parse = (input = '', user, language) => {
       result = event;
       break;
     default:
-      console.log(`Sorry, ${command} is not a valid command`);
+      result = {
+        type: 'error',
+        content: {
+          text: `${invalidCommandPrefix} ${command} ${invalidCommandSufix}`
+        }
+      }
       break;
   }
 
