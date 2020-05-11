@@ -5,19 +5,21 @@ import getPrefabEvents from '../../constants/events/genericEvents';
 import getTranslations from '../../CritCore/Translations/Translations.js';
 
 const parse = (input = '', user, language) => {
-  const translations  = getTranslations(language) || {},
-    errorTranslations = translations.errors || {},
-    commandErrorTrans = errorTranslations.commands || {},
-    invalidCommandPrefix = commandErrorTrans.invalidPrefix || '',
-    invalidCommandSufix = commandErrorTrans.invalidSufix || '',
-    invalidRoll = commandErrorTrans.invalidRoll || '',
-    { icon, alterEgo } = user,
-    character = alterEgo;
-  let isSay = input[0] !== '/',
-    verifiedInput = isSay ? '/say ' + input : input,
-    terms = verifiedInput.split(' '),
-    command = terms[0].toLowerCase(),
+  const translations      = getTranslations(language) || {},
+    errorTranslations     = translations.errors || {},
+    commandErrorTrans     = errorTranslations.commands || {},
+    invalidCommandPrefix  = commandErrorTrans.invalidPrefix || '',
+    invalidCommandSufix   = commandErrorTrans.invalidSufix || '',
+    invalidRoll           = commandErrorTrans.invalidRoll || '',
+    { icon, alterEgo }    = user,
+    character             = alterEgo;
+
+  let isSay               = input[0] !== '/',
+    verifiedInput         = isSay ? '/say ' + input : input,
+    terms                 = verifiedInput.split(' '),
+    command               = terms[0].toLowerCase(),
     result;
+
   switch(command) {
     case '/say':
     case '/s':
