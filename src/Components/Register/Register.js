@@ -26,37 +26,37 @@ const Register = ({ onSubmit, errorLabel }) => {
   });
 
   const handleChange = ({ target }) => {
-    const { name, value } = target;
-    let algo = {};
-    console.log('Target', name, value, target);
-    if(name === 'password'){
-        if(value === payload.repeatPassword && value !== ''){
-          algo.isPwdMatched = true;
-        }else{
-          algo.isPwdMatched = false;
-        }
-      }
-    if(name === 'repeatPassword'){
-        if(value === payload.password && value !== ''){
-          algo.isPwdMatched = true;
-        }else{
-          algo.isPwdMatched = false;
-        }
-      }
+
+  const { name, value } = target;
+
+  let checkPwdValidity = {};
+    if ( name === 'password' ) {
+        if ( value === payload.repeatPassword && value !== '' ) {
+          checkPwdValidity.isPwdMatched = true;
+        } else {
+          checkPwdValidity.isPwdMatched = false;
+        };
+      };
+    if ( name === 'repeatPassword' ) {
+        if ( value === payload.password && value !== '' ) {
+          checkPwdValidity.isPwdMatched = true;
+        } else {
+          checkPwdValidity.isPwdMatched = false;
+        };
+      };
     setPayload({
       ...payload,
-      ...algo,
+      ...checkPwdValidity,
       [name]: value
     });
-    console.log('state', payload)
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    if(payload.isPwdMatched){
-      onSubmit(payload);
-    }else{
-      alert("Revisar contraseña")
+    if ( payload.isPwdMatched ) {
+      onSubmit( payload );
+    } else {
+      alert( "Check password" )
     };
   };
 
@@ -67,29 +67,35 @@ const Register = ({ onSubmit, errorLabel }) => {
     alterEgo,
     isPwdMatched
   } = payload,
-  { language }          = config,
-  translations          = getTranslations(language), //ToDo: Replace this language for config directly or from store
-  registerTranslations  = translations.register,
-  titleLabel            = registerTranslations.title,
-  emailLabel            = registerTranslations.email,
-  userNameLabel         = registerTranslations.userName,
-  passwordLabel         = registerTranslations.password,
-  repeatPasswordLabel   = registerTranslations.repeatPassword,
-  alterEgoLabel         = registerTranslations.alterEgo,
-  iconLabel             = registerTranslations.icon,
-  submitLabel           = registerTranslations.submit,
-  pwdTooltipLabel       = registerTranslations.passwordTooltip,
-  repeatPwdTooltipLabel = registerTranslations.repeatPasswordTooltip,
-  emailTooltipLabel     = registerTranslations.emailTooltip,
-  userTooltipLabel      = registerTranslations.userTooltip,
-  alterEgoTooltipLabel  = registerTranslations.alterEgoTooltip
+  { language, passwordSettings }          = config,
+  translations                            = getTranslations(language), //ToDo: Replace this language for config directly or from store
+  registerTranslations                    = translations.register,
+  titleLabel                              = registerTranslations.title,
+  emailLabel                              = registerTranslations.email,
+  userNameLabel                           = registerTranslations.userName,
+  passwordLabel                           = registerTranslations.password,
+  repeatPasswordLabel                     = registerTranslations.repeatPassword,
+  alterEgoLabel                           = registerTranslations.alterEgo,
+  iconLabel                               = registerTranslations.icon,
+  submitLabel                             = registerTranslations.submit,
+  pwdTooltipLabel                         = registerTranslations.passwordTooltip,
+  repeatPwdTooltipLabel                   = registerTranslations.repeatPasswordTooltip,
+  emailTooltipLabel                       = registerTranslations.emailTooltip,
+  userTooltipLabel                        = registerTranslations.userTooltip,
+  alterEgoTooltipLabel                    = registerTranslations.alterEgoTooltip,
+  emailMinSetting                         = passwordSettings.email.minLengthEmail,
+  emailMaxSetting                         = passwordSettings.email.maxLengthEmail,
+  pwdMinSetting                           = passwordSettings.pwd.minLengthPwd,
+  pwdMaxSetting                           = passwordSettings.pwd.maxLengthPwd,
+  userNameMinSetting                      = passwordSettings.userName.minLengthUserName,
+  userNameMaxSetting                      = passwordSettings.userName.maxLengthUserName
 
   let pwdError = null;
-  if(isPwdMatched === true){
+  if ( isPwdMatched === true ) {
     pwdError = styles.registerinput
-  }else{
+  } else {
     pwdError = styles.registerinputError
-  }
+  };
 
   return (
     <div className={styles.registerContainer} onClick={e => e.stopPropagation()}>
@@ -102,8 +108,8 @@ const Register = ({ onSubmit, errorLabel }) => {
           name="email"
           required
           value={email}
-          minLength="7"
-          maxLength="60"
+          minLength={emailMinSetting}
+          maxLength={emailMaxSetting}
           title={emailTooltipLabel}
           placeholder={emailLabel}
           onChange={handleChange}
@@ -115,8 +121,8 @@ const Register = ({ onSubmit, errorLabel }) => {
           name="userName"
           required
           value={userName}
-          minLength="6"
-          maxLength="20"
+          minLength={userNameMinSetting}
+          maxLength={userNameMaxSetting}
           title={userTooltipLabel}
           placeholder={userNameLabel}
           onChange={handleChange}
@@ -128,8 +134,8 @@ const Register = ({ onSubmit, errorLabel }) => {
           name="password"
           required
           value={password}
-          minLength="4"
-          maxLength="30"
+          minLength={pwdMinSetting}
+          maxLength={pwdMaxSetting}
           title={pwdTooltipLabel}
           placeholder={passwordLabel}
           className={styles.registerinput}
@@ -141,8 +147,8 @@ const Register = ({ onSubmit, errorLabel }) => {
           name="repeatPassword"
           required
           value={repeatPassword}
-          minLength="4"
-          maxLength="30"
+          minLength={pwdMinSetting}
+          maxLength={pwdMaxSetting}
           title={repeatPwdTooltipLabel}
           placeholder={repeatPasswordLabel}
           className={pwdError}
