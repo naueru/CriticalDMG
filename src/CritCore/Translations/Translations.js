@@ -94,7 +94,7 @@ let translations = {
       repeatPassword: 'Repita contraseña',
       alterEgo: 'Nombre visible / Alter ego',
       icon: 'Elija un avatar',
-      submit: 'Crear',
+      submit: 'Enviar',
       passwordTitle : '7-30 letras & numeros',
       repeatPasswordTitle : '7-30 letras & numeros'
     },
