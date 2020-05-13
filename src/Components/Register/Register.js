@@ -21,37 +21,81 @@ const Register = ({ onSubmit, errorLabel }) => {
     password: '',
     repeatPassword: '',
     alterEgo: '',
-    icon: '' });
+    icon: '',
+    isPwdMatched: false,
+    ifRepPwdInputChange: false
+  });
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
+    let pwdMatching       = {};
+
+    switch ( name ) {
+      case 'password':
+        if ( value === payload.repeatPassword && value !== '' ) {
+          pwdMatching.isPwdMatched = true;
+        } else {
+          pwdMatching.isPwdMatched = false;
+        };
+        break;
+      case 'repeatPassword':
+        if ( value === payload.password && value !== '' ) {
+          pwdMatching.isPwdMatched = true;
+        } else {
+          pwdMatching.isPwdMatched = false;
+        };
+        pwdMatching.ifRepPwdInputChange = true;
+        break;
+      default:
+        break;
+    };
+
     setPayload({
       ...payload,
+      ...pwdMatching,
       [name]: value
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(payload);
+    if ( payload.isPwdMatched ) {
+      onSubmit( payload );
+    } else {
+      alert( "Check password" );
+    };
   };
 
   const { email,
     userName,
     password,
     repeatPassword,
-    alterEgo } = payload,
-  { language }          = config,
-  translations          = getTranslations(language), //ToDo: Replace this language for config directly or from store
-  registerTranslations  = translations.register,
-  titleLabel            = registerTranslations.title,
-  emailLabel            = registerTranslations.email,
-  userNameLabel         = registerTranslations.userName,
-  passwordLabel         = registerTranslations.password,
-  repeatPasswordLabel   = registerTranslations.repeatPassword,
-  alterEgoLabel         = registerTranslations.alterEgo,
-  iconLabel             = registerTranslations.icon,
-  submitLabel           = registerTranslations.submit;
+    alterEgo,
+    isPwdMatched,
+    ifRepPwdInputChange
+  }                                  = payload,
+  { language, registerFormSettings } = config,
+  translations                       = getTranslations(language), //ToDo: Replace this language for config directly or from store
+  registerTranslations               = translations.register,
+  titleLabel                         = registerTranslations.title,
+  emailLabel                         = registerTranslations.email,
+  userNameLabel                      = registerTranslations.userName,
+  passwordLabel                      = registerTranslations.password,
+  repeatPasswordLabel                = registerTranslations.repeatPassword,
+  alterEgoLabel                      = registerTranslations.alterEgo,
+  iconLabel                          = registerTranslations.icon,
+  submitLabel                        = registerTranslations.submit,
+  pwdTooltipLabel                    = registerTranslations.passwordTooltip,
+  repeatPwdTooltipLabel              = registerTranslations.repeatPasswordTooltip,
+  emailTooltipLabel                  = registerTranslations.emailTooltip,
+  userTooltipLabel                   = registerTranslations.userTooltip,
+  alterEgoTooltipLabel               = registerTranslations.alterEgoTooltip,
+  emailMinSetting                    = registerFormSettings.email.minLengthEmail,
+  emailMaxSetting                    = registerFormSettings.email.maxLengthEmail,
+  pwdMinSetting                      = registerFormSettings.password.minLengthPwd,
+  pwdMaxSetting                      = registerFormSettings.password.maxLengthPwd,
+  userNameMinSetting                 = registerFormSettings.userName.minLengthUserName,
+  userNameMaxSetting                 = registerFormSettings.userName.maxLengthUserName
 
   return (
     <div className={styles.registerContainer} onClick={e => e.stopPropagation()}>
@@ -59,21 +103,73 @@ const Register = ({ onSubmit, errorLabel }) => {
       <form onSubmit={handleSubmit} className={styles.registerForm}>
         { errorLabel && <h3 className={styles.registerError}>{errorLabel}</h3>}
         <h3 className={styles.registerHeadline}>{emailLabel}</h3>
-        <input name="email" className={styles.registerinput} value={email} onChange={handleChange} />
+        <input
+          type="email"
+          name="email"
+          required
+          value={email}
+          minLength={emailMinSetting}
+          maxLength={emailMaxSetting}
+          title={emailTooltipLabel}
+          placeholder={emailLabel}
+          onChange={handleChange}
+          className={styles.registerinput}
+        />
         <h3 className={styles.registerHeadline}>{userNameLabel}</h3>
-        <input name="userName" className={styles.registerinput} value={userName} onChange={handleChange} />
+        <input
+          type="text"
+          name="userName"
+          required
+          value={userName}
+          minLength={userNameMinSetting}
+          maxLength={userNameMaxSetting}
+          title={userTooltipLabel}
+          placeholder={userNameLabel}
+          onChange={handleChange}
+          className={styles.registerinput}
+        />
         <h3 className={styles.registerHeadline}>{passwordLabel}</h3>
-        <input name="password" className={styles.registerinput} value={password} onChange={handleChange} type="password" />
+        <input
+          type="password"
+          name="password"
+          required
+          value={password}
+          minLength={pwdMinSetting}
+          maxLength={pwdMaxSetting}
+          title={pwdTooltipLabel}
+          placeholder={passwordLabel}
+          className={styles.registerinput}
+          onChange={handleChange}
+        />
         <h3 className={styles.registerHeadline}>{repeatPasswordLabel}</h3>
-        <input name="repeatPassword" className={styles.registerinput} value={repeatPassword} onChange={handleChange} type="password" />
+        <input
+          type="password"
+          name="repeatPassword"
+          required
+          value={repeatPassword}
+          minLength={pwdMinSetting}
+          maxLength={pwdMaxSetting}
+          title={repeatPwdTooltipLabel}
+          placeholder={repeatPasswordLabel}
+          className={ifRepPwdInputChange && !isPwdMatched ? styles.registerinputError : styles.registerinput}
+          onChange={handleChange}
+        />
         <h3 className={styles.registerHeadline}>{alterEgoLabel}</h3>
-        <input name="alterEgo" className={styles.registerinput} value={alterEgo} onChange={handleChange} />
+        <input
+          name="alterEgo"
+          className={styles.registerinput}
+          required
+          value={alterEgo}
+          title={alterEgoTooltipLabel}
+          placeholder={alterEgoLabel}
+          onChange={handleChange}
+        />
         <h3 className={styles.registerHeadline}>{iconLabel}</h3>
         <select name="icon" className={styles.registerinput} onChange={handleChange}>
           <option value="warrior">Warrior</option>
           <option value="mage">Mage</option>
         </select>
-        <button className={styles.registerBtn} >{submitLabel}</button>
+        <button className={styles.registerBtn}>{submitLabel}</button>
       </form>
     </div>
   );
