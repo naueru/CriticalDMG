@@ -89,12 +89,19 @@ let translations = {
     register: {
       title: 'Crear cuenta',
       email: 'E-mail',
+      emailTooltip: 'Direccion de E-mail',
       userName: 'Nombre de usuario',
+      userTooltip: 'Nombre de usuario',
       password: 'Ingrese contraseña',
-      repeatPassword: 'Repita contraseña',
-      alterEgo: 'Nombre visible / alter ego',
+      passwordTooltip : '7-30 letras & números',
+      repeatPassword: 'Repita la contraseña',
+      repeatPasswordTooltip : '7-30 letras & números',
+      alterEgo: 'Nombre visible / Alter ego',
+      alterEgoTooltip: 'Nombre visible / Alter ego',
       icon: 'Elija un avatar',
-      submit: 'Crear'
+      submit: 'Crear',
+      passwordTitle : '7-30 letras & números',
+      repeatPasswordTitle : '7-30 letras & números'
     },
     availableCommands: {
       title: 'Comandos disponibles',
@@ -207,12 +214,19 @@ let translations = {
     register: {
       title: 'Create account',
       email: 'E-mail',
+      emailTooltip: 'E-mail address',
       userName: 'User name',
+      userTooltip: 'User Name',
       password: 'Password',
+      passwordTooltip : '7-30 letters & numbers',
       repeatPassword: 'Repeat password',
-      alterEgo: 'Visible name / alter ego',
+      repeatPasswordTooltip : '7-30 letters & numbers',
+      alterEgo: 'Visible name / Alter ego',
+      alterEgoTooltip: 'Alter Ego / Visual name',
       icon: 'Choose an avatar',
-      submit: 'Create'
+      submit: 'Create',
+      passwordTitle : '7-30 letters & numbers',
+      repeatPasswordTitle : '7-30 letters & numbers'
     },
     availableCommands: {
       title: 'Available commands',

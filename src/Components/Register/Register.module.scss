@@ -39,6 +39,11 @@
       margin: 1rem 0;
     }
 
+    .registerinputError {
+      border: 1px solid red;
+      margin: 1rem 0;
+    }
+
     .registerBtn {
       background: none;
       border: solid 2px black;
@@ -52,8 +57,8 @@
       width: fit-content;
 
       &:hover {
-        color: white;
         background-color: black;
+        color: white;
       }
 
       &:focus {
