@@ -1,3 +1,13 @@
+// Config
+import config from '../Config/config';
+
+const {
+  registerFormSettings
+}                       = config,
+passwordSettings        = registerFormSettings.password || {},
+pwdMinSetting           = passwordSettings.minLength,
+pwdMaxSetting           = passwordSettings.maxLength;
+
 let translations = {
   es: {
     mainMenu: {
@@ -89,19 +99,18 @@ let translations = {
     register: {
       title: 'Crear cuenta',
       email: 'E-mail',
-      emailTooltip: 'Direccion de E-mail',
+      emailTooltip: 'Dirección de E-mail',
       userName: 'Nombre de usuario',
       userTooltip: 'Nombre de usuario',
       password: 'Ingrese contraseña',
-      passwordTooltip : '7-30 letras & números',
+      passwordTooltip : `${pwdMinSetting}-${pwdMaxSetting} letras & números`,
       repeatPassword: 'Repita la contraseña',
-      repeatPasswordTooltip : '7-30 letras & números',
+      repeatPasswordTooltip : `${pwdMinSetting}-${pwdMaxSetting} letras & números`,
       alterEgo: 'Nombre visible / Alter ego',
       alterEgoTooltip: 'Nombre visible / Alter ego',
       icon: 'Elija un avatar',
       submit: 'Crear',
-      passwordTitle : '7-30 letras & números',
-      repeatPasswordTitle : '7-30 letras & números'
+      selectPlaceholder: 'Elija un ícono'
     },
     availableCommands: {
       title: 'Comandos disponibles',
@@ -218,15 +227,14 @@ let translations = {
       userName: 'User name',
       userTooltip: 'User Name',
       password: 'Password',
-      passwordTooltip : '7-30 letters & numbers',
+      passwordTooltip : `${pwdMinSetting}-${pwdMaxSetting} letters & numbers`,
       repeatPassword: 'Repeat password',
-      repeatPasswordTooltip : '7-30 letters & numbers',
+      repeatPasswordTooltip : `${pwdMinSetting}-${pwdMaxSetting} letters & numbers`,
       alterEgo: 'Visible name / Alter ego',
       alterEgoTooltip: 'Alter Ego / Visual name',
       icon: 'Choose an avatar',
       submit: 'Create',
-      passwordTitle : '7-30 letters & numbers',
-      repeatPasswordTitle : '7-30 letters & numbers'
+      selectPlaceholder: 'Select an icon'
     },
     availableCommands: {
       title: 'Available commands',
