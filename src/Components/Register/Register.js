@@ -23,7 +23,7 @@ const Register = ({ onSubmit, errorLabel }) => {
     alterEgo: '',
     icon: '',
     isPwdMatched: false,
-    ifRepPwdInputChange: false
+    repeatPwdHasChanged: false
   });
 
   const handleChange = ({ target }) => {
@@ -44,7 +44,9 @@ const Register = ({ onSubmit, errorLabel }) => {
         } else {
           pwdMatching.isPwdMatched = false;
         };
-        pwdMatching.ifRepPwdInputChange = true;
+        if (payload.repeatPwdHasChanged === false) {
+          pwdMatching.repeatPwdHasChanged = true;
+        };
         break;
       default:
         break;
@@ -62,40 +64,48 @@ const Register = ({ onSubmit, errorLabel }) => {
     if ( payload.isPwdMatched ) {
       onSubmit( payload );
     } else {
-      alert( "Check password" );
+      alert( "Check password" ); // Replace this with component or fallback in form
     };
   };
 
-  const { email,
+  const {
+    email,
     userName,
     password,
     repeatPassword,
     alterEgo,
     isPwdMatched,
-    ifRepPwdInputChange
-  }                                  = payload,
-  { language, registerFormSettings } = config,
-  translations                       = getTranslations(language), //ToDo: Replace this language for config directly or from store
-  registerTranslations               = translations.register,
-  titleLabel                         = registerTranslations.title,
-  emailLabel                         = registerTranslations.email,
-  userNameLabel                      = registerTranslations.userName,
-  passwordLabel                      = registerTranslations.password,
-  repeatPasswordLabel                = registerTranslations.repeatPassword,
-  alterEgoLabel                      = registerTranslations.alterEgo,
-  iconLabel                          = registerTranslations.icon,
-  submitLabel                        = registerTranslations.submit,
-  pwdTooltipLabel                    = registerTranslations.passwordTooltip,
-  repeatPwdTooltipLabel              = registerTranslations.repeatPasswordTooltip,
-  emailTooltipLabel                  = registerTranslations.emailTooltip,
-  userTooltipLabel                   = registerTranslations.userTooltip,
-  alterEgoTooltipLabel               = registerTranslations.alterEgoTooltip,
-  emailMinSetting                    = registerFormSettings.email.minLengthEmail,
-  emailMaxSetting                    = registerFormSettings.email.maxLengthEmail,
-  pwdMinSetting                      = registerFormSettings.password.minLengthPwd,
-  pwdMaxSetting                      = registerFormSettings.password.maxLengthPwd,
-  userNameMinSetting                 = registerFormSettings.userName.minLengthUserName,
-  userNameMaxSetting                 = registerFormSettings.userName.maxLengthUserName
+    repeatPwdHasChanged
+  }                       = payload,
+  {
+    language,
+    registerFormSettings
+  }                       = config,
+  translations            = getTranslations(language), //ToDo: Replace this language for config directly or from store
+  registerTranslations    = translations.register,
+  titleLabel              = registerTranslations.title,
+  emailLabel              = registerTranslations.email,
+  userNameLabel           = registerTranslations.userName,
+  passwordLabel           = registerTranslations.password,
+  repeatPasswordLabel     = registerTranslations.repeatPassword,
+  alterEgoLabel           = registerTranslations.alterEgo,
+  iconLabel               = registerTranslations.icon,
+  submitLabel             = registerTranslations.submit,
+  pwdTooltipLabel         = registerTranslations.passwordTooltip,
+  repeatPwdTooltipLabel   = registerTranslations.repeatPasswordTooltip,
+  emailTooltipLabel       = registerTranslations.emailTooltip,
+  userTooltipLabel        = registerTranslations.userTooltip,
+  alterEgoTooltipLabel    = registerTranslations.alterEgoTooltip,
+  iconSelectPlaceholder   = registerTranslations.selectPlaceholder,
+  emailSettings           = registerFormSettings.email || {},
+  emailMinSetting         = emailSettings.minLength,
+  emailMaxSetting         = emailSettings.maxLength,
+  passwordSettings        = registerFormSettings.password || {},
+  pwdMinSetting           = passwordSettings.minLength,
+  pwdMaxSetting           = passwordSettings.maxLength,
+  userNameSettings        = registerFormSettings.userName || {},
+  userNameMinSetting      = userNameSettings.minLength,
+  userNameMaxSetting      = userNameSettings.maxLength;
 
   return (
     <div className={styles.registerContainer} onClick={e => e.stopPropagation()}>
@@ -151,7 +161,7 @@ const Register = ({ onSubmit, errorLabel }) => {
           maxLength={pwdMaxSetting}
           title={repeatPwdTooltipLabel}
           placeholder={repeatPasswordLabel}
-          className={ifRepPwdInputChange && !isPwdMatched ? styles.registerinputError : styles.registerinput}
+          className={repeatPwdHasChanged && !isPwdMatched ? styles.registerinputError : styles.registerinput}
           onChange={handleChange}
         />
         <h3 className={styles.registerHeadline}>{alterEgoLabel}</h3>
@@ -166,6 +176,7 @@ const Register = ({ onSubmit, errorLabel }) => {
         />
         <h3 className={styles.registerHeadline}>{iconLabel}</h3>
         <select name="icon" className={styles.registerinput} onChange={handleChange}>
+          <option value="" disabled selected>{iconSelectPlaceholder}</option>
           <option value="warrior">Warrior</option>
           <option value="mage">Mage</option>
         </select>

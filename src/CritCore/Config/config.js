@@ -8,16 +8,16 @@ const config = {
   SERVER_PORT: process.env.REACT_APP_SERVER_PORT || "3030",
   registerFormSettings: {
     email: {
-      minLengthEmail: '7',
-      maxLengthEmail: '60',
+      minLength: '7',
+      maxLength: '60',
     },
     password: {
-      minLengthPwd: '4',
-      maxLengthPwd: '30',
+      minLength: '4',
+      maxLength: '30',
     },
     userName: {
-      minLengthUserName: '6',
-      maxLengthUserName: '20',
+      minLength: '6',
+      maxLength: '20',
     },
   },
   pictureViewer: {
