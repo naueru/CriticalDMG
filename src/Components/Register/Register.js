@@ -8,11 +8,13 @@ import PropTypes from 'prop-types';
 import config from '../../CritCore/Config/config';
 
 // Translations
-import getTranslations from '../../CritCore/Translations/Translations.js';
+import getTranslations from '../../CritCore/Translations/Translations';
+
+// Constants
+import { icons } from '../../constants/globalConstants';
 
 // Styles
 import styles from './Register.module.scss';
-
 
 const Register = ({ onSubmit, errorLabel }) => {
   const [ payload, setPayload ] = useState({
@@ -66,6 +68,14 @@ const Register = ({ onSubmit, errorLabel }) => {
     } else {
       alert( "Check password" ); // Replace this with component or fallback in form
     };
+  };
+
+  const renderAvatarOptions = (iconsList = []) => {
+    const generateOption = (item) => (<option value={item.name}>{item.label}</option>);
+
+    const filterList = (item) => item.role === 'avatar';
+
+    return iconsList.filter(filterList).map(generateOption);
   };
 
   const {
@@ -177,8 +187,7 @@ const Register = ({ onSubmit, errorLabel }) => {
         <h3 className={styles.registerHeadline}>{iconLabel}</h3>
         <select name="icon" className={styles.registerinput} onChange={handleChange}>
           <option value="" disabled selected>{iconSelectPlaceholder}</option>
-          <option value="warrior">Warrior</option>
-          <option value="mage">Mage</option>
+          {renderAvatarOptions(icons)}
         </select>
         <button className={styles.registerBtn}>{submitLabel}</button>
       </form>
