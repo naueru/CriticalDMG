@@ -3,6 +3,7 @@
 
 .modalContainer {
   align-items: center;
+  backface-visibility: hidden;
   background-color: $Color-ModalCurtain;
   display: flex;
   height: 100vh;
