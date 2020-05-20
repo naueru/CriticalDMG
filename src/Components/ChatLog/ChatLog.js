@@ -133,7 +133,7 @@ class ChatLog extends Component {
       parsedInput = inputParser.parse(input, user, language);
       log.push(parsedInput);
       inputHistory.push(input);
-      let inputHistoryIndex = inputHistory.length-1;
+      let inputHistoryIndex = inputHistory.length;
     this.setState({
       log,
       inputHistory,
