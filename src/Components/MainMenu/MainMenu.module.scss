@@ -5,6 +5,7 @@
 @import '../../constants//Sizes/Sizes';
 
 .mainList {
+  backface-visibility: hidden;
   background-color: $Color-mainMenu;
   border-bottom: $Border-MainBorder;
   border-right: $Border-MainBorder;
@@ -47,6 +48,7 @@
 
 .hamburgerBtn {
   align-items: center;
+  backface-visibility: hidden;
   background: black;
   border: none;
   display: flex;

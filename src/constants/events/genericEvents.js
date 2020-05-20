@@ -1,8 +1,6 @@
 // Translations
 import getTranslations from '../../CritCore/Translations/Translations.js';
 
-import snd from '../../assets/sounds/mocks/door.ogg';
-
 const getPrefabEvents = (lang) => {
   const translatedEvents = getTranslations(lang).events;
 
@@ -31,7 +29,7 @@ const getPrefabEvents = (lang) => {
           url: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg',
           name: 'beefy'
         },
-        sound: snd,
+        sound: 'https://uc2186f92c8de061b294dc850aab.dl.dropboxusercontent.com/cd/0/get/A4C8mL5u0Fp6g-qTiL3umeY8yMnxOYYZghamd4-dXWCaAJvogrEG9IWqi-zoaabJDxbaZW6iAqbdUNV7y9a6zEhEzSJwcnWWgHBjvgwbmgHFs7i4ATTLvyblkys1ozHJepI/file?_download_id=66976913568844916442238941959775203345900686633725072789269321387&_notify_domain=www.dropbox.com&dl=1',
         autoPlay: true
       }
     }
