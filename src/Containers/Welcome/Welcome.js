@@ -77,6 +77,7 @@ const Welcome = ({ checkCredentials, registerUser, session = {} }) => {
         />}
         {showRegister && <Register
           onSubmit={handleRegisterUser}
+          errorLabel={errorLabel}
         />}
       </Modal>}
       <nav className={styles.loginRegisterContainer}>
