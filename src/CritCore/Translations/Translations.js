@@ -88,6 +88,7 @@ let translations = {
       login: 'Ingresar',
       register: 'Registrarse',
       description: 'El kit de herramientas OpenSource para juegos RPG de mesa. ¡Bienvenido, Por favor ingresa para continuar!',
+      400: 'El nombre de usuario o email elegidos ya han sido utilizados',
       401: 'Nombre de usuario o contraseña incorrectos',
       500: 'Ups!, error interno, intente nuevamente más tarde'
     },
@@ -212,6 +213,7 @@ let translations = {
       login: 'Login',
       register: 'Register',
       description: 'The OpenSource table rpg toolkit. Welcome, Login to continue!',
+      400: 'The chosen username or email are already in use',
       401: 'Invalid username or password',
       500: 'Oops!, internal error, try again later.'
     },
