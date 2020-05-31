@@ -81,6 +81,5 @@ export const registerUser = credentials => (dispatch) => {
     .catch(err => {
       const error = _get(err, 'response.data', err && err.response);
       dispatch(checkCredentialsFailed(error));
-      // throw error;
     });
 };
