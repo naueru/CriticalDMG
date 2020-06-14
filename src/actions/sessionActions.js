@@ -74,7 +74,12 @@ export const fetchLoggedUser = () => async dispatch => {
 };
 
 export const registerUser = credentials => (dispatch) => {
-  return register(credentials).then((res) => {
-    // return dispatch(checkCredentials(res));
-  })
+  return register(credentials)
+    .then((res) => {
+      // return dispatch(checkCredentials(res));
+    })
+    .catch(err => {
+      const error = _get(err, 'response.data', err && err.response);
+      dispatch(checkCredentialsFailed(error));
+    });
 };
