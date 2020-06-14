@@ -90,7 +90,9 @@ let translations = {
       description: 'El kit de herramientas OpenSource para juegos RPG de mesa. ¡Bienvenido, Por favor ingresa para continuar!',
       400: 'El nombre de usuario o email elegidos ya han sido utilizados',
       401: 'Nombre de usuario o contraseña incorrectos',
-      500: 'Ups!, error interno, intente nuevamente más tarde'
+      500: 'Ups!, error interno, intente nuevamente más tarde',
+      600: 'El email elegido ya ha sido utilizado.',
+      601: 'El nombre de usuario elegido ya ha sido utilizado.'
     },
     login: {
       userName: 'Nombre de usuario',
@@ -215,7 +217,9 @@ let translations = {
       description: 'The OpenSource table rpg toolkit. Welcome, Login to continue!',
       400: 'The chosen username or email are already in use',
       401: 'Invalid username or password',
-      500: 'Oops!, internal error, try again later.'
+      500: 'Oops!, internal error, try again later.',
+      600: 'The chosen email is already in use.',
+      601: 'The chosen username is already in use.'
     },
     login: {
       userName: 'User Name',
