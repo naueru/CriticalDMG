@@ -60,14 +60,17 @@ const Welcome = ({ checkCredentials, registerUser, session = {} }) => {
       showRegister
     }                   = state,
     error               = session.error || {},
-    errorCode           = error.code,
+    errorData           = error.data || {},
+    errorCode           = errorData.internalError || error.code,
     { language }        = config,
     translations        = getTranslations(language) || {}, //ToDo: Replace this language for config directly or from store
     welcomeTranslations = translations.welcome || {},
     loginLabel          = welcomeTranslations.login,
     registerLabel       = welcomeTranslations.register,
     description         = welcomeTranslations.description,
-    errorLabel          = errorCode && welcomeTranslations[errorCode];
+    errorGenericMsg     = error.message,
+    errorMsg            = _get(error, 'errors[0].message', errorGenericMsg),
+    errorLabel          = (errorCode && welcomeTranslations[errorCode]) || errorMsg;
   return (
     <div className={styles.welcomeContainer}>
       {showModal && <Modal onClose={() => handleState({ showModal: false, showLogin: false, showRegister: false })}>
