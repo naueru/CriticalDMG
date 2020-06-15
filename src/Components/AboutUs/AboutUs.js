@@ -3,10 +3,10 @@
 import React from 'react';
 
 // Config
-// import config from '../../CritCore/Config/config';
+import config from '../../CritCore/Config/config';
 
 // Translations
-// import getTranslations from '../../CritCore/Translations/Translations.js';
+import getTranslations from '../../CritCore/Translations/Translations.js';
 
 // Components
 import AboutUsIntroduction from './components/aboutUsIntroduction';
@@ -21,12 +21,19 @@ import styles from './AboutUs.module.css';
 import contributors from './contributorsConstants';
 
 const AboutUs = () => {
+  const { language } = config,
+  translations  = getTranslations(language),
+  aboutUsTranslations = translations.aboutUs || {},
+  introductionTranslations = aboutUsTranslations.introduction,
+  sliderTranslations = aboutUsTranslations.slider,
+  contributorsTranslations = aboutUsTranslations.contributors,
+  footerTranslations = aboutUsTranslations.footer;
   return (
     <div className={styles.aboutUsContainer}>
-      <AboutUsIntroduction />
-      <AboutUsSlider />
-      <AboutUsContributors contributors={contributors} />
-      <AboutUsFooter />
+      <AboutUsIntroduction translations={introductionTranslations} />
+      <AboutUsSlider translations={sliderTranslations} />
+      <AboutUsContributors contributors={contributors} translations={contributorsTranslations} />
+      <AboutUsFooter translations={footerTranslations} />
     </div>
   );
 }
