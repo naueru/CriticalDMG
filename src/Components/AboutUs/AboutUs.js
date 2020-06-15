@@ -21,13 +21,14 @@ import styles from './AboutUs.module.css';
 import contributors from './contributorsConstants';
 
 const AboutUs = () => {
-  const { language } = config,
-  translations  = getTranslations(language),
-  aboutUsTranslations = translations.aboutUs || {},
-  introductionTranslations = aboutUsTranslations.introduction,
-  sliderTranslations = aboutUsTranslations.slider,
-  contributorsTranslations = aboutUsTranslations.contributors,
-  footerTranslations = aboutUsTranslations.footer;
+  const
+  { language }              = config,
+  translations              = getTranslations(language),
+  aboutUsTranslations       = translations.aboutUs || {},
+  introductionTranslations  = aboutUsTranslations.introduction,
+  sliderTranslations        = aboutUsTranslations.slider,
+  contributorsTranslations  = aboutUsTranslations.contributors,
+  footerTranslations        = aboutUsTranslations.footer;
   return (
     <div className={styles.aboutUsContainer}>
       <AboutUsIntroduction translations={introductionTranslations} />
