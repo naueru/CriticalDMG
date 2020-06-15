@@ -1,0 +1,45 @@
+// ToDo: Implement sizes and theme constants
+.aboutUsFooterContainer {
+  background-color: white;
+  border-top: solid 1px gray;
+  bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  position: sticky;
+  width: 100%;
+
+  .branding {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2rem;
+  }
+
+  .contact {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .media {
+    button {
+      background: none;
+      border: solid 1px black;
+      border-radius: 5px;
+      font-family: sans-serif;
+      font-weight: bold;
+      height: 3rem;
+      margin-right: 1rem;
+      width: 3rem;
+    }
+  }
+
+  .contactUs {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+}
