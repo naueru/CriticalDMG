@@ -1,0 +1,71 @@
+// ToDo: Implement sizes ant themes
+.sheetContainer {
+  background-image: url('../../../../Logo10.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: solid 1px black;
+  box-shadow: grey 5px 5px 15px;
+  left: 50%;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: auto;
+  padding: 2rem;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+
+  .dataList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0;
+
+    .data {
+      margin: 1rem;
+      .label {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .attributes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .category {
+      background-color: red;
+      display: inline-flex;
+      flex-direction: column;
+    }
+  }
+
+  .skills{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .category {
+      display: inline-flex;
+      flex-direction: column;
+    }
+  }
+
+  .attrCategory {
+    margin: 1rem 2rem;
+    min-width: fit-content;
+
+    .categoryTitle {
+      margin: 1rem 0px;
+    }
+  }
+
+  .hpWill {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
