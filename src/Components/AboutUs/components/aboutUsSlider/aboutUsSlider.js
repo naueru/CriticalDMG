@@ -9,6 +9,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 // Styles
 import styles from './aboutUsSlider.module.css';
+import './carousel.css';
 
 // Mock
 const maps = require('../../../../assets/img/mocks/aboutMaps.png');
