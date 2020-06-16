@@ -19,6 +19,7 @@ import getTranslations from '../../CritCore/Translations/Translations.js';
 import Modal from '../../Components/Modal';
 import Login from '../../Components/Login';
 import Register from '../../Components/Register';
+import Branding from '../../Components/branding';
 
 // Styles
 import styles from './Welcome.module.css';
@@ -106,8 +107,11 @@ const Welcome = ({ checkCredentials, registerUser, session = {} }) => {
       </nav>
       <section className={styles.welcomeWrapper}>
         <div className={styles.welcomeFrame}>
-          <div className={styles.logo} />
-          <h1 className={styles.headline}>CriticalDMG</h1>
+          <Branding
+            logoSize={{ width: '12rem', height: '12rem' }}
+            alignment="column"
+            shadow
+          />
           <p className={styles.description}>{description}</p>
         </div>
       </section>
