@@ -1,0 +1,19 @@
+.brandingContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  &.row {
+    flex-direction: row;
+  }
+  &.column {
+    flex-direction: column;
+  }
+}
+
+.headline {
+  font-size: 30px;
+  &.shadow {
+    text-shadow: white 0 0 5px;
+  }
+}
