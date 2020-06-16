@@ -78,8 +78,138 @@ let translations = {
       sessionNumber: 'Sesión N°:'
     },
     about: {
+      // This section is for the about modal inside the app
       description: 'CriticalDMG es una plataforma de juegos RPG  de mesa de código abierto.',
       docsLinkLabel: 'Leer la documentación'
+    },
+    aboutUs: {
+      // This section is for the about-us page
+      introduction: {
+        slogan: 'The ultimate toolkit platform for remote tabletop RPG',
+        whatIs: '¿Qué es CriticalDMG?',
+        description: `CriticalDMG es un proyecto OpenSource dedicado a
+ todos los jugadores de rol de mesa que no puede o prefieren jugar a
+ distancia. Es en escencia un conjunto de herramientas que pueden utilizar o no
+ para hacer de tu experiencia de juego lo más parecido a jugar en persona.`
+      },
+      slider: {
+        title: '¿Qué ofrecemos?',
+        features: {
+          maps: 'Visor de mapas',
+          log: 'Chat y log'
+        }
+      },
+      contributors: {
+        title: 'Colaboradores',
+        sheet: {
+          data: {
+            name: 'Nombre:',
+            team: 'Equipo:',
+            gender: 'Género:'
+          },
+          attributes: {
+            title: 'Atributos',
+            physical: {
+              title: 'Físicos',
+              str: {
+                label: 'Fue',
+                description: 'Fuerza',
+              },
+              dex: {
+                label: 'Des',
+                description: 'Destreza',
+              },
+              sta: {
+                label: 'Est',
+                description: 'Estamina',
+              }
+            },
+            social: {
+              title: 'Sociales',
+              cha: {
+                label: 'Car',
+                description: 'Carisma',
+              },
+              man: {
+                label: 'Man',
+                description: 'Manipulación',
+              },
+              com: {
+                label: 'Cal',
+                description: 'Calma',
+              }
+            },
+            mental: {
+              title: 'Mentales',
+              int: {
+                label: 'Int',
+                description: 'Inteligencia',
+              },
+              wit: {
+                label: 'Ing',
+                description: 'Ingenio',
+              },
+              res: {
+                label: 'Res',
+                description: 'Resolución',
+              }
+            }
+          },
+          skills: {
+            title: 'Habilidades',
+            programming: {
+              title: 'Programación',
+              fronEndDev: {
+                label: 'Front - Dev',
+                description: 'Todo lo relacionado al desarrollo de front-end.',
+              },
+              backEndDev:{
+                label: 'Back - Dev',
+                description: 'Todo lo relacionado al desarrollo de back-end.',
+              },
+              unitTest: {
+                label: 'Test unitarios',
+                description: 'Todo lo relacionado a los test unitarios.',
+              }
+            },
+            testing: {
+              title: 'Testeo',
+              dataBase: {
+                label: 'Base de datos',
+                description: 'Todo lo relacionado a las Bases de datos.',
+              },
+              manualTesting:{
+                label: 'Testeo Manual',
+                description: 'Todo lo relacionado al testeo manual.',
+              },
+              autoTesting: {
+                label: 'Test Automatizado',
+                description: 'Todo lo relacionado al testeo automatizado.',
+              }
+            },
+            others: {
+              title: 'Otros',
+              leadership: {
+                label: 'Liderazgo',
+                description: 'Todo relacionado al liderazgo y guiar al equipo.',
+              },
+              agile:{
+                label: 'Ágiles',
+                description: 'Todo lo relacionado con metodologías ágiles.',
+              },
+              design: {
+                label: 'Diseño',
+                description: 'Todo lo relacionado con UI/UX.',
+              }
+            }
+          },
+          health: 'Salud',
+          willpower: 'Fuerza de voluntad'
+        }
+      },
+      footer: {
+        contactUs: 'Contáctenos'
+      }
     },
     chatLog: {
       inputPlaceholder: '> Ingrese texto o comando'
@@ -205,8 +335,138 @@ let translations = {
       sessionNumber: 'Session N°:'
     },
     about: {
+      // This section is for the about modal inside the app
       description: 'CriticalDMG is an opensource table RPG platform.',
       docsLinkLabel: 'Read the documentation'
+    },
+    aboutUs: {
+      // This section is for the about-us page
+      introduction: {
+        slogan: 'The ultimate toolkit platform for remote tabletop RPG',
+        whatIs: 'What is CriticalDMG?',
+        description: `CriticalDMG is an OpenSource project targeted to
+ every tabletop rpg player that can't or rather play remotely. It esentially is
+ a bunch of tools that you may use or not to make your playing experience the most
+ similar to play face to face.`
+      },
+      slider: {
+        title: 'What we provide?',
+        features: {
+          maps: 'Map viewer',
+          log: 'Chat & log'
+        }
+      },
+      contributors: {
+        title: 'Contributors',
+        sheet: {
+          data: {
+            name: 'Name:',
+            team: 'Team:',
+            gender: 'Gender:'
+          },
+          attributes: {
+            title: 'Attributes',
+            physical: {
+              title: 'Physical',
+              str: {
+                label: 'Str',
+                description: 'Strenght',
+              },
+              dex: {
+                label: 'Dex',
+                description: 'Dextery',
+              },
+              sta: {
+                label: 'Sta',
+                description: 'Stamina',
+              }
+            },
+            social: {
+              title: 'Social',
+              cha: {
+                label: 'Cha',
+                description: 'Charisma',
+              },
+              man: {
+                label: 'Man',
+                description: 'Manipulation',
+              },
+              com: {
+                label: 'Com',
+                description: 'Composure',
+              }
+            },
+            mental: {
+              title: 'Mental',
+              int: {
+                label: 'Int',
+                description: 'Intelligence',
+              },
+              wit: {
+                label: 'Wit',
+                description: 'Wits',
+              },
+              res: {
+                label: 'Res',
+                description: 'Resolve',
+              }
+            }
+          },
+          skills: {
+            title: 'Skills',
+            programming: {
+              title: 'Programming',
+              fronEndDev: {
+                label: 'Front - Dev',
+                description: 'Everything related to front-end develop.',
+              },
+              backEndDev:{
+                label: 'Back - Dev',
+                description: 'Everything related to back-end develop.',
+              },
+              unitTest: {
+                label: 'Unit tests',
+                description: 'Everything related to unit testing',
+              }
+            },
+            testing: {
+              title: 'Testing',
+              dataBase: {
+                label: 'Database',
+                description: 'Everything related to Databases',
+              },
+              manualTesting:{
+                label: 'Man. testing',
+                description: 'Everything related to manual testing',
+              },
+              autoTesting: {
+                label: 'Auto. testing',
+                description: 'Everything related to automation testing',
+              }
+            },
+            others: {
+              title: 'Others',
+              leadership: {
+                label: 'Lead',
+                description: 'Everything related to leadership and guiding people',
+              },
+              agile:{
+                label: 'Agile',
+                description: 'Everything related to agile methods',
+              },
+              design: {
+                label: 'Design',
+                description: 'Everything related to UI/UX',
+              }
+            }
+          },
+          health: 'Health',
+          willpower: 'Willpower'
+        }
+      },
+      footer: {
+        contactUs: 'Contact Us'
+      }
     },
     chatLog: {
       inputPlaceholder: '> Insert text or command'
