@@ -345,7 +345,7 @@ let translations = {
         slogan: 'The ultimate toolkit platform for remote tabletop RPG',
         whatIs: 'What is CriticalDMG?',
         description: `CriticalDMG is an OpenSource project targeted to
- every tabletop rpg player that can't or rather play remotely. It esentially is
+ every tabletop rpg player that needs or rather play remotely. It essentially is
  a bunch of tools that you may use or not to make your playing experience the most
  similar to play face to face.`
       },
