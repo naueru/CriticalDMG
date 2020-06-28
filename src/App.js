@@ -32,15 +32,12 @@ function App({ isAuth, user, fetchLoggedUser }) {
     }
   });
 
-  // A hack to avoid Route warning expecting functions instead of objecs
-  // Since Connect from Redux converts functional components to objects
-  const loggedInContent = noUserInRedux ? LoadingCurtain : () => {return(<Home />)};
-  const main = isAuth ? loggedInContent : () => {return(<Welcome />)};
+  const loggedInContent = noUserInRedux ? <LoadingCurtain /> : <Home />;
 
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component={main} />
+        <Route exact path="/" render={() => (isAuth ? loggedInContent : <Welcome />)} />
         <Route exact path="/about-us" component={AboutUs} />
         <Route component={NotFound} />
       </Switch>
