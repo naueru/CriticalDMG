@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 // Components
 import CDMGIcon from '../../../CDMGIcon';
+import Tooltip from '../../../Tooltip';
 
 // Styles
 import styles from './Roll.module.css';
@@ -29,7 +30,11 @@ const Roll = ({
         <CDMGIcon name={'dice'} />
       </span>
       <p className={styles.rollText}>
-        {prefix}<span className={styles.rollResults} title={rolls}>{total}</span>{sufix}
+        {prefix}
+        <Tooltip message={rolls} orientation="top">
+          <span className={styles.rollResults}>{total}</span>
+        </Tooltip>
+        {sufix}
       </p>
     </div>
   );
