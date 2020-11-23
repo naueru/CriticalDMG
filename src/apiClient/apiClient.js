@@ -28,9 +28,10 @@ export const getClient = () => {
         return response;
       },
       (error) => {
+        const { data } = error.response;
         if (
-          error.response.data.code === 401 &&
-          error.response.data.name === 'TokenExpiredError'
+          data?.code === 401 &&
+          data?.data?.name === 'TokenExpiredError'
         ) {
           removeAutohrizationToken();
         } else {
