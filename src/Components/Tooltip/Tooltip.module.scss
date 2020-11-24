@@ -2,14 +2,13 @@
 @import '../../constants/Themes/MainTheme';
 
 .tooltipContainer {
-  position: relative;
-  display: inline-block;
   color: white;
+  display: inline-block;
+  position: relative;
 
   .tooltipMsg {
     background: $Color-TooltipBG;
     border-radius: 5px;
-    border: solid 1px darkgray;
     display: inline-block;
     margin: 0;
     padding: 4px 8px;
@@ -19,14 +18,13 @@
     width: max-content;
 
     &.visible {
-      visibility: visible
-      ;
+      visibility: visible;
     }
 
     &::after {
-      content: " ";
       border-width: 5px;
       border-style: solid;
+      content: " ";
       position: absolute;
     }
 
@@ -35,7 +33,7 @@
       left: 10%;
 
       &::after {
-        border-color: black transparent transparent transparent;
+        border-color: $Peak-BorderColor-top;
         left: 10px;
         margin-left: -5px;
         top: 100%;
@@ -48,7 +46,7 @@
 
       &::after {
         bottom: 100%;
-        border-color: transparent transparent black transparent;
+        border-color: $Peak-BorderColor-bottom;
         left: 10px;
         margin-left: -5px;
       }
@@ -58,9 +56,9 @@
       right: 100%;
 
       &::after {
-        border-color: transparent transparent transparent black;
-        margin-top: -5px;
+        border-color: $Peak-BorderColor-left;
         left: 100%;
+        margin-top: -5px;
         top: 10px;
       }
     }
@@ -69,7 +67,7 @@
       left: 105%;
 
       &::after {
-        border-color: transparent black transparent transparent;
+        border-color: $Peak-BorderColor-right;
         margin-top: -5px;
         right: 100%;
         top: 10px;
