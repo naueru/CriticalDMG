@@ -30,5 +30,10 @@ $Border-EventBorder: 1px solid blue;
 $Border-RollBorder: 1px solid gray;
 $Border-ErrorLogBorder: 1px solid red;
 
+$Peak-BorderColor-top: $Color-TooltipBG transparent transparent transparent;
+$Peak-BorderColor-bottom: transparent transparent $Color-TooltipBG transparent;
+$Peak-BorderColor-left: transparent transparent transparent $Color-TooltipBG;
+$Peak-BorderColor-right: transparent $Color-TooltipBG transparent transparent;
+
 // Shadows
 $Shadow-LogEntry: 2px 2px 2px black;
