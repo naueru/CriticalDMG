@@ -19,7 +19,7 @@ const Tooltip = ({ message, children, orientation, maxHeight, maxWidth }) => {
 
   const toogleVisibility = () => {
     return setVisible(!visible);
-  }
+  };
 
   const fixDirection = (event) => {
     setFixOrientatiooin('');
@@ -63,13 +63,18 @@ const Tooltip = ({ message, children, orientation, maxHeight, maxWidth }) => {
 };
 
 Tooltip.propTypes = {
+  children: PropTypes.object.isRequired,
+  maxHeight: PropTypes.string,
+  maxWidth: PropTypes.string,
   message: PropTypes.string,
-  visible: PropTypes.bool
+  orientation: PropTypes.string
 };
 
 Tooltip.defaultProps = {
+  maxHeight: '',
+  maxWidth: '',
   message: '',
-  visible: false
+  orientation: 'top'
 }
 
 export default Tooltip;
