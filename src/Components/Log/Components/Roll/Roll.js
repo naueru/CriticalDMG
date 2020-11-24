@@ -31,7 +31,7 @@ const Roll = ({
       </span>
       <p className={styles.rollText}>
         {prefix}
-        <Tooltip message={rolls} orientation="top">
+        <Tooltip message={rolls} orientation="top" maxWidth="100px" maxHeight="50px">
           <span className={styles.rollResults}>{total}</span>
         </Tooltip>
         {sufix}
