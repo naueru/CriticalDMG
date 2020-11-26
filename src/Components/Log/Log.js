@@ -1,5 +1,5 @@
 // Core
-import React, { Component } from 'react';
+import React from 'react';
 
 // Libraries
 import PropTypes from 'prop-types';
@@ -13,27 +13,12 @@ import Roll from './Components/Roll';
 import Event from './Components/Event';
 import Error from './Components/Error';
 
-
 // Styles
 import styles from './Log.module.css';
 
-class Log extends Component {
-  static propTypes = {
-    log: PropTypes.array,
-    handleSelect: PropTypes.func,
-    selectedItem: PropTypes.number,
-    showImages: PropTypes.func
-  };
+const Log = ({ handleSelect, log, selectedItem, showImages }) => {
 
-  static defaultProps = {
-    log: [],
-    handleSelect: () => {},
-    selectedItem: 0,
-    showImages: () => {}
-  };
-
-  parseList = (list = []) => {
-    const { handleSelect, selectedItem, showImages } = this.props;
+  const parseList = (list = []) => {
     return list.map((item = {}, index) => {
       let comp,
       { type, content } = item,
@@ -76,14 +61,25 @@ class Log extends Component {
     });
   };
 
-  render = () => {
-    const { log } = this.props;
-    return (
-      <ul className={styles.logContainer}>
-        {this.parseList(log)}
-      </ul>
-    );
-  };
+  return (
+    <ul className={styles.logContainer}>
+      {parseList(log)}
+    </ul>
+  );
 }
+
+Log.propTypes = {
+  log: PropTypes.array,
+  handleSelect: PropTypes.func,
+  selectedItem: PropTypes.number,
+  showImages: PropTypes.func
+};
+
+Log.defaultProps = {
+  log: [],
+  handleSelect: () => {},
+  selectedItem: 0,
+  showImages: () => {}
+};
 
 export default Log;
