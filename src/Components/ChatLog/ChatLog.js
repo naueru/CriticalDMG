@@ -29,7 +29,7 @@ import snd from '../../../src/assets/sounds/mocks/door.ogg';
 // Styles
 import styles from './ChatLog.module.css';
 
-const ChatLog = ({user, showImages}) => {
+const ChatLog = ({ user, showImages }) => {
 
   const [ selectedItem, setSelectedItem ]           = useState(null);
   const [ defaultInput, setDefaultInput ]           = useState('');
