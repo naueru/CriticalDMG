@@ -1,12 +1,13 @@
 import Axios from 'axios';
-import config from '../CritCore/Config/config';
+// import config from '../CritCore/Config/config';
 import {
   isLoggedIn,
   getAuthorizationToken,
   removeAutohrizationToken,
 } from '../services/localStorageServices';
 
-const BASE_URL = `${config.SERVER_HOST}:${config.SERVER_PORT}`;
+// const BASE_URL = `${config.SERVER_HOST}:${config.SERVER_PORT}`;
+const BASE_URL = `https://criticaldmg-api.herokuapp.com/`;
 let client;
 
 /**

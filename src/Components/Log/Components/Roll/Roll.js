@@ -29,13 +29,13 @@ const Roll = ({
       <span className={styles.pictureContainer}>
         <CDMGIcon name={'dice'} />
       </span>
-      <p className={styles.rollText}>
+      <span className={styles.rollText}>
         {prefix}
         <Tooltip message={rolls} orientation="top" maxWidth="100px" maxHeight="50px">
           <span className={styles.rollResults}>{total}</span>
         </Tooltip>
         {sufix}
-      </p>
+      </span>
     </div>
   );
 }
