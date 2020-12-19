@@ -1,5 +1,5 @@
 // Core
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Libraries
 import PropTypes from 'prop-types';
@@ -13,27 +13,18 @@ import Roll from './Components/Roll';
 import Event from './Components/Event';
 import Error from './Components/Error';
 
-
 // Styles
 import styles from './Log.module.css';
 
-class Log extends Component {
-  static propTypes = {
-    log: PropTypes.array,
-    handleSelect: PropTypes.func,
-    selectedItem: PropTypes.number,
-    showImages: PropTypes.func
-  };
+const Log = ({ handleSelect, log, selectedItem, showImages }) => {
 
-  static defaultProps = {
-    log: [],
-    handleSelect: () => {},
-    selectedItem: 0,
-    showImages: () => {}
-  };
+  const [ isAutoScrollEnabled, setIsAutoScrollEnabled ] = useState(true);
+  const [ isAutoScrolling, setIsAutoScrolling ] = useState(false);
+  const [ isAtTheEnd, setIsAtTheEnd ] = useState(true);
 
-  parseList = (list = []) => {
-    const { handleSelect, selectedItem, showImages } = this.props;
+  let dummy;
+
+  const parseList = (list = []) => {
     return list.map((item = {}, index) => {
       let comp,
       { type, content } = item,
@@ -76,14 +67,65 @@ class Log extends Component {
     });
   };
 
-  render = () => {
-    const { log } = this.props;
-    return (
-      <ul className={styles.logContainer}>
-        {this.parseList(log)}
-      </ul>
-    );
+  const scrollToBottom = async () => {
+    if (!isAtTheEnd) {
+      setIsAutoScrolling(true);
+    }
+    dummy.scrollIntoView({ block: "end", behavior: "smooth" });
   };
+
+  const lockAutoScroll = () => {
+    setIsAutoScrollEnabled(false);
+  };
+
+  const enableAutoScroll = () => {
+    setIsAutoScrollEnabled(true);
+  };
+
+  const chekScrollPosition = (e) => {
+    const isAtTheBottom = (Math.floor(e.target.scrollTop) + e.target.offsetHeight) >= (e.target.scrollHeight - 2);
+    setIsAtTheEnd(isAtTheBottom);
+
+    if (isAtTheBottom) {
+      enableAutoScroll();
+      if (isAutoScrolling) {
+        setIsAutoScrolling(false);
+      }
+    } else {
+      if (!isAutoScrolling) {
+        lockAutoScroll();
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (isAutoScrollEnabled) {
+      scrollToBottom();
+    }
+  });
+
+  return (
+    <ul className={styles.logContainer} onScroll={chekScrollPosition}>
+      {parseList(log)}
+      <li>
+        <div ref={(element) => { dummy = element; }}/>
+      </li>
+    </ul>
+  );
 }
+
+Log.propTypes = {
+  log: PropTypes.array,
+  handleSelect: PropTypes.func,
+  selectedItem: PropTypes.number,
+  showImages: PropTypes.func
+};
+
+Log.defaultProps = {
+  log: [],
+  handleSelect: () => {},
+  selectedItem: 0,
+  showImages: () => {}
+};
 
 export default Log;

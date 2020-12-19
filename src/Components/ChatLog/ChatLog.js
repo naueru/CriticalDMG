@@ -1,5 +1,5 @@
 // Core
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 // Store
 import { bindActionCreators } from 'redux';
@@ -29,146 +29,131 @@ import snd from '../../../src/assets/sounds/mocks/door.ogg';
 // Styles
 import styles from './ChatLog.module.css';
 
-class ChatLog extends Component {
-  static propTypes = {
-    showImages: PropTypes.func
+const ChatLog = ({ user, showImages }) => {
+
+  const [ selectedItem, setSelectedItem ]           = useState(null);
+  const [ defaultInput, setDefaultInput ]           = useState('');
+  const [ inputHistory, setInputHistory ]           = useState([]);
+  const [ inputHistoryIndex, setInputHistoryIndex ] = useState(0);
+  const [ log, setLog ]                             = useState([
+    {
+      type: 'message',
+      content:{
+        text: 'Bartender, bring me a beer!.',
+        actionModifier: 'Yelling',
+        picture: '',
+        icon: 'warrior',
+        character: 'Valdamir'
+      }
+    },
+    {
+      type: 'roll',
+      content:{
+        total: 11,
+        results: [5, 4],
+        dices: 2,
+        faces: 6,
+        modifier: 2,
+        character: 'Valdamir'
+      }
+    },
+    {
+      type: 'message',
+      content:{
+        text: 'Hey, careful with that.',
+        actionModifier: '',
+        picture: '',
+        icon: 'mage',
+        character: 'Meriadoc'
+      }
+    },
+    {
+      type: 'event',
+      content:{
+        text: 'Suddenly the doors of the tavern open and a beefy man appears',
+        image: {
+          label: 'Do it!',
+          title: 'Just do it!',
+          url: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg',
+          name: 'beefy'
+        },
+        sound: snd,
+        autoPlay: false
+      }
+    },
+    {
+      type: 'message',
+      content:{
+        text: 'Guys, look, somebody has arrived.',
+        actionModifier: 'Whispering',
+        picture: '',
+        icon: 'bard',
+        character: 'Drako'
+      }
+    },
+    {
+      type: 'error',
+      content:{
+        text: 'The command was not understood',
+      }
+    }
+  ]);
+
+  const handleSelect = (selected) => {
+    const newSelected = selectedItem === selected ? null : selected;
+      setSelectedItem(newSelected);
   };
 
-  static defaultProps = {
-    showImages: () => {}
+  const handleHistory = (action, callback) => {
+    const newIndex = action === 'increase' ? Math.min(inputHistory.length, inputHistoryIndex + 1) : Math.max(0, inputHistoryIndex - 1);
+    setInputHistoryIndex(newIndex);
+    setDefaultInput(inputHistory[newIndex]);
+    callback(inputHistory[newIndex] || '');
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedItem: null,
-      defaultInput: '',
-      inputHistory: [],
-      inputHistoryIndex: 0,
-      log: [
-        {
-          type: 'message',
-          content:{
-            text: 'Bartender, bring me a beer!.',
-            actionModifier: 'Yelling',
-            picture: '',
-            icon: 'warrior',
-            character: 'Valdamir'
-          }
-        },
-        {
-          type: 'roll',
-          content:{
-            total: 11,
-            results: [5, 4],
-            dices: 2,
-            faces: 6,
-            modifier: 2,
-            character: 'Valdamir'
-          }
-        },
-        {
-          type: 'message',
-          content:{
-            text: 'Hey, careful with that.',
-            actionModifier: '',
-            picture: '',
-            icon: 'mage',
-            character: 'Meriadoc'
-          }
-        },
-        {
-          type: 'event',
-          content:{
-            text: 'Suddenly the doors of the tavern open and a beefy man appears',
-            image: {
-              label: 'Do it!',
-              title: 'Just do it!',
-              url: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg',
-              name: 'beefy'
-            },
-            sound: snd,
-            autoPlay: false
-          }
-        },
-        {
-          type: 'message',
-          content:{
-            text: 'Guys, look, somebody has arrived.',
-            actionModifier: 'Whispering',
-            picture: '',
-            icon: 'bard',
-            character: 'Drako'
-          }
-        },
-        {
-          type: 'error',
-          content:{
-            text: 'The command was not understood',
-          }
-        }
-      ]
-    };
-  }
-
-  handleSelect = (selected) => {
-    const { selectedItem } = this.state,
-      newSelected = selectedItem === selected ? null : selected;
-    this.setState({ selectedItem: newSelected });
-  };
-
-  handleHistory = (action, callback) => {
-    const { inputHistoryIndex, inputHistory } = this.state,
-      newIndex = action === 'increase' ? Math.min(inputHistory.length, inputHistoryIndex + 1) : Math.max(0, inputHistoryIndex - 1);
-    this.setState({
-      inputHistoryIndex: newIndex,
-      defaultInput: inputHistory[newIndex]
-    }, () => callback(inputHistory[newIndex] || ''));
-  };
-
-  parseInput = (input = '') => {
-    const { user } = this.props,
-      { log, inputHistory } = this.state,
-      { language } = config,
+  const parseInput = (input = '') => {
+    const { language } = config,
       parsedInput = inputParser.parse(input, user, language);
       log.push(parsedInput);
       inputHistory.push(input);
       let inputHistoryIndex = inputHistory.length;
-    this.setState({
-      log,
-      inputHistory,
-      inputHistoryIndex,
-      defaultInput: ''
-    });
-
+      setLog(log);
+      setInputHistory(inputHistory);
+      setInputHistoryIndex(inputHistoryIndex);
+      setDefaultInput('');
   };
 
-  render = () => {
-    const { showImages } = this.props,
-      { language } = config,
-      translations  = getTranslations(language),
-      { inputPlaceholder } = translations.chatLog,
-      { log, selectedItem, defaultInput } = this.state;
-    return (
-      <section className={styles.chat}>
-        <Log
-          log={log}
-          handleSelect={this.handleSelect}
-          selectedItem={selectedItem}
-          showImages={showImages}
+  const { language }      = config,
+    translations          = getTranslations(language),
+    { inputPlaceholder }  = translations.chatLog;
+
+  return (
+    <section className={styles.chat}>
+      <Log
+        log={log}
+        handleSelect={handleSelect}
+        selectedItem={selectedItem}
+        showImages={showImages}
+      />
+      <div className={styles.inputContainer}>
+        <CommandInput
+          placeholder={inputPlaceholder}
+          handleSubmit={parseInput}
+          handleHistory={handleHistory}
+          defaultInput={defaultInput}
         />
-        <div className={styles.inputContainer}>
-          <CommandInput
-            placeholder={inputPlaceholder}
-            handleSubmit={this.parseInput}
-            handleHistory={this.handleHistory}
-            defaultInput={defaultInput}
-          />
-        </div>
-      </section>
-    );
-  };
-}
+      </div>
+    </section>
+  );
+};
+
+ChatLog.propTypes = {
+  showImages: PropTypes.func
+};
+
+ChatLog.defaultProps = {
+  showImages: () => {}
+};
 
 const mapStateToProps = state => ({
   // FILTERED PROPS STORE HERE
