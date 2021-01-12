@@ -12,6 +12,7 @@ import Message from './Components/Message';
 import Roll from './Components/Roll';
 import Event from './Components/Event';
 import Error from './Components/Error';
+import DeveloperFeedback from '../DeveloperFeedback';
 
 // Styles
 import styles from './Log.module.css';
@@ -106,7 +107,7 @@ const Log = ({ handleSelect, log, selectedItem, showImages, developerMode }) => 
 
   return (
     <ul className={styles.logContainer} onScroll={chekScrollPosition}>
-      {developerMode && <pre style={{position: 'absolute', background: 'white'}}>{`IATB = ${isAtTheEnd} | isEnabled = ${isAutoScrollEnabled} | isScrolling = ${isAutoScrolling}`}</pre>}
+      {developerMode && <DeveloperFeedback style={{position: 'absolute', background: 'white'}}>{`IATB = ${isAtTheEnd} | isEnabled = ${isAutoScrollEnabled} | isScrolling = ${isAutoScrolling}`}</DeveloperFeedback>}
       {parseList(log)}
       <li>
         <div ref={(element) => { dummy = element; }}/>
