@@ -6,7 +6,13 @@ import getTranslations from '../../CritCore/Translations/Translations.js';
 
 const { defaultLanguage } = config;
 
-let parseMenues = (lang = defaultLanguage, handleState, account) => {
+let parseMenues = (
+  lang = defaultLanguage,
+  handleState,
+  account,
+  isDevelop,
+  developerMode,
+  updateDeveloperModeSetting) => {
   const translations    = getTranslations(lang),
     userName            = account,
     mainMenu            = (translations && translations.mainMenu) || {},
@@ -40,11 +46,13 @@ let parseMenues = (lang = defaultLanguage, handleState, account) => {
       subMenues: [
         {
           label: fileSubMenues.saveSession,
-          onClick: () => alert(`Clicked ${fileSubMenues.saveSession}`)
+          onClick: () => alert(`Clicked ${fileSubMenues.saveSession}`),
+          visible: true
         },
         {
           label: fileSubMenues.loadGamePresets,
-          onClick: () => alert(`Clicked ${fileSubMenues.loadGamePresets}`)
+          onClick: () => alert(`Clicked ${fileSubMenues.loadGamePresets}`),
+          visible: true
         }
       ]
     },
@@ -53,15 +61,18 @@ let parseMenues = (lang = defaultLanguage, handleState, account) => {
       subMenues: [
         {
           label: editionSubMenues.uploadCustomImages,
-          onClick: () => alert(`Clicked ${editionSubMenues.uploadCustomImages}`)
+          onClick: () => alert(`Clicked ${editionSubMenues.uploadCustomImages}`),
+          visible: true
         },
         {
           label: editionSubMenues.uploadMap,
-          onClick: () => alert(`Clicked ${editionSubMenues.uploadMap}`)
+          onClick: () => alert(`Clicked ${editionSubMenues.uploadMap}`),
+          visible: true
         },
         {
           label: editionSubMenues.configGame,
-          onClick: () => alert(`Clicked ${editionSubMenues.configGame}`)
+          onClick: () => alert(`Clicked ${editionSubMenues.configGame}`),
+          visible: true
         }
       ]
     },
@@ -70,23 +81,28 @@ let parseMenues = (lang = defaultLanguage, handleState, account) => {
       subMenues: [
         {
           label: librarySubMenues.loadManuals,
-          onClick: () => handleState({ showModal: 'manuals' })
+          onClick: () => handleState({ showModal: 'manuals' }),
+          visible: true
         },
         {
           label: librarySubMenues.viewMaps,
-          onClick: () => handleState({ showModal: 'maps' })
+          onClick: () => handleState({ showModal: 'maps' }),
+          visible: true
         },
         {
           label: librarySubMenues.bestiary,
-          onClick: () => alert(`Clicked ${librarySubMenues.bestiary}`)
+          onClick: () => alert(`Clicked ${librarySubMenues.bestiary}`),
+          visible: true
         },
         {
           label: librarySubMenues.weaponsItems,
-          onClick: () => alert(`Clicked ${librarySubMenues.weaponsItems}`)
+          onClick: () => alert(`Clicked ${librarySubMenues.weaponsItems}`),
+          visible: true
         },
         {
           label: librarySubMenues.magicPowers,
-          onClick: () => alert(`Clicked ${librarySubMenues.magicPowers}`)
+          onClick: () => alert(`Clicked ${librarySubMenues.magicPowers}`),
+          visible: true
         }
       ]
     },
@@ -95,15 +111,18 @@ let parseMenues = (lang = defaultLanguage, handleState, account) => {
       subMenues: [
         {
           label: characterSubMenues.characterSheet,
-          onClick: () => alert(`Clicked ${characterSubMenues.characterSheet}`)
+          onClick: () => alert(`Clicked ${characterSubMenues.characterSheet}`),
+          visible: true
         },
         {
           label: characterSubMenues.inventory,
-          onClick: () => alert(`Clicked ${characterSubMenues.inventory}`)
+          onClick: () => alert(`Clicked ${characterSubMenues.inventory}`),
+          visible: true
         },
         {
           label: characterSubMenues.magicPowers,
-          onClick: () => alert(`Clicked ${characterSubMenues.magicPowers}`)
+          onClick: () => alert(`Clicked ${characterSubMenues.magicPowers}`),
+          visible: true
         }
       ]
     },
@@ -112,8 +131,14 @@ let parseMenues = (lang = defaultLanguage, handleState, account) => {
       subMenues: [
         {
           label: toolsSubMenues.commands,
-          onClick: () => alert(`Clicked ${toolsSubMenues.commands}`)
-        }
+          onClick: () => alert(`Clicked ${toolsSubMenues.commands}`),
+          visible: true
+        },
+        {
+          label: toolsSubMenues.devMode,
+          onClick: () => updateDeveloperModeSetting(!developerMode),
+          visible: isDevelop
+        },
       ]
     },
     {
@@ -121,7 +146,8 @@ let parseMenues = (lang = defaultLanguage, handleState, account) => {
       subMenues: [
         {
           label: mediaSubMenues.player,
-          onClick: () => alert(`Clicked ${mediaSubMenues.player}`)
+          onClick: () => alert(`Clicked ${mediaSubMenues.player}`),
+          visible: true
         }
       ]
     },
@@ -130,11 +156,13 @@ let parseMenues = (lang = defaultLanguage, handleState, account) => {
       subMenues: [
         {
           label: helpSubMenues.about,
-          onClick: () => handleState({ showModal: 'about' })
+          onClick: () => handleState({ showModal: 'about' }),
+          visible: true
         },
         {
           label: helpSubMenues.availableCommands,
-          onClick: () => handleState({ showModal: 'availableCommands' })
+          onClick: () => handleState({ showModal: 'availableCommands' }),
+          visible: true
         }
       ]
     },
@@ -143,11 +171,13 @@ let parseMenues = (lang = defaultLanguage, handleState, account) => {
       subMenues: [
         {
           label: sessionSubMenues.profile,
-          onClick: () => alert(`Clicked ${sessionSubMenues.profile}`)
+          onClick: () => alert(`Clicked ${sessionSubMenues.profile}`),
+          visible: true
         },
         {
           label: sessionSubMenues.signOut,
-          onClick: () => handleState({ shouldLogOut: true })
+          onClick: () => handleState({ shouldLogOut: true }),
+          visible: true
         }
       ]
     }
