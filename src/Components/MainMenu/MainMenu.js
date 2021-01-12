@@ -68,10 +68,10 @@ class MainMenu extends Component {
   }
 
   render = () => {
-    const { handleState, account } = this.props,
+    const { handleState, account, isDevelop, developerMode, updateDeveloperModeSetting } = this.props,
       { showHideMenu } = this.state,
       { language } = config,
-      menues = parseMenues(language, handleState, account);
+      menues = parseMenues(language, handleState, account, isDevelop, developerMode, updateDeveloperModeSetting);
     return (
       <nav>
         <button onClick={this.toggleMenu} className={`${styles.hamburgerBtn} ${showHideMenu && styles.open}`}>
