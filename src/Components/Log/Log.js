@@ -16,7 +16,7 @@ import Error from './Components/Error';
 // Styles
 import styles from './Log.module.css';
 
-const Log = ({ handleSelect, log, selectedItem, showImages }) => {
+const Log = ({ handleSelect, log, selectedItem, showImages, developerMode }) => {
 
   const [ isAutoScrollEnabled, setIsAutoScrollEnabled ] = useState(true);
   const [ isAutoScrolling, setIsAutoScrolling ] = useState(false);
@@ -106,6 +106,7 @@ const Log = ({ handleSelect, log, selectedItem, showImages }) => {
 
   return (
     <ul className={styles.logContainer} onScroll={chekScrollPosition}>
+      {developerMode && <pre style={{position: 'absolute', background: 'white'}}>{`IATB = ${isAtTheEnd} | isEnabled = ${isAutoScrollEnabled} | isScrolling = ${isAutoScrolling}`}</pre>}
       {parseList(log)}
       <li>
         <div ref={(element) => { dummy = element; }}/>
