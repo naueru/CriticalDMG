@@ -5,6 +5,9 @@ export const fetchUser = async (userId) => {
     `/users/${userId}`
   );
 
+  // TODO handle errors status
+
+  // TODO Temporary user role. It does not exist in the DB.
   if (!res?.data?.role) {
     let role;
     switch (res?.data?.id) {
@@ -23,6 +26,8 @@ export const fetchUser = async (userId) => {
 
       res.data.role = role;
   }
+
+    // TODO handle errors status
   return res.data;
 };
 
