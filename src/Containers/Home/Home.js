@@ -60,7 +60,7 @@ const mockedManuals = [
 // Styles
 // import styles from './Home.module.css';
 
-const Home = ({ user, logOut }) => {
+const Home = ({ isDevelop, logOut, user, developerMode, updateDeveloperModeSetting }) => {
   const [ state, setState ] = useState({});
   const mounted = useRef();
 
@@ -114,7 +114,13 @@ const Home = ({ user, logOut }) => {
         {showModal === 'availableCommands' && <AvailableCommands />}
         {showModal === 'manuals' && <ManualsViewer manualsList={mockedManuals} />}
       </Modal>}
-      <MainMenu handleState={handleState} account={userName}/>
+      <MainMenu
+        handleState={handleState}
+        account={userName}
+        isDevelop={isDevelop}
+        developerMode={developerMode}
+        updateDeveloperModeSetting={updateDeveloperModeSetting}
+      />
       <MainBoard showImages={showImages} />
       <StatusBar
         players={currentPlayers}
@@ -129,15 +135,18 @@ const Home = ({ user, logOut }) => {
 const mapStateToProps = state => ({
   // FILTERED PROPS STORE HERE
   user: _get(state, 'session.user'),
+  isDevelop: _get(state, 'session.user.role') === 'dev',
+  developerMode: state?.applicationSettings?.developerMode
 });
 
 const mapDispatchToProps = (dispatch) => {
   // Filter used actions
-  const { logOut } = ActionCreators;
+  const { logOut, updateDeveloperModeSetting } = ActionCreators;
   return bindActionCreators(
     {
       // FILTERED ACTIONS HERE
       logOut,
+      updateDeveloperModeSetting
     },
     dispatch,
   );
