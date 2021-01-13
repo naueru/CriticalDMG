@@ -21,8 +21,9 @@ class SubMenu extends Component {
   renderList = (list) => {
     return list.map((item, index) => {
       const label = item && item.label,
-        onClick   = item && item.onClick;
-      return (
+        onClick   = item && item.onClick,
+        visible   = item && item.visible;
+      return visible ? (
         <li className={styles.subMenuListItem} key={`${label}_${index}`}>
           <button
             className={styles.subMenuButton}
@@ -31,7 +32,7 @@ class SubMenu extends Component {
             {label}
           </button>
         </li>
-      );
+      ) : null;
     });
   };
 
