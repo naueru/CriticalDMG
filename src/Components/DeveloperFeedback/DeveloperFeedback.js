@@ -1,8 +1,12 @@
+// Core
 import React from 'react';
+
+// Styles
+import styles from './DeveloperFeedback.module.css';
 
 const DeveloperFeedback = ({children}) => {
   return (
-    <pre style={{position: 'absolute', background: 'white'}}>{children}</pre>
+    <pre className={styles.devFeedback}>{children}</pre>
   )
 }
 
