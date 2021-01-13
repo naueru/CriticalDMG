@@ -27,7 +27,6 @@ export const fetchUser = async (userId) => {
       res.data.role = role;
   }
 
-    // TODO handle errors status
   return res.data;
 };
 
@@ -41,5 +40,6 @@ export const register = async ({email, password, userName, alterEgo, icon}) => {
   };
   const res = await getClient().post(`/users/`, data);
 
+  // TODO handle errors status
   return res.data;
 };
