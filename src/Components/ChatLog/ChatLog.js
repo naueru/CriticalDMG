@@ -29,7 +29,7 @@ import snd from '../../../src/assets/sounds/mocks/door.ogg';
 // Styles
 import styles from './ChatLog.module.css';
 
-const ChatLog = ({ user, showImages }) => {
+const ChatLog = ({ user, developerMode, showImages }) => {
 
   const [ selectedItem, setSelectedItem ]           = useState(null);
   const [ defaultInput, setDefaultInput ]           = useState('');
@@ -134,6 +134,7 @@ const ChatLog = ({ user, showImages }) => {
         handleSelect={handleSelect}
         selectedItem={selectedItem}
         showImages={showImages}
+        developerMode={developerMode}
       />
       <div className={styles.inputContainer}>
         <CommandInput
@@ -155,9 +156,10 @@ ChatLog.defaultProps = {
   showImages: () => {}
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = store => ({
   // FILTERED PROPS STORE HERE
-  user: _get(state, 'session.user'),
+  user: _get(store, 'session.user'),
+  developerMode: store?.applicationSettings?.developerMode
 });
 
 const mapDispatchToProps = (dispatch) => {

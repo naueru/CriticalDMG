@@ -47,7 +47,8 @@ let translations = {
       tools: {
         label: 'Herramientas',
         subMenues: {
-          commands: 'Comandos'
+          commands: 'Comandos',
+          devMode: 'Modo desarrollo'
         }
       },
       media: {
@@ -304,7 +305,8 @@ let translations = {
       tools: {
         label: 'Tools',
         subMenues: {
-          commands: 'Commands'
+          commands: 'Commands',
+          devMode: 'Developer Mode'
         }
       },
       media: {
