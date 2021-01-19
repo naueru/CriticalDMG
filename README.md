@@ -1,7 +1,8 @@
-In case you dont have internet conection, or there is api problems, you can use mocked data:
+## In case you dont have internet conection, or there is api problems, you can use mocked data:
 
 [http://localhost:3000?noApiCall=true](http://localhost:3000?noApiCall=true)
 
+##
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
