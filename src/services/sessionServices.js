@@ -1,15 +1,25 @@
 import { getClient } from '../apiClient';
+import getMockUser from './dataMock';
 
 export const loginCredentials = async ({ email, userName, password }) => {
 
-  const res = await getClient().post(
-    '/authentication',
-    {
-      email: email || userName,
-      password: password,
-      strategy: 'local'
-    }
-  );
+  const values = window.location.search;
+  const urlParams = new URLSearchParams(values);
+  const noApiCall = urlParams.get('noApiCall');
+
+  let res;
+  if (noApiCall) {
+      res = getMockUser({ email, userName });
+  } else {
+    res = await getClient().post(
+      '/authentication',
+      {
+        email: email || userName,
+        password: password,
+        strategy: 'local'
+      }
+    );
+  }
 
   if (!res?.data?.user?.role) {
     let role;

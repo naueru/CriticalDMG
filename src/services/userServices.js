@@ -1,9 +1,18 @@
 import { getClient } from '../apiClient';
+import getMockUser from './dataMock';
 
 export const fetchUser = async (userId) => {
-  const res = await getClient().get(
+  const values = window.location.search;
+  const urlParams = new URLSearchParams(values);
+  const noApiCall = urlParams.get('noApiCall');
+
+  let res;
+  if (noApiCall) {
+      res = getMockUser({ id: userId });
+  } else {
+      res = await getClient().get(
     `/users/${userId}`
-  );
+  )};
 
   // TODO handle errors status
 
