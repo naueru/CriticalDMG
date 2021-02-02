@@ -12,7 +12,7 @@ const config = {
       maxLength: '60',
     },
     password: {
-      minLength: '4',
+      minLength: '1',
       maxLength: '30',
     },
     userName: {
