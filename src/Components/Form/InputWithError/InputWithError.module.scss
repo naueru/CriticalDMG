@@ -1,0 +1,24 @@
+// Themes
+@import '../../../constants/Themes/MainTheme';
+
+.inputContainer {
+  margin: 1rem 0;
+
+  .inputError {
+    border: $Border-ErrorInputBorder;
+    margin: 1rem 0;
+  }
+
+  .hasError {
+    outline: $Outline-ErrorInputOutline;
+  }
+
+  .errorFeedback {
+    color: $Color-ErrorInputMsg;
+    font-size: 12px;
+    margin: 4px 0 0 0;
+    padding: 0;
+    text-align: right;
+    width: 100%;
+  }
+}
