@@ -28,7 +28,7 @@ const Register = ({ onSubmit, errorLabel }) => {
     password: '',
     repeatPassword: '',
     alterEgo: '',
-    icon: '',
+    icon: icons?.[0]?.name,
   };
 
   const [ payload, setPayload ] = useState(INITIAL_PAYLOAD);
@@ -219,8 +219,7 @@ const Register = ({ onSubmit, errorLabel }) => {
           errorMsg={fieldsErrors?.alterEgo}
         />
         <h3 className={styles.registerHeadline}>{iconLabel}</h3>
-        <select name="icon" className={styles.registerinput} onChange={handleChange}>
-          <option value="" disabled selected>{iconSelectPlaceholder}</option>
+        <select name="icon" className={styles.registerinput} onChange={handleChange} defaultValue={payload.icon}>
           {renderAvatarOptions(icons)}
         </select>
         <button className={styles.registerBtn}>{submitLabel}</button>
