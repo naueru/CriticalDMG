@@ -244,7 +244,15 @@ let translations = {
       alterEgoTooltip: 'Nombre visible / Alter ego',
       icon: 'Elija un avatar',
       submit: 'Crear',
-      selectPlaceholder: 'Elija un ícono'
+      selectPlaceholder: 'Elija un ícono',
+      errors: {
+        email: 'Email inválido',
+        userName:'UserName inválido',
+        password:'Caracteres: Min 4 | Max 30',
+        alterEgo:'Este campo es requerido',
+        isPwdMatched:'Las contraseñas no coinciden',
+        fieldRequired: 'Este campo es requerido',
+      },
     },
     availableCommands: {
       title: 'Comandos disponibles',
@@ -265,7 +273,7 @@ let translations = {
         invalidSufix: 'no es un comando válido.',
         invalidRoll: 'Tirada inválida, por favor use el formato: XdY+mod, ej.: "2d6+4". El modificador es opcional.'
       }
-    }
+    },
   },
   en: {
     mainMenu: {
@@ -502,7 +510,15 @@ let translations = {
       alterEgoTooltip: 'Alter Ego / Visual name',
       icon: 'Choose an avatar',
       submit: 'Create',
-      selectPlaceholder: 'Select an icon'
+      selectPlaceholder: 'Select an icon',
+      errors: {
+        email: 'Invalid email',
+        userName:'Invalid username',
+        password:'Characters: Min 4 | Max 30',
+        alterEgo:'This field is required',
+        isPwdMatched:'Passwords do not match',
+        fieldRequired: 'This field is required',
+      },
     },
     availableCommands: {
       title: 'Available commands',
@@ -523,7 +539,7 @@ let translations = {
         invalidSufix: 'is not a valid command.',
         invalidRoll: 'Invalid roll, please use the following format: XdY+mod, i.e.: "2d6+4". The modifier is optional'
       }
-    }
+    },
   }
 }
 
