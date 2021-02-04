@@ -144,7 +144,6 @@ const Register = ({ onSubmit, errorLabel }) => {
   emailTooltipLabel       = registerTranslations.emailTooltip,
   userTooltipLabel        = registerTranslations.userTooltip,
   alterEgoTooltipLabel    = registerTranslations.alterEgoTooltip,
-  iconSelectPlaceholder   = registerTranslations.selectPlaceholder,
   emailSettings           = registerFormSettings.email || {},
   emailMinSetting         = emailSettings.minLength,
   emailMaxSetting         = emailSettings.maxLength,
