@@ -247,7 +247,9 @@ let translations = {
       selectPlaceholder: 'Elija un ícono',
       errors: {
         email: 'Email inválido',
+        emailMinMaxLength: 'Caracteres: Min 6 | Max 60',
         userName:'UserName inválido',
+        userNameMinMaxLength: 'Caracteres: Min 6 | Max 20',
         password:'Caracteres: Min 4 | Max 30',
         alterEgo:'Este campo es requerido',
         isPwdMatched:'Las contraseñas no coinciden',
@@ -513,7 +515,9 @@ let translations = {
       selectPlaceholder: 'Select an icon',
       errors: {
         email: 'Invalid email',
+        emailMinMaxLength: 'Characters: Min 6 | Max 60',
         userName:'Invalid username',
+        userNameMinMaxLength: 'Characters: Min 6 | Max 20',
         password:'Characters: Min 4 | Max 30',
         alterEgo:'This field is required',
         isPwdMatched:'Passwords do not match',
