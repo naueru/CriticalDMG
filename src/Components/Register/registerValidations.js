@@ -4,16 +4,28 @@ import config from '../../CritCore/Config/config';
 // Translations
 import getTranslations from '../../CritCore/Translations/Translations';
 
-const { language }         = config,
-translations               = getTranslations(language),
-registerInputErrors        = translations.register,
-msgErrorInput              = registerInputErrors.errors,
-msgErrorInputEmail         = msgErrorInput.email,
-msgErrorInputUserName      = msgErrorInput.userName,
-msgErrorInputPassword      = msgErrorInput.password,
-msgErrorInputAlterEgo      = msgErrorInput.alterEgo,
-msgErrorInputIsPwdMatched  = msgErrorInput.isPwdMatched,
-msgErrorInputFieldRequired = msgErrorInput.fieldRequired;
+const {
+  language,
+  registerFormSettings
+} = config,
+registerFormConfig                = registerFormSettings,
+registerFormConfigEmail           = registerFormConfig.email,
+emailMinLengthConfig              = registerFormConfigEmail.minLength,
+emailMaxLengthConfig              = registerFormConfigEmail.maxLength,
+registerFormConfigUserName        = registerFormConfig.userName,
+userNameMinLengthConfig           = registerFormConfigUserName.minLength,
+userNameMaxLengthConfig           = registerFormConfigUserName.maxLength,
+translations                      = getTranslations(language),
+registerInputErrors               = translations.register,
+msgErrorInput                     = registerInputErrors.errors,
+msgErrorInputEmail                = msgErrorInput.email,
+msgErrorInputEmailMinMaxLength    = msgErrorInput.emailMinMaxLength,
+msgErrorInputUserName             = msgErrorInput.userName,
+msgErrorInputUserNameMinMaxLength = msgErrorInput.userNameMinMaxLength,
+msgErrorInputPassword             = msgErrorInput.password,
+msgErrorInputAlterEgo             = msgErrorInput.alterEgo,
+msgErrorInputIsPwdMatched         = msgErrorInput.isPwdMatched,
+msgErrorInputFieldRequired        = msgErrorInput.fieldRequired;
 
 const registerValidator = {
   email: ({ value }) => {
@@ -25,6 +37,9 @@ const registerValidator = {
     if (!value.match(emailRegexp)){
       return msgErrorInputEmail;
     }
+    if (value.length < emailMinLengthConfig || value.length > emailMaxLengthConfig) {
+      return msgErrorInputEmailMinMaxLength;
+    }
     return null;
   },
   userName: ({ value }) => {
@@ -34,6 +49,9 @@ const registerValidator = {
     }
     if (!value.match(userNameRegexp)){
       return msgErrorInputUserName;
+    }
+    if (value.length < userNameMinLengthConfig || value.length > userNameMaxLengthConfig) {
+      return msgErrorInputUserNameMinMaxLength;
     }
     return null;
   },
