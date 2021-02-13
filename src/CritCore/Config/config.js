@@ -8,7 +8,7 @@ const config = {
   SERVER_PORT: process.env.REACT_APP_SERVER_PORT || "3030",
   registerFormSettings: {
     email: {
-      minLength: '7',
+      minLength: '6',
       maxLength: '60',
     },
     password: {
