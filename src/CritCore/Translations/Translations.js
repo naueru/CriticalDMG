@@ -3,10 +3,17 @@ import config from '../Config/config';
 
 const {
   registerFormSettings
-}                       = config,
-passwordSettings        = registerFormSettings.password || {},
-pwdMinSetting           = passwordSettings.minLength,
-pwdMaxSetting           = passwordSettings.maxLength;
+}                   = config,
+passwordSettings    = registerFormSettings.password || {},
+pwdMinSetting       = passwordSettings.minLength,
+pwdMaxSetting       = passwordSettings.maxLength,
+emailSettings       = registerFormSettings.email || {},
+emailMinSettings    = emailSettings.minLength,
+emailMaxSettings    = emailSettings.maxLength,
+userNameSettings    = registerFormSettings.userName || {},
+userNameMinSettings = userNameSettings.minLength,
+userNameMaxSettings = userNameSettings.maxLength;
+
 
 let translations = {
   es: {
@@ -247,9 +254,9 @@ let translations = {
       selectPlaceholder: 'Elija un ícono',
       errors: {
         email: 'Email inválido',
-        emailMinMaxLength: 'Caracteres: Min 6 | Max 60',
-        userName:'UserName inválido',
-        userNameMinMaxLength: 'Caracteres: Min 6 | Max 20',
+        emailMinMaxLength: `Caracteres: Min ${emailMinSettings} | Max ${emailMaxSettings}`,
+        userName:'Nombre de usuario inválido',
+        userNameMinMaxLength: `Caracteres: Min ${userNameMinSettings} | Max ${userNameMaxSettings}`,
         password: `Caracteres: Min ${pwdMinSetting} | Max ${pwdMaxSetting}`,
         alterEgo:'Este campo es requerido',
         isPwdMatched:'Las contraseñas no coinciden',
@@ -515,9 +522,9 @@ let translations = {
       selectPlaceholder: 'Select an icon',
       errors: {
         email: 'Invalid email',
-        emailMinMaxLength: 'Characters: Min 6 | Max 60',
+        emailMinMaxLength: `Characters: Min ${emailMinSettings} | Max ${emailMaxSettings}`,
         userName:'Invalid username',
-        userNameMinMaxLength: 'Characters: Min 6 | Max 20',
+        userNameMinMaxLength: `Characters: Min ${userNameMinSettings} | Max ${userNameMaxSettings}`,
         password: `Characters: Min ${pwdMinSetting} | Max ${pwdMaxSetting}`,
         alterEgo:'This field is required',
         isPwdMatched:'Passwords do not match',
