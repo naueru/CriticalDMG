@@ -3,10 +3,17 @@ import config from '../Config/config';
 
 const {
   registerFormSettings
-}                       = config,
-passwordSettings        = registerFormSettings.password || {},
-pwdMinSetting           = passwordSettings.minLength,
-pwdMaxSetting           = passwordSettings.maxLength;
+}                   = config,
+passwordSettings    = registerFormSettings.password || {},
+pwdMinSetting       = passwordSettings.minLength,
+pwdMaxSetting       = passwordSettings.maxLength,
+emailSettings       = registerFormSettings.email || {},
+emailMinSettings    = emailSettings.minLength,
+emailMaxSettings    = emailSettings.maxLength,
+userNameSettings    = registerFormSettings.userName || {},
+userNameMinSettings = userNameSettings.minLength,
+userNameMaxSettings = userNameSettings.maxLength;
+
 
 let translations = {
   es: {
@@ -244,7 +251,17 @@ let translations = {
       alterEgoTooltip: 'Nombre visible / Alter ego',
       icon: 'Elija un avatar',
       submit: 'Crear',
-      selectPlaceholder: 'Elija un ícono'
+      selectPlaceholder: 'Elija un ícono',
+      errors: {
+        email: 'Email inválido',
+        emailMinMaxLength: `Caracteres: Min ${emailMinSettings} | Max ${emailMaxSettings}`,
+        userName:'Nombre de usuario inválido',
+        userNameMinMaxLength: `Caracteres: Min ${userNameMinSettings} | Max ${userNameMaxSettings}`,
+        password: `Caracteres: Min ${pwdMinSetting} | Max ${pwdMaxSetting}`,
+        alterEgo:'Este campo es requerido',
+        isPwdMatched:'Las contraseñas no coinciden',
+        fieldRequired: 'Este campo es requerido',
+      },
     },
     availableCommands: {
       title: 'Comandos disponibles',
@@ -265,7 +282,7 @@ let translations = {
         invalidSufix: 'no es un comando válido.',
         invalidRoll: 'Tirada inválida, por favor use el formato: XdY+mod, ej.: "2d6+4". El modificador es opcional.'
       }
-    }
+    },
   },
   en: {
     mainMenu: {
@@ -502,7 +519,17 @@ let translations = {
       alterEgoTooltip: 'Alter Ego / Visual name',
       icon: 'Choose an avatar',
       submit: 'Create',
-      selectPlaceholder: 'Select an icon'
+      selectPlaceholder: 'Select an icon',
+      errors: {
+        email: 'Invalid email',
+        emailMinMaxLength: `Characters: Min ${emailMinSettings} | Max ${emailMaxSettings}`,
+        userName:'Invalid username',
+        userNameMinMaxLength: `Characters: Min ${userNameMinSettings} | Max ${userNameMaxSettings}`,
+        password: `Characters: Min ${pwdMinSetting} | Max ${pwdMaxSetting}`,
+        alterEgo:'This field is required',
+        isPwdMatched:'Passwords do not match',
+        fieldRequired: 'This field is required',
+      },
     },
     availableCommands: {
       title: 'Available commands',
@@ -523,7 +550,7 @@ let translations = {
         invalidSufix: 'is not a valid command.',
         invalidRoll: 'Invalid roll, please use the following format: XdY+mod, i.e.: "2d6+4". The modifier is optional'
       }
-    }
+    },
   }
 }
 

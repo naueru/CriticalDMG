@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 // Config
 import config from '../../CritCore/Config/config';
+import registerValidator from './registerValidations';
 
 // Translations
 import getTranslations from '../../CritCore/Translations/Translations';
@@ -13,61 +14,100 @@ import getTranslations from '../../CritCore/Translations/Translations';
 // Constants
 import { icons } from '../../constants/globalConstants';
 
+// Components
+import InputWithError from '../Form/InputWithError';
+
 // Styles
 import styles from './Register.module.scss';
 
 const Register = ({ onSubmit, errorLabel }) => {
-  const [ payload, setPayload ] = useState({
+
+  const INITIAL_PAYLOAD = {
     email: '',
     userName: '',
     password: '',
     repeatPassword: '',
     alterEgo: '',
-    icon: '',
-    isPwdMatched: false,
-    repeatPwdHasChanged: false
-  });
+    icon: icons?.[0]?.name,
+  };
+
+  const [ payload, setPayload ] = useState(INITIAL_PAYLOAD);
+
+  const INITIAL_ERRORS = {
+    email: null,
+    userName: null,
+    password: null,
+    repeatPassword: null,
+    alterEgo: null,
+    isPwdMatched: null,
+  };
+
+  const [ fieldsErrors, setFieldsErrors ] = useState(INITIAL_ERRORS);
+
+  const validateField = (fields, value) => {
+    let result = {...fieldsErrors};
+    const validate = ({name, value, password, repeatPassword}) => {
+        return registerValidator?.[name]?.({ value, password, repeatPassword });
+    };
+
+    switch (typeof fields) {
+
+      case "object":
+        for (let field in fields) {
+          result[field] = validate({ value: payload[field], password: payload?.password, repeatPassword: payload?.repeatPassword, name: field })
+        }
+        break;
+
+      case "string":
+        if (fields === 'password') {
+          result.isPwdMatched = validate({ repeatPassword: payload?.repeatPassword, password: value, name: 'isPwdMatched' });
+        }
+        if (fields === 'repeatPassword') {
+          result.isPwdMatched = validate({ password: payload?.password, repeatPassword: value , name: 'isPwdMatched' });
+        }
+        if (Object.keys(fieldsErrors)?.indexOf(fields) > -1) {
+          result[fields] = validate({ value, name: fields });
+        }
+        break;
+
+      default:
+        break;
+    }
+    return result;
+  };
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
-    let pwdMatching       = {};
 
-    switch ( name ) {
-      case 'password':
-        if ( value === payload.repeatPassword && value !== '' ) {
-          pwdMatching.isPwdMatched = true;
-        } else {
-          pwdMatching.isPwdMatched = false;
-        };
-        break;
-      case 'repeatPassword':
-        if ( value === payload.password && value !== '' ) {
-          pwdMatching.isPwdMatched = true;
-        } else {
-          pwdMatching.isPwdMatched = false;
-        };
-        if (payload.repeatPwdHasChanged === false) {
-          pwdMatching.repeatPwdHasChanged = true;
-        };
-        break;
-      default:
-        break;
-    };
+    const errors = validateField(name, value);
+
+    setFieldsErrors(errors);
 
     setPayload({
       ...payload,
-      ...pwdMatching,
-      [name]: value
+      [name]: value,
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    if ( payload.isPwdMatched ) {
+
+    let errors = validateField(fieldsErrors);
+
+    setFieldsErrors(errors);
+
+    let hasError = false;
+
+    for (let keys in errors) {
+      if(errors[keys]){
+        hasError = true;
+        break;
+      }
+    }
+
+    if (!hasError) {
       onSubmit( payload );
-    } else {
-      alert( "Check password" ); // Replace this with component or fallback in form
-    };
+    }
   };
 
   const renderAvatarOptions = (iconsList = []) => {
@@ -84,8 +124,6 @@ const Register = ({ onSubmit, errorLabel }) => {
     password,
     repeatPassword,
     alterEgo,
-    isPwdMatched,
-    repeatPwdHasChanged
   }                       = payload,
   {
     language,
@@ -106,7 +144,6 @@ const Register = ({ onSubmit, errorLabel }) => {
   emailTooltipLabel       = registerTranslations.emailTooltip,
   userTooltipLabel        = registerTranslations.userTooltip,
   alterEgoTooltipLabel    = registerTranslations.alterEgoTooltip,
-  iconSelectPlaceholder   = registerTranslations.selectPlaceholder,
   emailSettings           = registerFormSettings.email || {},
   emailMinSetting         = emailSettings.minLength,
   emailMaxSetting         = emailSettings.maxLength,
@@ -123,70 +160,65 @@ const Register = ({ onSubmit, errorLabel }) => {
       <form onSubmit={handleSubmit} className={styles.registerForm}>
         { errorLabel && <h3 className={styles.registerError}>{errorLabel}</h3>}
         <h3 className={styles.registerHeadline}>{emailLabel}</h3>
-        <input
+        <InputWithError
           type="email"
           name="email"
-          required
           value={email}
           minLength={emailMinSetting}
           maxLength={emailMaxSetting}
           title={emailTooltipLabel}
           placeholder={emailLabel}
           onChange={handleChange}
-          className={styles.registerinput}
+          errorMsg={fieldsErrors?.email}
         />
         <h3 className={styles.registerHeadline}>{userNameLabel}</h3>
-        <input
+        <InputWithError
           type="text"
           name="userName"
-          required
           value={userName}
           minLength={userNameMinSetting}
           maxLength={userNameMaxSetting}
           title={userTooltipLabel}
           placeholder={userNameLabel}
           onChange={handleChange}
-          className={styles.registerinput}
+          errorMsg={fieldsErrors?.userName}
         />
         <h3 className={styles.registerHeadline}>{passwordLabel}</h3>
-        <input
+        <InputWithError
           type="password"
           name="password"
-          required
           value={password}
           minLength={pwdMinSetting}
           maxLength={pwdMaxSetting}
           title={pwdTooltipLabel}
           placeholder={passwordLabel}
-          className={styles.registerinput}
           onChange={handleChange}
+          errorMsg={fieldsErrors?.password}
         />
         <h3 className={styles.registerHeadline}>{repeatPasswordLabel}</h3>
-        <input
+        <InputWithError
           type="password"
           name="repeatPassword"
-          required
           value={repeatPassword}
           minLength={pwdMinSetting}
           maxLength={pwdMaxSetting}
           title={repeatPwdTooltipLabel}
           placeholder={repeatPasswordLabel}
-          className={repeatPwdHasChanged && !isPwdMatched ? styles.registerinputError : styles.registerinput}
           onChange={handleChange}
+          errorMsg={fieldsErrors?.isPwdMatched || fieldsErrors?.repeatPassword}
         />
         <h3 className={styles.registerHeadline}>{alterEgoLabel}</h3>
-        <input
+        <InputWithError
           name="alterEgo"
           className={styles.registerinput}
-          required
           value={alterEgo}
           title={alterEgoTooltipLabel}
           placeholder={alterEgoLabel}
           onChange={handleChange}
+          errorMsg={fieldsErrors?.alterEgo}
         />
         <h3 className={styles.registerHeadline}>{iconLabel}</h3>
-        <select name="icon" className={styles.registerinput} onChange={handleChange}>
-          <option value="" disabled selected>{iconSelectPlaceholder}</option>
+        <select name="icon" className={styles.registerinput} onChange={handleChange} defaultValue={payload.icon}>
           {renderAvatarOptions(icons)}
         </select>
         <button className={styles.registerBtn}>{submitLabel}</button>
