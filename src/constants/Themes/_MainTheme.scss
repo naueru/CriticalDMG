@@ -18,6 +18,10 @@ $Color-EventBG: rgba(0, 0, 255, 0.1);
 $Color-RollBG: $Color-MainBGColor;
 $Color-ErrorLogBG: rgba(255, 0, 0, 0.1);
 
+$Color-ErrorInputMsg: rgb(255, 0, 0);
+$Color-ErrorInputBorder: rgb(255, 0, 0);
+$Color-ErrorInputOutline: rgb(255, 0, 0);
+
 $Color-TooltipBG: rgb(77, 77, 77);
 
 // Fonts
@@ -29,11 +33,15 @@ $Border-MainBorder: 1px solid $Color-MainBorderColor;
 $Border-EventBorder: 1px solid blue;
 $Border-RollBorder: 1px solid gray;
 $Border-ErrorLogBorder: 1px solid red;
+$Border-ErrorInputBorder: 1px solid $Color-ErrorInputBorder;
 
 $Peak-BorderColor-top: $Color-TooltipBG transparent transparent transparent;
 $Peak-BorderColor-bottom: transparent transparent $Color-TooltipBG transparent;
 $Peak-BorderColor-left: transparent transparent transparent $Color-TooltipBG;
 $Peak-BorderColor-right: transparent $Color-TooltipBG transparent transparent;
+
+// Outlines
+$Outline-ErrorInputOutline: 1px solid $Color-ErrorInputOutline;
 
 // Shadows
 $Shadow-LogEntry: 2px 2px 2px black;

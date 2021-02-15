@@ -1,3 +1,5 @@
+// Themes
+@import '../../constants/Themes/MainTheme';
 
 .registerContainer {
   align-items: center;
@@ -17,9 +19,9 @@
 
   .registerError {
     background-color: rgba(255, 0, 0, 0.1);
-    border: red 1px solid;
+    border: $Border-ErrorInputBorder;
     border-radius: 4px;
-    color: red;
+    color: $Color-ErrorInputMsg;
     font-size: 14px;
     font-weight: normal;
     padding: 4px 8px;
@@ -32,15 +34,6 @@
 
     .registerHeadline {
       line-height: 1;
-      margin: 1rem 0;
-    }
-
-    .registerinput {
-      margin: 1rem 0;
-    }
-
-    .registerinputError {
-      border: 1px solid red;
       margin: 1rem 0;
     }
 
