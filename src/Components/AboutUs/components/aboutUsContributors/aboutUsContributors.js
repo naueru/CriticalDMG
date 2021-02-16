@@ -10,7 +10,7 @@ import AboutUsContributorCard from '../aboutUsContributorCard';
 // Styles
 import styles from './aboutUsContributors.module.css'
 
-const renderCards = (list = []) => {
+const renderCards = (list = [], translations) => {
   return list.map((item = {}, index) => {
     const invertedAlignment = index % 2 !== 0;
     return (
@@ -18,6 +18,7 @@ const renderCards = (list = []) => {
         <AboutUsContributorCard
           contributor={item}
           invertedAlignment={invertedAlignment}
+          translations={translations}
         />
       </li>
     );
@@ -30,7 +31,7 @@ const aboutUsContributors = ({ contributors, translations }) => {
     <section className={styles.contributorsContainer}>
       <h2>{title}</h2>
       <ul className={styles.contributorsList}>
-        {renderCards(contributors)}
+        {renderCards(contributors, translations)}
       </ul>
     </section>
   );

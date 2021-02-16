@@ -4,9 +4,6 @@ import React, { Component } from 'react';
 // Libraries
 import PropTypes from 'prop-types';
 
-// Config
-import config from '../../CritCore/Config/config';
-
 // Parser
 import parseMenues from './MenuParser';
 
@@ -68,10 +65,16 @@ class MainMenu extends Component {
   }
 
   render = () => {
-    const { handleState, account, isDevelop, developerMode, updateDeveloperModeSetting } = this.props,
-      { showHideMenu } = this.state,
-      { language } = config,
-      menues = parseMenues(language, handleState, account, isDevelop, developerMode, updateDeveloperModeSetting);
+    const {
+      handleState,
+      account,
+      isDevelop,
+      developerMode,
+      updateDeveloperModeSetting,
+      translations
+    } = this.props,
+    { showHideMenu } = this.state,
+    menues = parseMenues({translations, handleState, account, isDevelop, developerMode, updateDeveloperModeSetting});
     return (
       <nav>
         <button onClick={this.toggleMenu} className={`${styles.hamburgerBtn} ${showHideMenu && styles.open}`}>

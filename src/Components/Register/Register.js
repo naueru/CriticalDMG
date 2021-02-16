@@ -8,9 +8,6 @@ import PropTypes from 'prop-types';
 import config from '../../CritCore/Config/config';
 import registerValidator from './registerValidations';
 
-// Translations
-import getTranslations from '../../CritCore/Translations/Translations';
-
 // Constants
 import { icons } from '../../constants/globalConstants';
 
@@ -20,7 +17,8 @@ import InputWithError from '../Form/InputWithError';
 // Styles
 import styles from './Register.module.scss';
 
-const Register = ({ onSubmit, errorLabel }) => {
+const Register = ({ onSubmit, errorLabel, translations }) => {
+  const registerValidators = registerValidator({translations});
 
   const INITIAL_PAYLOAD = {
     email: '',
@@ -47,7 +45,7 @@ const Register = ({ onSubmit, errorLabel }) => {
   const validateField = (fields, value) => {
     let result = {...fieldsErrors};
     const validate = ({name, value, password, repeatPassword}) => {
-        return registerValidator?.[name]?.({ value, password, repeatPassword });
+        return registerValidators?.[name]?.({ value, password, repeatPassword });
     };
 
     switch (typeof fields) {
@@ -126,10 +124,8 @@ const Register = ({ onSubmit, errorLabel }) => {
     alterEgo,
   }                       = payload,
   {
-    language,
     registerFormSettings
   }                       = config,
-  translations            = getTranslations(language), //ToDo: Replace this language for config directly or from store
   registerTranslations    = translations.register,
   titleLabel              = registerTranslations.title,
   emailLabel              = registerTranslations.email,
@@ -228,11 +224,13 @@ const Register = ({ onSubmit, errorLabel }) => {
 };
 
 Register.propTypes = {
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  translations: PropTypes.object
 };
 
 Register.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  translations: {}
 };
 
 export default Register;

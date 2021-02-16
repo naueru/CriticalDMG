@@ -1,10 +1,6 @@
-// Translations
-import getTranslations from '../../CritCore/Translations/Translations.js';
-
 import snd from '../../assets/sounds/mocks/door.ogg';
 
-const getPrefabEvents = (lang) => {
-  const translatedEvents = getTranslations(lang).events;
+const getPrefabEvents = (translatedEvents) => {
 
   return {
     softRain: {
