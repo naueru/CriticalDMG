@@ -4,12 +4,6 @@ import React from 'react';
 // Libraries
 import Proptypes from 'prop-types';
 
-// Config
-import config from '../../../../CritCore/Config/config';
-
-// Translations
-import getTranslations from '../../../../CritCore/Translations/Translations.js';
-
 // Components
 import Branding from '../../../branding';
 import ConversationalDots from '../../../characterSheet/components/conversationalDots';
@@ -179,10 +173,8 @@ const renderCollection = (key, contributor = {}, baseSheet = {}, translations = 
   );
 };
 
-const AboutUsContributorCharSheet = ({ contributor, onLeave }) => {
+const AboutUsContributorCharSheet = ({ contributor, onLeave, translations }) => {
   const
-  { language }              = config,
-  translations              = getTranslations(language),
   aboutUsTranslations       = translations.aboutUs || {},
   contributorsTranslations  = aboutUsTranslations.contributors || {},
   sheetTranslations         = contributorsTranslations.sheet || {},

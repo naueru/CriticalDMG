@@ -9,12 +9,6 @@ import { ActionCreators } from '../../actions';
 // Libraries
 import _get from 'lodash/get';
 
-// Config
-import config from '../../CritCore/Config/config';
-
-// Translations
-import getTranslations from '../../CritCore/Translations/Translations.js';
-
 // Components
 import Modal from '../../Components/Modal';
 import Login from '../../Components/Login';
@@ -24,7 +18,7 @@ import Branding from '../../Components/branding';
 // Styles
 import styles from './Welcome.module.css';
 
-const Welcome = ({ checkCredentials, registerUser, session = {} }) => {
+const Welcome = ({ checkCredentials, registerUser, session = {}, translations }) => {
   const [ state, setState ] = useState({
     showModal: false,
     showLogin: false,
@@ -63,8 +57,6 @@ const Welcome = ({ checkCredentials, registerUser, session = {} }) => {
     error               = session.error || {},
     errorData           = error.data || {},
     errorCode           = errorData.internalError || error.code,
-    { language }        = config,
-    translations        = getTranslations(language) || {}, //ToDo: Replace this language for config directly or from store
     welcomeTranslations = translations.welcome || {},
     loginLabel          = welcomeTranslations.login,
     registerLabel       = welcomeTranslations.register,
@@ -78,10 +70,12 @@ const Welcome = ({ checkCredentials, registerUser, session = {} }) => {
         {showLogin && <Login
           onSubmit={checkLoginCredentials}
           errorLabel={errorLabel}
+          translations={translations}
         />}
         {showRegister && <Register
           onSubmit={handleRegisterUser}
           errorLabel={errorLabel}
+          translations={translations}
         />}
       </Modal>}
       <nav className={styles.loginRegisterContainer}>
@@ -121,8 +115,9 @@ const Welcome = ({ checkCredentials, registerUser, session = {} }) => {
 
 const mapStateToProps = state => ({
   // FILTERED PROPS STORE HERE
-  session: state.session,
-  isAuth: _get(state, 'session.isAuth'),
+  session: state?.session,
+  isAuth: state?.session?.isAuth,
+  translations: state?.applicationSettings?.translations,
 });
 
 const mapDispatchToProps = (dispatch) => {

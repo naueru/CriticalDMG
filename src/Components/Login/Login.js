@@ -4,17 +4,11 @@ import React, { useState } from 'react';
 // Libraries
 import PropTypes from 'prop-types';
 
-// Config
-import config from '../../CritCore/Config/config';
-
-// Translations
-import getTranslations from '../../CritCore/Translations/Translations.js';
-
 // Styles
 import styles from './Login.module.scss';
 
 
-const Login = ({ onSubmit, errorLabel }) => {
+const Login = ({ onSubmit, errorLabel, translations }) => {
   const [ credentials, setCredentials ] = useState({ userName: '', password: ''});
 
   const handleChange = ({ target }) => {
@@ -31,8 +25,6 @@ const Login = ({ onSubmit, errorLabel }) => {
   };
 
   const { userName, password } = credentials,
-  { language }      = config,
-  translations      = getTranslations(language), //ToDo: Replace this language for config directly or from store
   loginTranslations = translations.login,
   userNameLabel     = loginTranslations.userName,
   passwordLabel     = loginTranslations.password,
@@ -64,11 +56,13 @@ const Login = ({ onSubmit, errorLabel }) => {
 };
 
 Login.propTypes = {
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  translations: PropTypes.object
 };
 
 Login.defaultProps = {
-  onSubmit: () => {}
+  onSubmit: () => {},
+  translations: {}
 };
 
 export default Login;
