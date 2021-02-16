@@ -6,3 +6,5 @@ export const LOG_OUT = 'session/LOG_OUT';
 export const LOG_IN = 'session/LOG_IN';
 
 export const SET_DEVELOPER_MODE = 'applicationSettings/SET_DEVELOPER_MODE';
+export const SET_LOCALE = 'applicationSettings/SET_LOCALE';
+export const SET_TRANSLATIONS = 'applicationSettings/SET_TRANSLATIONS';

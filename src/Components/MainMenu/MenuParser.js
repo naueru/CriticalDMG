@@ -1,20 +1,12 @@
-// Config
-import config from '../../CritCore/Config/config';
-
-// Translations
-import getTranslations from '../../CritCore/Translations/Translations.js';
-
-const { defaultLanguage } = config;
-
-let parseMenues = (
-  lang = defaultLanguage,
+let parseMenues = ({
   handleState,
   account,
   isDevelop,
   developerMode,
-  updateDeveloperModeSetting) => {
-  const translations    = getTranslations(lang),
-    userName            = account,
+  updateDeveloperModeSetting,
+  translations
+}) => {
+  const userName        = account,
     mainMenu            = (translations && translations.mainMenu) || {},
     file                = mainMenu.file || {},
     fileLabel           = file.label || '',

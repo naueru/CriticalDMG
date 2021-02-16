@@ -28,7 +28,7 @@ export const getClient = () => {
         return response;
       },
       (error) => {
-        const { data } = error.response;
+        const data = error?.response?.data;
         if (
           data?.code === 401 &&
           data?.data?.name === 'TokenExpiredError'

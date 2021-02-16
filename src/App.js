@@ -23,7 +23,7 @@ import LoadingCurtain from './Components/LoadingCurtain';
 import './App.css';
 
 
-function App({ isAuth, user, fetchLoggedUser }) {
+function App({ isAuth, user, fetchLoggedUser, updateLocaleSetting }) {
   const noUserInRedux = !user;
   useEffect(() => {
 
@@ -32,13 +32,27 @@ function App({ isAuth, user, fetchLoggedUser }) {
     }
   });
 
+  useEffect(() => {
+    const values = window.location.search;
+    const urlParams = new URLSearchParams(values);
+    const lang = urlParams?.get('lang');
+
+    const navLang = lang || navigator?.language || 'en-US';
+    const locale = {
+      locale: navLang,
+      lang: navLang?.split?.('-')?.[0]?.toLowerCase?.(),
+      countryIso2: navLang?.split?.('-')?.[1]?.toUpperCase?.()
+    };
+    updateLocaleSetting(locale);
+  });
+
   const loggedInContent = noUserInRedux ? <LoadingCurtain /> : <Home />;
 
   return (
     <div className="App">
       <Switch>
         <Route exact path="/" render={() => (isAuth ? loggedInContent : <Welcome />)} />
-        <Route exact path="/about-us" component={AboutUs} />
+        <Route exact path="/about-us" render={() => <AboutUs />} />
         <Route component={NotFound} />
       </Switch>
     </div>
@@ -47,11 +61,12 @@ function App({ isAuth, user, fetchLoggedUser }) {
 
 const mapDispatchToProps = (dispatch) => {
   // Filter used actions
-  const { fetchLoggedUser } = ActionCreators;
+  const { fetchLoggedUser, updateLocaleSetting } = ActionCreators;
   return bindActionCreators(
     {
       // FILTERED ACTIONS HERE
       fetchLoggedUser,
+      updateLocaleSetting
     },
     dispatch,
   );

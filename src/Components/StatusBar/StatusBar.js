@@ -4,12 +4,6 @@ import React, { Component } from 'react';
 // Libraries
 import PropTypes from 'prop-types';
 
-// Config
-import config from '../../CritCore/Config/config';
-
-// Translations
-import getTranslations from '../../CritCore/Translations/Translations.js';
-
 // Styles
 import styles from './StatusBar.module.css';
 
@@ -29,13 +23,13 @@ class MainMenu extends Component {
   }
 
   render = () => {
-    const { language } = config,
-      translations    = getTranslations(language),
+    const
       props               = this.props || {},
       players             = props.players,
       timeSpent           = props.timeSpent,
       sessionNumber       = props.sessionNumber,
       gameName            = props.gameName,
+      translations        = props.translations,
       statusBarLabels     = (translations && translations.statusBar) || {},
       amountPlayersLabel  = `${statusBarLabels.amountPlayers} ${players}`,
       timeSpentLabel      = `${statusBarLabels.timeSpent} ${timeSpent}`,

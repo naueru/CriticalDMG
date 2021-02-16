@@ -2,11 +2,11 @@
 // React
 import React from 'react';
 
-// Config
-import config from '../../CritCore/Config/config';
+// Store
+import { connect } from 'react-redux';
 
-// Translations
-import getTranslations from '../../CritCore/Translations/Translations.js';
+// Libraries
+import PropTypes from 'prop-types';
 
 // Components
 import AboutUsIntroduction from './components/aboutUsIntroduction';
@@ -20,10 +20,8 @@ import styles from './AboutUs.module.css';
 // Contributors
 import contributors from './contributorsConstants';
 
-const AboutUs = () => {
+const AboutUs = ({ translations }) => {
   const
-  { language }              = config,
-  translations              = getTranslations(language),
   aboutUsTranslations       = translations.aboutUs || {},
   introductionTranslations  = aboutUsTranslations.introduction,
   sliderTranslations        = aboutUsTranslations.slider,
@@ -37,6 +35,17 @@ const AboutUs = () => {
       <AboutUsFooter translations={footerTranslations} />
     </div>
   );
-}
+};
 
-export default AboutUs;
+AboutUs.propTypes = {
+  translations: PropTypes.object
+};
+
+const mapStateToProps = store => ({
+  // FILTERED PROPS STORE HERE
+  translations: store?.applicationSettings?.translations,
+});
+
+export default connect(
+  mapStateToProps
+)(AboutUs);

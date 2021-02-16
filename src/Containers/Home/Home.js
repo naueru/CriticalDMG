@@ -60,7 +60,7 @@ const mockedManuals = [
 // Styles
 // import styles from './Home.module.css';
 
-const Home = ({ isDevelop, logOut, user, developerMode, updateDeveloperModeSetting }) => {
+const Home = ({ isDevelop, logOut, user, developerMode, updateDeveloperModeSetting, translations }) => {
   const [ state, setState ] = useState({});
   const mounted = useRef();
 
@@ -109,9 +109,9 @@ const Home = ({ isDevelop, logOut, user, developerMode, updateDeveloperModeSetti
           imageList={imagesList} //ToDo: Replace this mocks with real data
         />}
 
-        {showModal === 'about' && <About />}
+        {showModal === 'about' && <About translations={translations} />}
 
-        {showModal === 'availableCommands' && <AvailableCommands />}
+        {showModal === 'availableCommands' && <AvailableCommands translations={translations} />}
         {showModal === 'manuals' && <ManualsViewer manualsList={mockedManuals} />}
       </Modal>}
       <MainMenu
@@ -120,6 +120,7 @@ const Home = ({ isDevelop, logOut, user, developerMode, updateDeveloperModeSetti
         isDevelop={isDevelop}
         developerMode={developerMode}
         updateDeveloperModeSetting={updateDeveloperModeSetting}
+        translations={translations}
       />
       <MainBoard showImages={showImages} />
       <StatusBar
@@ -127,6 +128,7 @@ const Home = ({ isDevelop, logOut, user, developerMode, updateDeveloperModeSetti
         timeSpent={timeSpent}
         sessionNumber={sessionNumber}
         gameName={gameName}
+        translations={translations}
       />
     </div>
   );
@@ -136,7 +138,8 @@ const mapStateToProps = state => ({
   // FILTERED PROPS STORE HERE
   user: _get(state, 'session.user'),
   isDevelop: _get(state, 'session.user.role') === 'dev',
-  developerMode: state?.applicationSettings?.developerMode
+  developerMode: state?.applicationSettings?.developerMode,
+  translations: state?.applicationSettings?.translations,
 });
 
 const mapDispatchToProps = (dispatch) => {

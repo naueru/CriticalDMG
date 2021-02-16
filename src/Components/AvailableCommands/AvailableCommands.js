@@ -1,12 +1,6 @@
 // React
 import React from 'react';
 
-// Config
-import config from '../../CritCore/Config/config';
-
-// Translations
-import getTranslations from '../../CritCore/Translations/Translations.js';
-
 // Styles
 import styles from './AvailableCommands.module.css';
 
@@ -22,10 +16,8 @@ const renderCommands = (list) => {
   return commands;
 };
 
-const AvailableCommands = () => {
-  const { language } = config,
-    translations  = getTranslations(language),
-    { title, description } = translations.availableCommands;
+const AvailableCommands = ({ translations }) => {
+  const { title, description } = translations.availableCommands;
   return (
     <div className={styles.availableCommandsContainer}>
       <h2>{title}</h2>

@@ -1,12 +1,8 @@
 // Predefined events
 import getPrefabEvents from '../../constants/events/genericEvents';
 
-// Translations
-import getTranslations from '../../CritCore/Translations/Translations.js';
-
-const parse = (input = '', user, language) => {
-  const translations      = getTranslations(language) || {},
-    errorTranslations     = translations.errors || {},
+const parse = (input = '', user, translations) => {
+  const errorTranslations = translations.errors || {},
     commandErrorTrans     = errorTranslations.commands || {},
     invalidCommandPrefix  = commandErrorTrans.invalidPrefix || '',
     invalidCommandSufix   = commandErrorTrans.invalidSufix || '',
@@ -103,7 +99,7 @@ const parse = (input = '', user, language) => {
       break;
     case '/event':
     case '/e':
-      const prefabEvents = getPrefabEvents(language),
+      const prefabEvents = getPrefabEvents(translations.events),
         hasId = terms[1][0] === '#',
         id = hasId && terms[1].slice(1),
         event = id ? prefabEvents[id] : {

@@ -10,12 +10,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import _get from 'lodash/get';
 
-// Config
-import config from '../../CritCore/Config/config';
-
-// Translations
-import getTranslations from '../../CritCore/Translations/Translations.js';
-
 // Parsers
 import inputParser from './inputParser';
 
@@ -29,7 +23,7 @@ import snd from '../../../src/assets/sounds/mocks/door.ogg';
 // Styles
 import styles from './ChatLog.module.css';
 
-const ChatLog = ({ user, developerMode, showImages }) => {
+const ChatLog = ({ user, developerMode, showImages, translations }) => {
 
   const [ selectedItem, setSelectedItem ]           = useState(null);
   const [ defaultInput, setDefaultInput ]           = useState('');
@@ -112,8 +106,7 @@ const ChatLog = ({ user, developerMode, showImages }) => {
   };
 
   const parseInput = (input = '') => {
-    const { language } = config,
-      parsedInput = inputParser.parse(input, user, language);
+    const parsedInput = inputParser.parse(input, user, translations);
       log.push(parsedInput);
       inputHistory.push(input);
       let inputHistoryIndex = inputHistory.length;
@@ -123,9 +116,7 @@ const ChatLog = ({ user, developerMode, showImages }) => {
       setDefaultInput('');
   };
 
-  const { language }      = config,
-    translations          = getTranslations(language),
-    { inputPlaceholder }  = translations.chatLog;
+  const { inputPlaceholder }  = translations.chatLog;
 
   return (
     <section className={styles.chat}>
@@ -159,7 +150,8 @@ ChatLog.defaultProps = {
 const mapStateToProps = store => ({
   // FILTERED PROPS STORE HERE
   user: _get(store, 'session.user'),
-  developerMode: store?.applicationSettings?.developerMode
+  developerMode: store?.applicationSettings?.developerMode,
+  translations: store?.applicationSettings?.translations,
 });
 
 const mapDispatchToProps = (dispatch) => {

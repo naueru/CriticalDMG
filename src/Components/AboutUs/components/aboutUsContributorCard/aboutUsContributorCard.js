@@ -10,7 +10,7 @@ import AboutUsContributorCharSheet from '../aboutUsContributorCharSheet';
 // Styles
 import styles from './aboutUsContributorCard.module.css';
 
-const AboutUsContributorCard = ({ contributor, invertedAlignment }) => {
+const AboutUsContributorCard = ({ contributor, invertedAlignment, translations }) => {
   const [ state, setState ] = useState({ showCharacterSheet: false });
 
   const showSheet = (value) => {
@@ -25,7 +25,7 @@ const AboutUsContributorCard = ({ contributor, invertedAlignment }) => {
 
   return (
     <div className={containerStyles} onMouseOver={() => showSheet(true)} onMouseLeave={() => showSheet(false)}>
-      {showCharacterSheet && <AboutUsContributorCharSheet contributor={contributor} onLeave={() => showSheet(false)}/>}
+      {showCharacterSheet && <AboutUsContributorCharSheet translations={translations} contributor={contributor} onLeave={() => showSheet(false)}/>}
       <img src={contributor.img} alt='profile' className={styles.profile} />
       <div className={dataStyles}>
         <h3 className={styles.name}>{contributor.name}</h3>
