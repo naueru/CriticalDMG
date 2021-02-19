@@ -68,14 +68,14 @@ const PictureViewer = ({imageList, onClick}) => {
       />
     </div>
   );
-}
+};
 
 PictureViewer.propTypes = {
   imageList: PropTypes.array,
 };
 
 PictureViewer.defaultProps = {
-  imageList: []
-}
+  imageList: [],
+};
 
 export default PictureViewer;
