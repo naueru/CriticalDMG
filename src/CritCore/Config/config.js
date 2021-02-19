@@ -21,7 +21,7 @@ const config = {
     },
   },
   pictureViewer: {
-    magnifierSize: '50%'
+    magnifierSize: '50%',
   },
 };
 
