@@ -16,7 +16,7 @@ export const loginCredentials = async ({ email, userName, password }) => {
       {
         email: email || userName,
         password: password,
-        strategy: 'local'
+        strategy: 'local',
       }
     );
   }
