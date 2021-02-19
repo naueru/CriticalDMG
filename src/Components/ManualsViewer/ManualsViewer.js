@@ -41,14 +41,14 @@ const ManualsViewer = ({manualsList, onClick}) => {
       />
     </div>
   );
-}
+};
 
 ManualsViewer.propTypes = {
   manualsList: PropTypes.array,
 };
 
 ManualsViewer.defaultProps = {
-  manualsList: []
+  manualsList: [],
 }
 
 export default ManualsViewer;
