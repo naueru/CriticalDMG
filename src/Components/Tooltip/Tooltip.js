@@ -47,7 +47,7 @@ const Tooltip = ({ message, children, orientation, maxHeight, maxWidth }) => {
       default:
         break;
     }
-    return
+    return;
   };
 
   return (
@@ -67,14 +67,14 @@ Tooltip.propTypes = {
   maxHeight: PropTypes.string,
   maxWidth: PropTypes.string,
   message: PropTypes.string,
-  orientation: PropTypes.string
+  orientation: PropTypes.string,
 };
 
 Tooltip.defaultProps = {
   maxHeight: '',
   maxWidth: '',
   message: '',
-  orientation: 'top'
+  orientation: 'top',
 }
 
 export default Tooltip;
