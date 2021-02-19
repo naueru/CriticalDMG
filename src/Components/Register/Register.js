@@ -225,12 +225,12 @@ const Register = ({ onSubmit, errorLabel, translations }) => {
 
 Register.propTypes = {
   onSubmit: PropTypes.func,
-  translations: PropTypes.object
+  translations: PropTypes.object,
 };
 
 Register.defaultProps = {
   onSubmit: () => {},
-  translations: {}
+  translations: {},
 };
 
 export default Register;
