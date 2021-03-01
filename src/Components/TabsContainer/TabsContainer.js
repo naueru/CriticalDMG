@@ -45,7 +45,7 @@ const TabsContainer = ({
       );
     });
     return (
-      <Fragment>
+      <>
         <ul className={styles.tabs}>
           {tabList}
         </ul>
@@ -58,7 +58,7 @@ const TabsContainer = ({
         >
           {contentList}
         </div>
-      </Fragment>
+      </>
     );
   };
 
