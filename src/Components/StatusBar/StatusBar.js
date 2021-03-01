@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 // Styles
 import styles from './StatusBar.module.css';
 
-const MainMenu = (props) => {
+const StatusBar = (props) => {
 
   const properties     = props || {},
     players            = properties.players,
@@ -33,18 +33,18 @@ const MainMenu = (props) => {
   );
 };
 
-MainMenu.propTypes = {
+StatusBar.propTypes = {
   players: PropTypes.number,
   timeSpent: PropTypes.string,
   sessionNumber: PropTypes.number,
   gameName: PropTypes.string,
 };
 
-MainMenu.defaultProps = {
+StatusBar.defaultProps = {
   players: 0,
   timeSpent: '0:00h',
   sessionNumber: 0,
   gameName: 'Eclipse Phase',
 };
 
-export default MainMenu;
+export default StatusBar;
