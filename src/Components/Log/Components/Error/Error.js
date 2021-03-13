@@ -1,5 +1,5 @@
 // Core
-import React, { Component } from 'react';
+import React from 'react';
 
 // Libraries
 import PropTypes from 'prop-types';
@@ -7,24 +7,20 @@ import PropTypes from 'prop-types';
 // Styles
 import styles from './Error.module.css';
 
-class Error extends Component {
-  static propTypes = {
-    text: PropTypes.string
-  };
+const Error = ({text}) => {
+  return (
+    <div className={styles.errorContainer}>
+      <p className={styles.errorText}>{text}</p>
+    </div>
+  );
+};
 
-  static defaultProps = {
-    text: ''
-  };
+Error.propTypes = {
+  text: PropTypes.string,
+};
 
-  render = () => {
-    const { text } = this.props;
-
-    return (
-      <div className={styles.errorContainer}>
-        <p className={styles.errorText}>{text}</p>
-      </div>
-    );
-  };
-}
+Error.defaultProps = {
+  text: '',
+};
 
 export default Error;

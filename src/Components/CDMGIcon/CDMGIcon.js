@@ -1,5 +1,5 @@
 // Core
-import React, { Component } from 'react';
+import React from 'react';
 
 // Libraries
 import PropTypes from 'prop-types';
@@ -7,24 +7,18 @@ import PropTypes from 'prop-types';
 // Styles
 import styles from './CDMGIcon.module.css';
 
-class CDMGIcon extends Component {
-  static propTypes = {
-    name: PropTypes.string
-  };
+const CDMGIcon = ({name}) => {
+  return (
+    <div className={`${styles.icon} ${styles[name]}`} />
+  );
+};
 
-  static defaultProps = {
-    name: ''
-  };
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render = () => {
-    const { name } = this.props;
-    return (
-      <div className={`${styles.icon} ${styles[name]}`} />
-    );
-  };
-}
+CDMGIcon.propTypes = {
+  name: PropTypes.string,
+};
+
+CDMGIcon.defaultProps = {
+  name: '',
+};
 
 export default CDMGIcon;

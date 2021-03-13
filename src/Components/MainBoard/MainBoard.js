@@ -24,11 +24,11 @@ const MainBoard = ({showImages}) => {
 };
 
 MainBoard.propTypes = {
-  showImages: PropTypes.func
+  showImages: PropTypes.func,
 };
 
 MainBoard.defaultProps = {
-  showImages: () => {}
+  showImages: () => {},
 };
 
 export default MainBoard;

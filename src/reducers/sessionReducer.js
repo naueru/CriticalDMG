@@ -3,7 +3,7 @@ import {
   CHECK_CREDENTIALS_FAILED,
   CHECK_CREDENTIALS_LOADING,
   LOG_OUT,
-  FETCH_LOGGED_USER_SUCCESS
+  FETCH_LOGGED_USER_SUCCESS,
 } from './constants';
 import { isLoggedIn } from "../services/localStorageServices";
 
@@ -12,7 +12,7 @@ const initialState = {
   isAuth: isLoggedIn(),
   token: null,
   error: null,
-  user: null
+  user: null,
 };
 
 export const session = (state = initialState, action) => {

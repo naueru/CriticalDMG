@@ -1,5 +1,5 @@
 // Core
-import React, { Fragment } from 'react';
+import React from 'react';
 
 // Libraries
 import PropTypes from 'prop-types';
@@ -26,10 +26,10 @@ const PictureViewer = ({imageList, onClick}) => {
         comp = {
           label,
           content: (
-            <Fragment>
+            <>
               <h4>{title}</h4>
               <img src={imgUrl} alt={name} />
-            </Fragment>
+            </>
           )
         }
         break;
@@ -40,7 +40,7 @@ const PictureViewer = ({imageList, onClick}) => {
         comp = {
           label,
           content: (
-            <Fragment>
+            <>
               <GlassMagnifier
                 imageSrc={smallImgUrl}
                 imageAlt={label}
@@ -48,7 +48,7 @@ const PictureViewer = ({imageList, onClick}) => {
                 magnifierSize={magnifierSize}
                 allowOverflow
               />
-            </Fragment>
+            </>
           )
         }
         break;
@@ -68,14 +68,14 @@ const PictureViewer = ({imageList, onClick}) => {
       />
     </div>
   );
-}
+};
 
 PictureViewer.propTypes = {
   imageList: PropTypes.array,
 };
 
 PictureViewer.defaultProps = {
-  imageList: []
-}
+  imageList: [],
+};
 
 export default PictureViewer;

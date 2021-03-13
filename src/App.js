@@ -41,7 +41,7 @@ function App({ isAuth, user, fetchLoggedUser, updateLocaleSetting }) {
     const locale = {
       locale: navLang,
       lang: navLang?.split?.('-')?.[0]?.toLowerCase?.(),
-      countryIso2: navLang?.split?.('-')?.[1]?.toUpperCase?.()
+      countryIso2: navLang?.split?.('-')?.[1]?.toUpperCase?.(),
     };
     updateLocaleSetting(locale);
   });
@@ -66,7 +66,7 @@ const mapDispatchToProps = (dispatch) => {
     {
       // FILTERED ACTIONS HERE
       fetchLoggedUser,
-      updateLocaleSetting
+      updateLocaleSetting,
     },
     dispatch,
   );

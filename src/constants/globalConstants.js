@@ -4,54 +4,54 @@ export const icons = [
     role: 'avatar',
     name: 'warrior',
     label: 'Warrior',
-    url: ''
+    url: '',
   },
   {
     id: 1,
     role: 'avatar',
     name: 'mage',
     label: 'Mage',
-    url: ''
+    url: '',
   },
   {
     id: 2,
     role: 'avatar',
     name: 'bard',
     label: 'Bard',
-    url: ''
+    url: '',
   },
   {
     id: 3,
     role: 'avatar',
     name: 'archer',
     label: 'Archer',
-    url: ''
+    url: '',
   },
   {
     id: 4,
     role: 'icon',
     name: 'dice',
     label: 'Dice',
-    url: ''
+    url: '',
   },
   {
     id: 5,
     role: 'icon',
     name: 'sound',
     label: 'Sound',
-    url: ''
+    url: '',
   },
   {
     id: 6,
     role: 'icon',
     name: 'picture',
     label: 'Picture',
-    url: ''
-  }
+    url: '',
+  },
 ];
 
 const globalConstants = {
-  icons
+  icons,
 };
 
 export default globalConstants;

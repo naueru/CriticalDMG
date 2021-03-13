@@ -45,7 +45,7 @@ export const register = async ({email, password, userName, alterEgo, icon}) => {
     userName,
     alterEgo,
     password,
-    icon
+    icon,
   };
   const res = await getClient().post(`/users/`, data);
 

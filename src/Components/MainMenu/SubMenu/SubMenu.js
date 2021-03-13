@@ -1,5 +1,5 @@
 // Core
-import React, { Component } from 'react';
+import React from 'react';
 
 // Libraries
 import PropTypes from 'prop-types';
@@ -7,18 +7,14 @@ import PropTypes from 'prop-types';
 // Styles
 import styles from './SubMenu.module.css';
 
-class SubMenu extends Component {
-  static propTypes = {
-    items: PropTypes.array,
-    onClick: PropTypes.func
-  };
+const SubMenu = ({
+  items,
+  closeMenu,
+  onClick,
+}) => {
 
-  static defaultProps = {
-    items: [],
-    onClick: () => {}
-  };
 
-  renderList = (list) => {
+  const renderList = (list) => {
     return list.map((item, index) => {
       const label = item && item.label,
         onClick   = item && item.onClick,
@@ -36,23 +32,28 @@ class SubMenu extends Component {
     });
   };
 
-  handleClick = () => {
-    const { onClick, closeMenu } = this.props;
+  const handleClick = () => {
     closeMenu();
     onClick();
   };
 
-  render = () => {
-    const { items } = this.props;
+  return (
+    <div className={styles.subMenuWrapper} onClick={handleClick}>
+      <ul className={styles.subMenuList}>
+        {renderList(items)}
+      </ul>
+    </div>
+  );
+};
 
-    return (
-      <div className={styles.subMenuWrapper} onClick={this.handleClick}>
-        <ul className={styles.subMenuList}>
-          {this.renderList(items)}
-        </ul>
-      </div>
-    );
-  };
-}
+SubMenu.propTypes = {
+  items: PropTypes.array,
+  onClick: PropTypes.func,
+};
+
+SubMenu.defaultProps = {
+  items: [],
+  onClick: () => {},
+};
 
 export default SubMenu;

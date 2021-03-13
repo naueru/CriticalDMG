@@ -1,5 +1,5 @@
 // Core
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 // Libraries
 import PropTypes from 'prop-types';
@@ -13,27 +13,19 @@ import SubMenu from './SubMenu';
 // Styles
 import styles from './MainMenu.module.css';
 
-class MainMenu extends Component {
-  static propTypes = {
-    handleState: PropTypes.func,
-    account: PropTypes.string
-  };
+const MainMenu = ({
+  account,
+  developerMode,
+  handleState,
+  isDevelop,
+  translations,
+  updateDeveloperModeSetting,
+}) => {
 
-  static defaultProps = {
-    handleState: () => {},
-    account: ''
-  };
+  const [activeMenu, setStateActiveMenu]     = useState(false);
+  const [showHideMenu, setStateShowHideMenu] = useState(false);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeMenu: false,
-      showHideMenu: false
-    };
-  }
-
-  renderMenuItems = (list) => {
-    const { activeMenu } = this.state;
+  const renderMenuItems = (list) => {
     return list.map((item, index) => {
       const label     = item.label,
         renderSubmenu = activeMenu === index,
@@ -42,52 +34,58 @@ class MainMenu extends Component {
         <li className={styles.mainListItem} key={`${label}_${index}`}>
           <button
             className={styles.mainMenuButton}
-            onClick={() => this.setState({ activeMenu: setActiveMenu })}
+            onClick={() => setStateActiveMenu(setActiveMenu)}
           >
             {label}
           </button>
           {renderSubmenu && <SubMenu items={item.subMenues}
-            onClick={() => this.setState({ activeMenu: -1 })}
-            closeMenu={() => this.hideMenu()}
+            onClick={() => setStateActiveMenu(-1)}
+            closeMenu={() => hideMenu()}
           />}
         </li>
-      )
-    })
-  }
-
-  hideMenu = () => {
-    return this.setState({showHideMenu: false})
-  }
-
-  toggleMenu = () => {
-    const { showHideMenu } = this.state;
-    return this.setState({showHideMenu: !showHideMenu})
-  }
-
-  render = () => {
-    const {
-      handleState,
-      account,
-      isDevelop,
-      developerMode,
-      updateDeveloperModeSetting,
-      translations
-    } = this.props,
-    { showHideMenu } = this.state,
-    menues = parseMenues({translations, handleState, account, isDevelop, developerMode, updateDeveloperModeSetting});
-    return (
-      <nav>
-        <button onClick={this.toggleMenu} className={`${styles.hamburgerBtn} ${showHideMenu && styles.open}`}>
-          <span className={styles.hamburgerIngredient} />
-          <span className={styles.hamburgerIngredient} />
-          <span className={styles.hamburgerIngredient} />
-        </button>
-        <ul className={`${styles.mainList} ${!showHideMenu && styles.hiddenMenu}`}>
-          {this.renderMenuItems(menues)}
-        </ul>
-      </nav>
-    );
+      );
+    });
   };
-}
+
+  const hideMenu = () => {
+    return setStateShowHideMenu(false);
+  };
+
+  const toggleMenu = () => {
+    return setStateShowHideMenu(!showHideMenu);
+  };
+
+  const menues = parseMenues({
+    account,
+    developerMode,
+    handleState,
+    isDevelop,
+    translations,
+    updateDeveloperModeSetting,
+  });
+
+  return (
+    <nav>
+      <button onClick={toggleMenu} className={`${styles.hamburgerBtn} ${showHideMenu && styles.open}`}>
+        <span className={styles.hamburgerIngredient} />
+        <span className={styles.hamburgerIngredient} />
+        <span className={styles.hamburgerIngredient} />
+      </button>
+      <ul className={`${styles.mainList} ${!showHideMenu && styles.hiddenMenu}`}>
+        {renderMenuItems(menues)}
+      </ul>
+    </nav>
+  );
+};
+
+MainMenu.propTypes = {
+  handleState: PropTypes.func,
+  account: PropTypes.string,
+};
+
+MainMenu.defaultProps = {
+  handleState: () => {},
+  account: '',
+};
 
 export default MainMenu;

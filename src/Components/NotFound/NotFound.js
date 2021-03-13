@@ -11,6 +11,6 @@ const NotFound = () => {
       The page you are looking for is not here
     </div>
   );
-}
+};
 
 export default NotFound;
