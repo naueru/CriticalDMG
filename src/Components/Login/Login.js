@@ -21,7 +21,7 @@ const Login = ({ onSubmit, errorLabel, translations }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(credentials)
+    onSubmit(credentials);
   };
 
   const { userName, password } = credentials,
@@ -57,12 +57,12 @@ const Login = ({ onSubmit, errorLabel, translations }) => {
 
 Login.propTypes = {
   onSubmit: PropTypes.func,
-  translations: PropTypes.object
+  translations: PropTypes.object,
 };
 
 Login.defaultProps = {
   onSubmit: () => {},
-  translations: {}
+  translations: {},
 };
 
 export default Login;

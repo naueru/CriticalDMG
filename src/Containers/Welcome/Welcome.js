@@ -22,7 +22,7 @@ const Welcome = ({ checkCredentials, registerUser, session = {}, translations })
   const [ state, setState ] = useState({
     showModal: false,
     showLogin: false,
-    showRegister: false
+    showRegister: false,
   });
 
   const handleState = (state) => {
@@ -44,7 +44,7 @@ const Welcome = ({ checkCredentials, registerUser, session = {}, translations })
         userName,
         alterEgo,
         password,
-        icon
+        icon,
       };
     return registerUser(data);
   };
@@ -52,7 +52,7 @@ const Welcome = ({ checkCredentials, registerUser, session = {}, translations })
   const {
       showModal,
       showLogin,
-      showRegister
+      showRegister,
     }                   = state,
     error               = session.error || {},
     errorData           = error.data || {},
@@ -111,7 +111,7 @@ const Welcome = ({ checkCredentials, registerUser, session = {}, translations })
       </section>
     </div>
   );
-}
+};
 
 const mapStateToProps = state => ({
   // FILTERED PROPS STORE HERE
@@ -127,7 +127,7 @@ const mapDispatchToProps = (dispatch) => {
     {
       // FILTERED ACTIONS HERE
       checkCredentials,
-      registerUser
+      registerUser,
     },
     dispatch,
   );

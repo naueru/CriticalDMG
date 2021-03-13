@@ -2,7 +2,7 @@
 import config from '../Config/config';
 
 const {
-  registerFormSettings
+  registerFormSettings,
 }                   = config,
 passwordSettings    = registerFormSettings.password || {},
 pwdMinSetting       = passwordSettings.minLength,
@@ -22,16 +22,16 @@ let translations = {
         label: 'Archivo',
         subMenues: {
           saveSession: 'Grabar sesión actual',
-          loadGamePresets: 'Cargar preseteos de juego'
-        }
+          loadGamePresets: 'Cargar preseteos de juego',
+        },
       },
       edition: {
         label: 'Edición',
         subMenues: {
           uploadCustomImages: 'Subir imagen',
           uploadMap: 'Subir mapa',
-          configGame: 'Configurar juego'
-        }
+          configGame: 'Configurar juego',
+        },
       },
       library: {
         label: 'Biblioteca',
@@ -40,55 +40,55 @@ let translations = {
           viewMaps: 'Ver mapas',
           bestiary: 'Bestiario',
           weaponsItems: 'Armas y objetos',
-          magicPowers: 'Magia / poderes'
-        }
+          magicPowers: 'Magia / poderes',
+        },
       },
       character: {
         label: 'Personaje',
         subMenues: {
           characterSheet: 'Hoja de personaje',
           inventory: 'Inventario',
-          magicPowers: 'Magia / poderes'
-        }
+          magicPowers: 'Magia / poderes',
+        },
       },
       tools: {
         label: 'Herramientas',
         subMenues: {
           commands: 'Comandos',
-          devMode: 'Modo desarrollo'
-        }
+          devMode: 'Modo desarrollo',
+        },
       },
       media: {
         label: 'Media',
         subMenues: {
-          player: 'Reproductor/mezclador de audio'
-        }
+          player: 'Reproductor/mezclador de audio',
+        },
       },
       help: {
         label: 'Ayuda',
         subMenues: {
           about: 'Acerca de CriticalDMG',
-          availableCommands: 'Comandos disponibles'
-        }
+          availableCommands: 'Comandos disponibles',
+        },
       },
       session: {
         label: 'Cuenta',
         subMenues: {
           profile: 'Perfil',
-          signOut: 'Salir'
-        }
-      }
+          signOut: 'Salir',
+        },
+      },
     },
     statusBar: {
       amountPlayers: 'Jugadores:',
       timeSpent: 'Tiempo trans.:',
       gameName: 'Juego:',
-      sessionNumber: 'Sesión N°:'
+      sessionNumber: 'Sesión N°:',
     },
     about: {
       // This section is for the about modal inside the app
       description: 'CriticalDMG es una plataforma de juegos RPG  de mesa de código abierto.',
-      docsLinkLabel: 'Leer la documentación'
+      docsLinkLabel: 'Leer la documentación',
     },
     aboutUs: {
       // This section is for the about-us page
@@ -98,14 +98,14 @@ let translations = {
         description: `CriticalDMG es un proyecto OpenSource dedicado a
  todos los jugadores de rol de mesa que no puede o prefieren jugar a
  distancia. Es en escencia un conjunto de herramientas que pueden utilizar o no
- para hacer de tu experiencia de juego lo más parecido a jugar en persona.`
+ para hacer de tu experiencia de juego lo más parecido a jugar en persona.`,
       },
       slider: {
         title: '¿Qué ofrecemos?',
         features: {
           maps: 'Visor de mapas',
-          log: 'Chat y log'
-        }
+          log: 'Chat y log',
+        },
       },
       contributors: {
         title: 'Colaboradores',
@@ -113,7 +113,7 @@ let translations = {
           data: {
             name: 'Nombre:',
             team: 'Equipo:',
-            gender: 'Género:'
+            gender: 'Género:',
           },
           attributes: {
             title: 'Atributos',
@@ -130,7 +130,7 @@ let translations = {
               sta: {
                 label: 'Est',
                 description: 'Estamina',
-              }
+              },
             },
             social: {
               title: 'Sociales',
@@ -145,7 +145,7 @@ let translations = {
               com: {
                 label: 'Cal',
                 description: 'Calma',
-              }
+              },
             },
             mental: {
               title: 'Mentales',
@@ -160,8 +160,8 @@ let translations = {
               res: {
                 label: 'Res',
                 description: 'Resolución',
-              }
-            }
+              },
+            },
           },
           skills: {
             title: 'Habilidades',
@@ -178,7 +178,7 @@ let translations = {
               unitTest: {
                 label: 'Test unitarios',
                 description: 'Todo lo relacionado a los test unitarios.',
-              }
+              },
             },
             testing: {
               title: 'Testeo',
@@ -193,7 +193,7 @@ let translations = {
               autoTesting: {
                 label: 'Test Automatizado',
                 description: 'Todo lo relacionado al testeo automatizado.',
-              }
+              },
             },
             others: {
               title: 'Otros',
@@ -208,19 +208,19 @@ let translations = {
               design: {
                 label: 'Diseño',
                 description: 'Todo lo relacionado con UI/UX.',
-              }
-            }
+              },
+            },
           },
           health: 'Salud',
-          willpower: 'Fuerza de voluntad'
-        }
+          willpower: 'Fuerza de voluntad',
+        },
       },
       footer: {
-        contactUs: 'Contáctenos'
-      }
+        contactUs: 'Contáctenos',
+      },
     },
     chatLog: {
-      inputPlaceholder: '> Ingrese texto o comando'
+      inputPlaceholder: '> Ingrese texto o comando',
     },
     welcome: {
       login: 'Ingresar',
@@ -230,12 +230,12 @@ let translations = {
       401: 'Nombre de usuario o contraseña incorrectos',
       500: 'Ups!, error interno, intente nuevamente más tarde',
       600: 'El email elegido ya ha sido utilizado.',
-      601: 'El nombre de usuario elegido ya ha sido utilizado.'
+      601: 'El nombre de usuario elegido ya ha sido utilizado.',
     },
     login: {
       userName: 'Nombre de usuario',
       password: 'Contraseña',
-      button: 'Ingresar'
+      button: 'Ingresar',
     },
     register: {
       title: 'Crear cuenta',
@@ -270,18 +270,18 @@ let translations = {
         {command :'{/yell | /y} {text}', description: 'Current player yells text'},
         {command :'{/whisper | /w} {text}', description: 'Current player whispers text'},
         {command :'{/roll | /r} {XdY+M}', description: 'Current player rolls X dices of Y faces and adds M to result'}
-      ]
+      ],
     },
     events: {
       softRain: 'Lentamente, unas cuantas gotas comienzan a caer desde el cielo.',
-      heavyRain: 'Repentinamente, un puñado de truenos y un montón de agua comienza a caer del cielo.'
+      heavyRain: 'Repentinamente, un puñado de truenos y un montón de agua comienza a caer del cielo.',
     },
     errors: {
       commands: {
         invalidPrefix: 'Lo siento,',
         invalidSufix: 'no es un comando válido.',
-        invalidRoll: 'Tirada inválida, por favor use el formato: XdY+mod, ej.: "2d6+4". El modificador es opcional.'
-      }
+        invalidRoll: 'Tirada inválida, por favor use el formato: XdY+mod, ej.: "2d6+4". El modificador es opcional.',
+      },
     },
   },
   en: {
@@ -290,16 +290,16 @@ let translations = {
         label: 'File',
         subMenues: {
           saveSession: 'Save current session',
-          loadGamePresets: 'Load game presets'
-        }
+          loadGamePresets: 'Load game presets',
+        },
       },
       edition: {
         label: 'Edition',
         subMenues: {
           uploadCustomImages: 'Upload image',
           uploadMap: 'Upload map',
-          configGame: 'Configure game'
-        }
+          configGame: 'Configure game',
+        },
       },
       library: {
         label: 'Library',
@@ -308,55 +308,55 @@ let translations = {
           viewMaps: 'View maps',
           bestiary: 'Bestiary',
           weaponsItems: 'Weapons and items',
-          magicPowers: 'Magic / powers'
-        }
+          magicPowers: 'Magic / powers',
+        },
       },
       character: {
         label: 'Character',
         subMenues: {
           characterSheet: 'Character sheet',
           inventory: 'Inventory',
-          magicPowers: 'Magic / powers'
-        }
+          magicPowers: 'Magic / powers',
+        },
       },
       tools: {
         label: 'Tools',
         subMenues: {
           commands: 'Commands',
-          devMode: 'Developer Mode'
-        }
+          devMode: 'Developer Mode',
+        },
       },
       media: {
         label: 'Media',
         subMenues: {
-          player: 'Audio player/mixer'
-        }
+          player: 'Audio player/mixer',
+        },
       },
       help: {
         label: 'Help',
         subMenues: {
           about: 'About CriticalDMG',
-          availableCommands: 'Available commands'
-        }
+          availableCommands: 'Available commands',
+        },
       },
       session: {
         label: 'Account',
         subMenues: {
           profile: 'Profile',
-          signOut: 'Logout'
-        }
-      }
+          signOut: 'Logout',
+        },
+      },
     },
     statusBar: {
       amountPlayers: 'Players:',
       timeSpent: 'Time spent:',
       gameName: 'Game:',
-      sessionNumber: 'Session N°:'
+      sessionNumber: 'Session N°:',
     },
     about: {
       // This section is for the about modal inside the app
       description: 'CriticalDMG is an opensource table RPG platform.',
-      docsLinkLabel: 'Read the documentation'
+      docsLinkLabel: 'Read the documentation',
     },
     aboutUs: {
       // This section is for the about-us page
@@ -366,14 +366,14 @@ let translations = {
         description: `CriticalDMG is an OpenSource project targeted to
  every tabletop rpg player that needs or rather play remotely. It essentially is
  a bunch of tools that you may use or not to make your playing experience the most
- similar to play face to face.`
+ similar to play face to face.`,
       },
       slider: {
         title: 'What we provide?',
         features: {
           maps: 'Map viewer',
-          log: 'Chat & log'
-        }
+          log: 'Chat & log',
+        },
       },
       contributors: {
         title: 'Contributors',
@@ -381,7 +381,7 @@ let translations = {
           data: {
             name: 'Name:',
             team: 'Team:',
-            gender: 'Gender:'
+            gender: 'Gender:',
           },
           attributes: {
             title: 'Attributes',
@@ -398,7 +398,7 @@ let translations = {
               sta: {
                 label: 'Sta',
                 description: 'Stamina',
-              }
+              },
             },
             social: {
               title: 'Social',
@@ -413,7 +413,7 @@ let translations = {
               com: {
                 label: 'Com',
                 description: 'Composure',
-              }
+              },
             },
             mental: {
               title: 'Mental',
@@ -428,8 +428,8 @@ let translations = {
               res: {
                 label: 'Res',
                 description: 'Resolve',
-              }
-            }
+              },
+            },
           },
           skills: {
             title: 'Skills',
@@ -446,7 +446,7 @@ let translations = {
               unitTest: {
                 label: 'Unit tests',
                 description: 'Everything related to unit testing',
-              }
+              },
             },
             testing: {
               title: 'Testing',
@@ -461,7 +461,7 @@ let translations = {
               autoTesting: {
                 label: 'Auto. testing',
                 description: 'Everything related to automation testing',
-              }
+              },
             },
             others: {
               title: 'Others',
@@ -476,19 +476,19 @@ let translations = {
               design: {
                 label: 'Design',
                 description: 'Everything related to UI/UX',
-              }
-            }
+              },
+            },
           },
           health: 'Health',
-          willpower: 'Willpower'
-        }
+          willpower: 'Willpower',
+        },
       },
       footer: {
-        contactUs: 'Contact Us'
-      }
+        contactUs: 'Contact Us',
+      },
     },
     chatLog: {
-      inputPlaceholder: '> Insert text or command'
+      inputPlaceholder: '> Insert text or command',
     },
     welcome: {
       login: 'Login',
@@ -498,12 +498,12 @@ let translations = {
       401: 'Invalid username or password',
       500: 'Oops!, internal error, try again later.',
       600: 'The chosen email is already in use.',
-      601: 'The chosen username is already in use.'
+      601: 'The chosen username is already in use.',
     },
     login: {
       userName: 'User Name',
       password: 'Password',
-      button: 'Login'
+      button: 'Login',
     },
     register: {
       title: 'Create account',
@@ -537,26 +537,26 @@ let translations = {
         {command :'{/say | /s} {text}', description: 'Current player says text'},
         {command :'{/yell | /y} {text}', description: 'Current player yells text'},
         {command :'{/whisper | /w} {text}', description: 'Current player whispers text'},
-        {command :'{/roll | /r} {XdY+M}', description: 'Current player rolls X dices of Y faces and adds M to result'}
-      ]
+        {command :'{/roll | /r} {XdY+M}', description: 'Current player rolls X dices of Y faces and adds M to result'},
+      ],
     },
     events: {
       softRain: 'Softly a few drops start falling from the sky.',
-      heavyRain: 'Suddenly a bunch of thunders and a lot of water start falling from the sky.'
+      heavyRain: 'Suddenly a bunch of thunders and a lot of water start falling from the sky.',
     },
     errors: {
       commands: {
         invalidPrefix: 'Sorry,',
         invalidSufix: 'is not a valid command.',
         invalidRoll: 'Invalid roll, please use the following format: XdY+mod, i.e.: "2d6+4". The modifier is optional'
-      }
+      },
     },
-  }
-}
+  },
+};
 
 
 let getTranslations = (lang = 'en') => {
   return translations[lang] || translations['en'];
-}
+};
 
 export default getTranslations;

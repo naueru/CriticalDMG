@@ -17,16 +17,16 @@ const Modal = ({child, onClose, children}) => {
       {children}
     </div>
   );
-}
+};
 
 // ToDo: Define by props if uses close button, wrapper and type of transition
 Modal.propTypes = {
   child: PropTypes.string,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
 };
 
 Modal.defaultProps = {
-  onClose: () => {}
+  onClose: () => {},
 }
 
 export default Modal;

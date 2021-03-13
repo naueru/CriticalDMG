@@ -1,5 +1,5 @@
 // Core
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 // Libraries
 import PropTypes from 'prop-types';
@@ -7,55 +7,45 @@ import PropTypes from 'prop-types';
 // Styles
 import styles from './TabsContainer.module.css';
 
-class TabsContainer extends Component {
-  static propTypes = {
-    tabs: PropTypes.array
-  };
+const TabsContainer = ({
+  height,
+  tabs,
+  width,
+}) => {
 
-  static defaultProps = {
-    tabs: []
-  };
+  const [currentTab, setStateCurrentTab] = useState(0);
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentTab: 0
-    };
-  }
-
-  setCurrentTab = (index, event) => {
+  const setCurrentTab = (index, event) => {
     event.stopPropagation();
-    return this.setState({ currentTab: index });
+    return setStateCurrentTab(index);
   };
 
-  renderTabs = (tabs) => {
-    const { currentTab } = this.state,
-      { width, height } = this.props,
-      tabList = tabs.map((tab, index) => {
-        const { label } = tab,
-          style = currentTab === index ? styles.tabSelected : styles.tab;
-        // ToDo: Determine how to handle when amount of tabs exeds content width
-        return (
-          <li key={`Tab_${index}`}>
-            <button
-              className={style}
-              onClick={(e) => {this.setCurrentTab(index, e)}}
-            >
-              {label}
-            </button>
-          </li>
-        );
-      }),
-      contentList = tabs.map((tab, index) => {
-        const { content } = tab;
-        return (
-          <Fragment key={`Tab_content_${index}`}>
-            {(currentTab === index) && content}
-          </Fragment>
-        );
-      });
+  const renderTabs = (tabs) => {
+    const tabList = tabs.map((tab, index) => {
+      const { label } = tab,
+        style = currentTab === index ? styles.tabSelected : styles.tab;
+      // ToDo: Determine how to handle when amount of tabs exeds content width
+      return (
+        <li key={`Tab_${index}`}>
+          <button
+            className={style}
+            onClick={(e) => {setCurrentTab(index, e)}}
+          >
+            {label}
+          </button>
+        </li>
+      );
+    });
+    const contentList = tabs.map((tab, index) => {
+      const { content } = tab;
+      return (
+        <Fragment key={`Tab_content_${index}`}>
+          {(currentTab === index) && content}
+        </Fragment>
+      );
+    });
     return (
-      <Fragment>
+      <>
         <ul className={styles.tabs}>
           {tabList}
         </ul>
@@ -68,20 +58,25 @@ class TabsContainer extends Component {
         >
           {contentList}
         </div>
-      </Fragment>
+      </>
     );
   };
 
-  render = () => {
-    const { tabs } = this.props;
-    return (
-      <div
-        className={styles.tabsContainer}
-      >
-        {this.renderTabs(tabs)}
-      </div>
-    );
-  };
+  return (
+    <div
+      className={styles.tabsContainer}
+    >
+      {renderTabs(tabs)}
+    </div>
+  );
+};
+
+TabsContainer.propTypes = {
+  tabs: PropTypes.array,
+};
+
+TabsContainer.defaultProps = {
+  tabs: [],
 };
 
 export default TabsContainer;

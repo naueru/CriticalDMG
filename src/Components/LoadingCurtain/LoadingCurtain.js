@@ -9,7 +9,7 @@ const LoadingCurtain = () => {
     <div className={styles.LoadingContainer}>
       Loading...
     </div>
-  )
-}
+  );
+};
 
 export default LoadingCurtain;

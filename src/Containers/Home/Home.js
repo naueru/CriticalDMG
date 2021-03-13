@@ -35,12 +35,12 @@ const mockedImages = [
   },
   {
     type: 'map',
-    content: {label: 'Goldar', smallImgUrl: smallCityMapMock, largeImgUrl: bigCityMapMock}
+    content: {label: 'Goldar', smallImgUrl: smallCityMapMock, largeImgUrl: bigCityMapMock},
   },
   {
     type: 'image',
-    content: {label: 'Do it!', title: 'Just do it!', name: 'shia', imgUrl: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg'}
-  }
+    content: {label: 'Do it!', title: 'Just do it!', name: 'shia', imgUrl: 'http://cdn01.cdn.justjared.com/wp-content/uploads/headlines/2015/01/shia-labeouf-goes-shirtless-dances-in-a-cage-for-sias-elastic-hart.jpg'},
+  },
 ];
 const mockedManuals = [
   {
@@ -54,7 +54,7 @@ const mockedManuals = [
   {
     label: 'Bestiary',
     url: manualBeast,
-  }
+  },
 ];
 
 // Styles
@@ -81,9 +81,9 @@ const Home = ({ isDevelop, logOut, user, developerMode, updateDeveloperModeSetti
     } else {
       // do componentDidUpate logic
       const { shouldLogOut } = state;
-    if (shouldLogOut) {
-      logOut();
-    }
+      if (shouldLogOut) {
+        logOut();
+      }
     }
   });
 
@@ -93,7 +93,7 @@ const Home = ({ isDevelop, logOut, user, developerMode, updateDeveloperModeSetti
     sessionNumber,
     gameName,
     showModal,
-    imagesList
+    imagesList,
   } = state,
   { userName } = user;
 
@@ -132,7 +132,7 @@ const Home = ({ isDevelop, logOut, user, developerMode, updateDeveloperModeSetti
       />
     </div>
   );
-}
+};
 
 const mapStateToProps = state => ({
   // FILTERED PROPS STORE HERE
@@ -149,7 +149,7 @@ const mapDispatchToProps = (dispatch) => {
     {
       // FILTERED ACTIONS HERE
       logOut,
-      updateDeveloperModeSetting
+      updateDeveloperModeSetting,
     },
     dispatch,
   );

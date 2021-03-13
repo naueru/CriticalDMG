@@ -17,7 +17,7 @@ const Roll = ({
     dices,
     faces,
     modifier,
-    character
+    character,
   }) => {
 
   const mod = ((modifier >= 0) && `+${modifier}`) || modifier,
@@ -38,7 +38,7 @@ const Roll = ({
       </div>
     </div>
   );
-}
+};
 
 Roll.propTypes = {
   total: PropTypes.number,
@@ -46,7 +46,7 @@ Roll.propTypes = {
   dices: PropTypes.number,
   faces: PropTypes.number,
   modifier: PropTypes.number,
-  character: PropTypes.string
+  character: PropTypes.string,
 };
 
 Roll.defaultProps = {
@@ -55,7 +55,7 @@ Roll.defaultProps = {
   dices: 0,
   faces: 0,
   modifier: 0,
-  character: ''
+  character: '',
 };
 
 export default Roll;

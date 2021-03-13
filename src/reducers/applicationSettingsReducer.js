@@ -3,7 +3,7 @@ import getTranslations from '../CritCore/Translations/Translations';
 import {
   SET_DEVELOPER_MODE,
   SET_LOCALE,
-  SET_TRANSLATIONS
+  SET_TRANSLATIONS,
 } from './constants';
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
     lang: 'en',
     countryIso2: 'US',
   },
-  translations: getTranslations('en')
+  translations: getTranslations('en'),
 };
 
 export const applicationSettings = (state = initialState, action) => {

@@ -7,7 +7,7 @@ const parseMsgProps = (content) => {
       actionModifier: actMod,
       message: text,
       picture,
-      icon
+      icon,
     };
   return parsedProps;
 };
@@ -25,7 +25,7 @@ const parseEventProps = (content) => {
     text,
     image,
     sound,
-    autoPlay
+    autoPlay,
   } = content,
   img = image || {},
   parsedProps = {
@@ -35,7 +35,7 @@ const parseEventProps = (content) => {
     imgLabel: img.label,
     imgTitle: img.title,
     sound,
-    autoPlay
+    autoPlay,
   };
   return parsedProps;
 };
@@ -44,7 +44,7 @@ const ItemsPropsParser = {
   parseMsgProps,
   parseRollProps,
   parseEventProps,
-  parseErrorProps
+  parseErrorProps,
 };
 
 export default ItemsPropsParser;
