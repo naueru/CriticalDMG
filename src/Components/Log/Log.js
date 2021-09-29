@@ -107,7 +107,7 @@ const Log = ({ handleSelect, log, selectedItem, showImages, developerMode }) => 
 
   return (
     <ul className={styles.logContainer} onScroll={chekScrollPosition}>
-      {developerMode && <DeveloperFeedback>{`IATB = ${isAtTheEnd} | isEnabled = ${isAutoScrollEnabled} | isScrolling = ${isAutoScrolling}`}</DeveloperFeedback>}
+      {developerMode && <DeveloperFeedback orientation='right'>{`IATB = ${isAtTheEnd} | isEnabled = ${isAutoScrollEnabled} | isScrolling = ${isAutoScrolling}`}</DeveloperFeedback>}
       {parseList(log)}
       <li>
         <div ref={(element) => { dummy = element; }}/>
