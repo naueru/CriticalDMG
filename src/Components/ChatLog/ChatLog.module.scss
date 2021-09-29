@@ -16,13 +16,14 @@
 .inputContainer {
   height: 3rem;
   margin-right: 0 1px;
-  width: 100%;
+  max-width: 100%;
+  min-width: 215px;
 }
 
 @media screen and (min-width: 992px) {
   .chat {
     border-left: 1px solid $Color-MainBorderColor;
     max-width: $Size-Width-Chat;
-    min-width: 200px;
+    min-width: 230px;
   }
 }
