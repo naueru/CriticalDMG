@@ -10,16 +10,19 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  width: 100%;
 }
 
 .inputContainer {
   height: 3rem;
-  width: 100%;
+  margin-right: 0 1px;
+  min-width: 100%;
 }
 
 @media screen and (min-width: 992px) {
   .chat {
     border-left: 1px solid $Color-MainBorderColor;
-    width: $Size-Width-Chat;
+    max-width: $Size-Width-Chat;
+    min-width: 230px;
   }
 }
