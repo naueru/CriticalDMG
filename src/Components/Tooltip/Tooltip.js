@@ -51,12 +51,14 @@ const Tooltip = ({ message, children, orientation, maxHeight, maxWidth }) => {
   };
 
   return (
-  <span className={styles.tooltipContainer} onClick={ toogleVisibility } onMouseEnter={fixDirection}>
-    <span className={`${styles.tooltipMsg} ${styles[fixOrientation || orientation]} ${visible ? styles.visible : ''}`} >
-      <p className={styles.tooltipText} style={{...textStyles}}>
-        {message}
-      </p>
-    </span>
+    <span className={styles.tooltipContainer} onClick={ toogleVisibility } onMouseEnter={fixDirection}>
+    <div className={styles.divPosisionated}>
+      <span className={`${styles.tooltipMsg} ${styles[fixOrientation || orientation]} ${visible ? styles.visible : ''}`} >
+        <p className={styles.tooltipText} style={{...textStyles}}>
+          {message}
+        </p>
+      </span>
+    </div>
     {children}
   </span>
   );
