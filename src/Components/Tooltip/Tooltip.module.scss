@@ -4,7 +4,6 @@
 .tooltipContainer {
   color: white;
   display: inline-block;
-  position: relative;
 
   .tooltipMsg {
     background: $Color-TooltipBG;
@@ -29,7 +28,7 @@
     }
 
     &.top {
-      bottom: 130%;
+      bottom: 125%;
       left: 10%;
 
       &::after {
@@ -42,7 +41,7 @@
 
     &.bottom {
       left: 10%;
-      top: 130%;
+      top: 154%;
 
       &::after {
         bottom: 100%;
@@ -86,4 +85,9 @@
       visibility: visible;
     }
   }
+}
+.divPosisionated{
+  display: inline-block;
+  height: 18px;
+  position: relative;
 }
